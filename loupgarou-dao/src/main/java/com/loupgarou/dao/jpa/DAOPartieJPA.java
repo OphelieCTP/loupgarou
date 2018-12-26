@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import com.loupgarou.divers.fonctions;
 
 
-public class DAOPartieJPA implements IDAO<Partie> {
+public class DAOPartieJPA implements IDAOPartie {
 	private EntityManager em;
 	
 	public DAOPartieJPA(EntityManagerFactory emf) {

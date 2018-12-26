@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import com.loupgarou.divers.fonctions;
 
 
-public class DAOChatJPA implements IDAO<Chat> {
+public class DAOChatJPA implements IDAOChat {
 	private EntityManager em;
 	
 	public DAOChatJPA(EntityManagerFactory emf) {

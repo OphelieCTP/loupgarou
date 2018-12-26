@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import com.loupgarou.divers.fonctions;
 
 
-public class DAOMessageJPA implements IDAO<Message> {
+public class DAOMessageJPA implements IDAOMessage {
 	private EntityManager em;
 	
 	public DAOMessageJPA(EntityManagerFactory emf) {

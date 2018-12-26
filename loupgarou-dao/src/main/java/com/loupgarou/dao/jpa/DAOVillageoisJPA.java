@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import com.loupgarou.divers.fonctions;
 
 
-public class DAOVillageoisJPA implements IDAO<Villageois> {
+public class DAOVillageoisJPA implements IDAOVillageois {
 	private EntityManager em;
 	
 	public DAOVillageoisJPA(EntityManagerFactory emf) {
