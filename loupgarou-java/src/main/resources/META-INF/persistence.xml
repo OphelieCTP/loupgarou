@@ -25,7 +25,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/x
 
 		<properties>
 		<!--  Listes des propriétés liées à l’implémentation (Hibernate, OpenJPA, ...) -->
-		<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/loupGarou?serverTimezone=UTC" />
+		<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/loupGarou2?serverTimezone=UTC" />
 		<property name="hibernate.connection.driver" value="com.mysql.jdbc.Driver" />
 		<property name="hibernate.connection.user" value="root" />
 		<property name="hibernate.connection.password" value="" />
