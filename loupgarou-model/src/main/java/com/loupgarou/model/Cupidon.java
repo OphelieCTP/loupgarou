@@ -3,9 +3,20 @@ package com.loupgarou.model;
 import java.util.ArrayList;
 
 
+import javax.persistence.*;
+import javax.validation.constraints.*;
+
 import com.loupgarou.divers.fonctions;
 
+
+@Entity
+@DiscriminatorValue("Cupidon")
+
+
 public class Cupidon extends Villageois{
+	
+	private String role = "Cupidon";
+	
 	public Cupidon()
 	{
 		

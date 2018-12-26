@@ -5,7 +5,18 @@ import java.util.ArrayList;
 
 import com.loupgarou.divers.*;
 
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+
+
+@Entity
+@DiscriminatorValue("Voyante")
+
+
 public class Voyante extends Villageois{
+	
+	private String role = "Voyante";
 	
 	public Voyante()
 	{

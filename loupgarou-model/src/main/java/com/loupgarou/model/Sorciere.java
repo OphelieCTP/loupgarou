@@ -1,6 +1,17 @@
 package com.loupgarou.model;
 
+import javax.persistence.*;
+import javax.validation.constraints.*;
+
+import com.loupgarou.divers.fonctions;
+
+
+@Entity
+@DiscriminatorValue("Sorciere")
+
 public class Sorciere extends Villageois{
+	
+	private String role = "Sorciere";
 	
 	public Sorciere()
 	{

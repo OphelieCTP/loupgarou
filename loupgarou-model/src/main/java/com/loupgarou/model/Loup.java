@@ -1,6 +1,18 @@
 package com.loupgarou.model;
 
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+
+import com.loupgarou.divers.fonctions;
+
+
+@Entity
+@DiscriminatorValue("Loup")
+
 public class Loup extends Villageois{
+	
+	private String role = "Loup";
 	
 	public Loup()
 	{
