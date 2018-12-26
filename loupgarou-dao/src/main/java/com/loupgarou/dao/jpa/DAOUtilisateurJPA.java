@@ -4,10 +4,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import com.loupgarou.dao.IDAOUtilisateur;
 import com.loupgarou.model.Utilisateur;
 import com.loupgarou.model.Villageois;
+import com.surfy.model.Produit;
 
 public class DAOUtilisateurJPA implements IDAOUtilisateur{
 
@@ -57,8 +60,13 @@ public class DAOUtilisateurJPA implements IDAOUtilisateur{
 
 	@Override
 	public Utilisateur authentification(String userName, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		Utilisateur util = new Utilisateur();
+		TypedQuery<Utilisateur> myQuery = em.createQuery("select u from Utilisateur WHERE u.userName = :userName AND u.passWord = :passWord AND u.isBanni = false", Utilisateur.class);
+		myQuery.setParameter("userName", userName);
+		myQuery.setParameter("passWord", password);
+		//gestion esxceptions
+		util = myQuery.getSingleResult();
+		return util;
 	}
 
 	@Override
