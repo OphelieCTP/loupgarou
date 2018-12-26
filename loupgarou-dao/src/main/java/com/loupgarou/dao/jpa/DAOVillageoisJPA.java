@@ -1,10 +1,11 @@
-package com.loupgarou.dao;
+package com.loupgarou.dao.jpa;
 
 
 import java.util.List;
 import java.util.ArrayList;
 import java.sql.*;
 import com.loupgarou.model.*;
+import com.loupgarou.dao.*;
 
 
 import javax.persistence.*;
