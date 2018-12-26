@@ -37,8 +37,10 @@ public class Partie {
 	@NotEmpty
 	private Boolean etat;
 	
-	@Column(name="PART_CHAT")
+	@OneToOne
+	@JoinColumn(name="PART_CHAT")
 	private Chat chat;
+	
 	
 	@Column(name="PART_DATE")
 	@Temporal(TemporalType.DATE)
