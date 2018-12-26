@@ -1,7 +1,13 @@
 package com.loupgarou.model;
 
-public class Administrateur extends Utilisateur{
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
+@Entity
+@DiscriminatorValue("1")
+
+public class Administrateur extends Utilisateur{
+	
 	public Administrateur()
 	{
 		

@@ -2,19 +2,74 @@ package com.loupgarou.model;
 
 import java.util.ArrayList;
 
+
 import java.util.Date;
 
 import com.loupgarou.divers.*;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+
+@Entity
+@Table(name="utilisateur")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="UTIL_ADMIN", discriminatorType=DiscriminatorType.INTEGER)
+
 public class Utilisateur {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="UTIL_ID")
 	protected int userID = 0;
+	
+	@Column(name="UTIL_USERNAME", length=50, nullable=false)
+	@NotEmpty
+	@NotNull
+	@Size(max=50)
 	protected String userName = "";
+	
+	@Column(name="UTIL_PASSWORD", length=250, nullable=false)
+	@NotEmpty
+	@NotNull
+	@Size(max=50)
 	protected String passWord = "";
+	
+	@Column(name="UTIL_NB_PLAINTES")
 	protected int nbPlaintes;
+	
+	@Column(name="UTIL_IS_CONNECTED")
 	protected Boolean isConnected = false;
+	
+	@Column(name="UTIL_BANNI")
 	protected Boolean isBanni = false;
+	
+	@Column(name="UTIL_EMAIL", length=100, nullable=false)
+	@NotEmpty
+	@NotNull
+	@Size(max=100)
 	protected String email;
+	
+	@Column(name="UTIL_DATE_NAISS")
+	@Temporal(TemporalType.DATE)
 	protected Date dateNaissance;
+	
+	@ManyToOne
+	@JoinColumn(name="UTIL_ID_CHAT")
 	protected Chat chat; 
 	
 	public Utilisateur()
