@@ -30,6 +30,7 @@ public class DAOVillageoisJPA implements IDAO<Villageois> {
 	public Villageois findById(int id) {
 		return this.em.find(Villageois.class, id);
 	}
+	
 
 	@Override
 	public Villageois save(Villageois entity) {
