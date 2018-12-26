@@ -9,19 +9,46 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import com.loupgarou.divers.*;
 
+@Entity
+@Table(name = "partie")
+@DiscriminatorValue("Partie")
+
 public class Partie {
-	
-	//private ArrayList<Villageois> joueurs = new ArrayList<Villageois>();
-	private int nbVillageois;
-	private int nbLoups;
-	private Boolean etat;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="PART_ID")
 	private int id = 0;
+
+	//private ArrayList<Villageois> joueurs = new ArrayList<Villageois>();
+	
+	@Column(name="PART_NB_VILLAGEOIS")
+	@NotEmpty
+	private int nbVillageois;
+	@Column(name="PART_NB_LOUP")
+	@NotEmpty
+	private int nbLoups;
+	@Column(name="PART_ETAT")
+	@NotEmpty
+	private Boolean etat;
+	
+	@Column(name="PART_CHAT")
 	private Chat chat;
+	
+	@Column(name="PART_DATE")
+	@Temporal(TemporalType.DATE)
+	@NotEmpty
 	private Date dateCreation = new Date();
-	private List<Integer> joueurs;
+	
+	
+	@OneToMany(mappedBy="partie")
+	private List<Villageois> joueurs;
+	
 	
 	public Partie()
 	{
@@ -41,10 +68,10 @@ public class Partie {
 //	}
 //
 	
-    public List<Integer> getJoueurs() {
+    public List<Villageois> getJoueurs() {
         return joueurs;
     }
-    public void setJoueurs(List<Integer> joueurs) {
+    public void setJoueurs(List<Villageois> joueurs) {
         this.joueurs = joueurs;
     }
 

@@ -3,28 +3,69 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import com.loupgarou.divers.fonctions;
 
+
+@Entity
+@Table(name = "villageois")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="VILL_ROLE", discriminatorType = DiscriminatorType.STRING)
+
+@AttributeOverrides({
+	@AttributeOverride(name="id", column=@Column(name="VILL_USER_ID"))
+})
+
 public class Villageois extends Utilisateur{
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="VILL_ID")
 	protected int villID;
+	
+	@Column(name="VILL_ROLE", length = 50)
+	@NotEmpty
 	protected String role = "";
+	
+	@Column(name="VILL_AMOUREUX")
+	@NotEmpty
 	protected Boolean amoureux;
+	
+	@Column(name="VILL_VIVANT")
+	@NotEmpty
 	protected Boolean vivant;
+	
+	@Column(name="VILL_BULLETIN")
+	@NotNull
 	protected Integer vote;
+	
+	@Column(name="VILL_PEUT_VOTER")
+	@NotEmpty
 	protected Boolean peutVoter = false;
+	
+	@Column(name="VILL_A_VOTE")
+	@NotEmpty
 	protected Boolean aVote = false;
+	
+	@Column(name="VILL_ENDORMIT")
+	@NotEmpty
 	protected Boolean endormit;
+	
+	@Column(name="VILL_CAPITAINE")
+	@NotEmpty
 	protected Boolean capitaine;
+	
+	@ManyToOne
+	@JoinColumn(name="VILL_PARTIE_ID")
 	protected Partie partie;
+	
+	
 	
 	public String getRole() {
 		return role;
 	}
-	
-	
-	
+
 	public int getVillID() {
 		return villID;
 	}
@@ -83,11 +124,12 @@ public class Villageois extends Utilisateur{
 		super(userName, passWord, user_id);
 		this.isConnected = true;
 		this.role = role;
+		this.partie = partie;		
 		this.amoureux = false;
 		this.vivant = true;
 		this.endormit = false;
 		this.capitaine = false;
-		this.partie = partie;
+
 	}
 	
 	public void setRole(String role) {
