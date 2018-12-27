@@ -2,6 +2,7 @@ package com.loupgarou.dao.jpa;
 
 
 import java.util.List;
+
 import java.util.ArrayList;
 import java.sql.*;
 import com.loupgarou.model.*;

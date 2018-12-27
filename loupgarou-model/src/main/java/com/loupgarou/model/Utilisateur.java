@@ -3,6 +3,7 @@ package com.loupgarou.model;
 import java.util.ArrayList;
 
 
+
 import java.util.Date;
 
 import com.loupgarou.divers.*;
@@ -18,6 +19,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,8 +30,13 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="utilisateur")
+
+@MappedSuperclass
+
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="UTIL_ADMIN", discriminatorType=DiscriminatorType.INTEGER)
+
+
 
 public class Utilisateur {
 	@Id
