@@ -206,42 +206,16 @@ public class PrincipaleJPA {
 							System.out.println("-------------------");
 							recrutement(daoPartie, p);
 						
-						// "timer" s'enclenche
 //							p.setEtat(true);
 //							ajouterVillageois(currentUser, "Villageois", p, daoVillageois);
 //							//int i = p.getDateCreation().getMinutes()+5;
 //							
-//							Timer timer = new Timer();
-//							TimerTask timers = new TimerTask() {
-//								public void run() {
-//									p.setEtat(false);
-//								}
-//							};
-//							
-//							timer.schedule(timers, (5*60*1000));
-//							if(p.getEtat()==false) {
-//								jouer(daoPartie, p);
-//							}
-//							
-							
-							
-							//timeLimit.setMinutes(p.getDateCreation().getMinutes()+5);
-							
-//							Boolean timeOut = false;
-//							while (new Date()<p.getDateCreation())
-//							Timer timer = new Timer();
-//							
-//							// deux cas : fermeture manuelle et time limite
-//						
-//							Date timeLimit = new Date();
-//							Date timeLim = DateUtils.addHours(timeLimit, 3);
-//							p.getDateCreation();
-//							// créer partie
-//							// créer temps pendant lequel la partie sera ouverte
-//							
 //							// démarer la partie
 							break;
 						case 4 : voirParties(daoPartie);
+							System.out.println("Quelle partie voulez-vous rejoindre ? ");
+							int selected = fonctions.lireEntier();
+							Partie partie = daoPartie.findById(selected);
 							break;
 						case 5 : System.out.println("en cours de developpement"); //
 							break;
