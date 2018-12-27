@@ -129,6 +129,7 @@ public class PrincipaleJPA {
 	public static Villageois ajouterVillageois(Utilisateur u, String role, Partie p, IDAOVillageois daoVillageois) {
 		System.out.println(" getUserID "+u.getUserID());
 		Villageois v = new Villageois(u.getUserID(), u.getUserName(), u.getPassWord(), role, p);
+		p.getJoueurs().add(v);
 		v.setVillID(0);
 		daoVillageois.save(v);
 		return v;
