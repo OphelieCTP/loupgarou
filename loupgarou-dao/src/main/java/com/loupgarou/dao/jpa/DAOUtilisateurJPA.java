@@ -17,6 +17,11 @@ public class DAOUtilisateurJPA implements IDAOUtilisateur{
 
 	private EntityManager em;
 	
+
+	public DAOUtilisateurJPA(EntityManagerFactory emf) {
+		this.em = emf.createEntityManager();
+	}
+	
 	public void initializeEM(EntityManagerFactory emf) {
 		this.em = emf.createEntityManager();
 		
