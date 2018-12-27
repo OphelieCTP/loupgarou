@@ -64,20 +64,20 @@ public class Partie {
 	
 	
 
-	public int getNbPartie() {
-	@NamedQueries({
-		@NamedQuery(
-				name = "Partie.nbParties",
-				query = " select count(p) from Partie p"
-				)
-	})
-
-
-	Query myquery = this.em.createNamedQuery("Partie.nbParties", Partie.class);
-
-
-		return (int);
-	}
+//	public int getNbPartie() {
+//	@NamedQueries({
+//		@NamedQuery(
+//				name = "Partie.nbParties",
+//				query = " select count(p) from Partie p"
+//				)
+//	})
+//
+//
+//	Query myquery = this.em.createNamedQuery("Partie.nbParties", Partie.class);
+//
+//
+//		return (int);
+//	}
 //
 //	public static void setNbPartie(int nbPartie) {
 //		Partie.nbPartie = nbPartie;
