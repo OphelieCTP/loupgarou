@@ -9,14 +9,17 @@ import javax.validation.constraints.*;
 import com.loupgarou.divers.fonctions;
 
 
-@Entity
-@Table(name = "villageois")
+//@Entity
+@SecondaryTable(name = "villageois")
+@MappedSuperclass
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="VILL_ROLE", discriminatorType = DiscriminatorType.STRING)
 
-@AttributeOverrides({
-	@AttributeOverride(name="id", column=@Column(name="VILL_USER_ID"))
-})
+@PrimaryKeyJoinColumn(name="VILL_USER_ID", referencedColumnName="UTIL_ID")
+
+//@AttributeOverrides({
+//	@AttributeOverride(name="id", column=@Column(name="VILL_USER_ID"))
+//})
 
 public class Villageois extends Utilisateur{
 	@Id

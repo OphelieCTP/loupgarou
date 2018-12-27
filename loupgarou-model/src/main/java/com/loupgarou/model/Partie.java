@@ -40,7 +40,7 @@ public class Partie {
 	private Boolean etat;
 	
 	@OneToOne
-	@JoinColumn(name="PART_CHAT")
+	@JoinColumn(name="PART_CHAT_ID")
 	private Chat chat;
 	
 	

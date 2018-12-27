@@ -1,6 +1,7 @@
 package com.loupgarou.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,12 +22,12 @@ public class Chat {
 	private int chatID;
 	
 	@OneToMany(mappedBy="chat")
-	private ArrayList<Message> messages = new ArrayList<Message>();
+	private List<Message> messages;
 	
 	@OneToMany(mappedBy="chat")
-	private ArrayList<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
+	private List<Utilisateur> utilisateurs;
 	
-	@OneToOne(mappedBy="PART_CHAT")
+	@OneToOne(mappedBy="chat")
 	private Partie partie;
 	
 	public Chat()
@@ -34,7 +35,7 @@ public class Chat {
 		
 	}
 	
-	public ArrayList<Message> getMessages() {
+	public List<Message> getMessages() {
 		return messages;
 	}
 
@@ -50,7 +51,7 @@ public class Chat {
 		this.chatID = chatId;
 	}
 
-	public ArrayList<Utilisateur> getUtilisateurs() {
+	public List<Utilisateur> getUtilisateurs() {
 		return utilisateurs;
 	}
 

@@ -27,13 +27,14 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+
+@Entity
 @Table(name="utilisateur")
 
-@MappedSuperclass
+//@MappedSuperclass
 
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="UTIL_ADMIN", discriminatorType=DiscriminatorType.INTEGER)
-
+@Inheritance(strategy = InheritanceType.JOINED)
+//@DiscriminatorColumn(name="UTIL_ADMIN", discriminatorType=DiscriminatorType.INTEGER)
 
 
 public class Utilisateur {

@@ -1,5 +1,7 @@
 package com.loupgarou.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,13 +38,13 @@ public class Message {
 	
 	@Column(name="MESS_DATE_ENVOI")
 	@Temporal(TemporalType.DATE)
-	private int dateCreation;
+	private Date dateCreation;
 	
 	@Column(name="MESS_VISIBLE")
 	private Visible visible;
 
 	@ManyToOne
-	@JoinColumn(name="UTIL_ID_CHAT")
+	@JoinColumn(name="MESS_ID_CHAT")
 	private Chat chat; 
 	
 	public Message()
@@ -56,10 +58,10 @@ public class Message {
 	public void setContenu(String contenu) {
 		this.contenu = contenu;
 	}
-	public int getDateCreation() {
+	public Date getDateCreation() {
 		return dateCreation;
 	}
-	public void setDateCreation(int dateCreation) {
+	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
 	}
 	public Visible getVisible() {
