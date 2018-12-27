@@ -26,6 +26,11 @@ public class Voyante extends Villageois{
 		super(userId, userName, passWord, role, partie);
 	}
 	
+	public Voyante(Villageois v)
+	{
+		super(v);
+	}
+	
 	public void voirCarte() {
 		System.out.println("Choisissez le joueur dont vous voulez voir la carte.");
 		List<Villageois> village = new ArrayList<Villageois>();

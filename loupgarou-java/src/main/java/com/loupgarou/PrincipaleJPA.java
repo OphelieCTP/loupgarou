@@ -142,7 +142,6 @@ public class PrincipaleJPA {
 	}
 	
 	public static Partie recrutement(IDAOPartie daoPartie, Partie p) {
-		p.getDateCreation();
 		//Long timeLimit = p.getDateCreation().getTime()+60*5*1000;
 		Long timeLimit = p.getDateCreation().getTime()+30*1000;
 		Date times = new Date();
@@ -152,14 +151,12 @@ public class PrincipaleJPA {
 		}
 		p.setEtat(false);
 		System.out.println("Recrutement pour la partie "+p.getId()+" terminé."); 
-		daoPartie.save(p);
-		return p;
+		return daoPartie.save(p);
 	}
 
 	
 	public static void main(String[] args) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("LoupGarouPU");
-		EntityManager em = emf.createEntityManager();
 		
 		IDAOUtilisateur daoUtilisateur = new DAOUtilisateurJPA(emf);
 		IDAOPartie daoPartie = new DAOPartieJPA(emf);
@@ -204,13 +201,22 @@ public class PrincipaleJPA {
 							break;
 						case 3 : Partie p = creerPartie(daoPartie, daoChat);
 							System.out.println("-------------------");
-							recrutement(daoPartie, p);
-						
-//							p.setEtat(true);
-//							ajouterVillageois(currentUser, "Villageois", p, daoVillageois);
-//							//int i = p.getDateCreation().getMinutes()+5;
-//							
+							int tentative = 0;
+							Villageois currentPlayer = ajouterVillageois(currentUser, "Villageois", p, daoVillageois);
+							//test si le nombre de joueurs est sufissant
+							do {
+								p = recrutement(daoPartie, p);
+								tentative++;
+							}while(p.getJoueurs().size() < 5 || tentative < 3);
+							p.setEtat(true);
 //							// démarer la partie
+							p.distribuerRole();
+							for(Villageois v : p.getJoueurs())
+							{
+								daoVillageois.save(v);
+							}
+							currentPlayer = daoVillageois.findById(currentPlayer.getUserID());
+							
 							break;
 						case 4 : voirParties(daoPartie);
 							System.out.println("Quelle partie voulez-vous rejoindre ? ");

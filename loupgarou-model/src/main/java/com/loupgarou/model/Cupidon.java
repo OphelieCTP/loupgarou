@@ -25,6 +25,11 @@ public class Cupidon extends Villageois{
 		super(userId, userName, passWord, role, partie);
 	}
 	
+	public Cupidon(Villageois v)
+	{
+		super(v);
+	}
+	
 	public Villageois chercherAmoureux(List<Villageois> village, String name) {
 		for (Villageois v : village) {
 			if(v.getUserName()==name) {
@@ -37,22 +42,23 @@ public class Cupidon extends Villageois{
 	
 	public void formerCoupler() {
 		System.out.println("Formez un couple.");
-		List<Villageois> village = new ArrayList<Villageois>();
-		village = this.partie.getJoueurs();
 		System.out.println("Choisissez le premier amoureux.");
-		Villageois vi = chercherAmoureux(village, fonctions.lireChaine());
+		Villageois vi = chercherAmoureux(this.getPartie().getJoueurs(), fonctions.lireChaine());
 		while(vi==null) {
 			System.out.println("Ce villageois n'est pas présent.");
 			System.out.println("Choisissez le premier amoureux.");
-			vi = chercherAmoureux(village, fonctions.lireChaine());
+			vi = chercherAmoureux(this.getPartie().getJoueurs(), fonctions.lireChaine());
 		}
+		String c1 = vi.getUserName();
+		vi = null;
 		System.out.println("Choisissez le second amoureux.");
 		String choix2 = fonctions.lireChaine();
-		while (vi.getUserName()==choix2) {
+		while (c1 == choix2 || vi == null) {
 			System.out.println("Choisissez un joueur different.");
 			choix2 = fonctions.lireChaine();
+			vi = chercherAmoureux(this.getPartie().getJoueurs(), choix2);
 		}
-		chercherAmoureux(village, choix2);
+		
 	}
 	/// PRB !!! ne renvoit rien, doit pouvoir renvoyer chaque villageois pour etre modifié
 	
