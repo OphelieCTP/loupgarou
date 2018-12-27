@@ -1,6 +1,6 @@
 package com.loupgarou;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -141,10 +141,19 @@ public class PrincipaleJPA {
 		System.out.println("en cours de paramétrage"); 
 	}
 	
-	public static void controleOuverturePartie(IDAOPartie daoPartie, Partie p) {
+	public static Partie recrutement(IDAOPartie daoPartie, Partie p) {
 		p.getDateCreation();
-		System.out.println("en cours de paramétrage"); 
-		System.out.println(p.getDateCreation()); 
+		//Long timeLimit = p.getDateCreation().getTime()+60*5*1000;
+		Long timeLimit = p.getDateCreation().getTime()+30*1000;
+		Date times = new Date();
+		while (times.getTime()<timeLimit) {
+			p.setEtat(true);
+			times = new Date();
+		}
+		p.setEtat(false);
+		System.out.println("Recrutement pour la partie "+p.getId()+" terminé."); 
+		daoPartie.save(p);
+		return p;
 	}
 
 	
@@ -192,9 +201,10 @@ public class PrincipaleJPA {
 						case 1 : actualiserCompteUtilisateur(currentUser, daoUtilisateur);
 							break;
 						case 2 : voirJoueursConnectes(daoUtilisateur);
+							break;
 						case 3 : Partie p = creerPartie(daoPartie, daoChat);
 							System.out.println("-------------------");
-							controleOuverturePartie(daoPartie, p);
+							recrutement(daoPartie, p);
 						
 						// "timer" s'enclenche
 //							p.setEtat(true);
@@ -230,8 +240,11 @@ public class PrincipaleJPA {
 //							// créer temps pendant lequel la partie sera ouverte
 //							
 //							// démarer la partie
+							break;
 						case 4 : voirParties(daoPartie);
+							break;
 						case 5 : System.out.println("en cours de developpement"); //
+							break;
 							
 						}
 					}
