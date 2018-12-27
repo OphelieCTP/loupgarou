@@ -11,6 +11,7 @@ import com.loupgarou.divers.*;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,12 +31,9 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="utilisateur")
-
-//@MappedSuperclass
-
-@Inheritance(strategy = InheritanceType.JOINED)
-//@DiscriminatorColumn(name="UTIL_ADMIN", discriminatorType=DiscriminatorType.INTEGER)
-
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="UTIL_ROLE", discriminatorType=DiscriminatorType.STRING)
+@DiscriminatorValue("Utilisateur")
 
 public class Utilisateur {
 	@Id
@@ -78,10 +76,15 @@ public class Utilisateur {
 	@JoinColumn(name="UTIL_ID_CHAT")
 	protected Chat chat; 
 	
+	@Column(name="UTIL_ROLE", length = 50 , insertable=false, updatable=false)	
+	@NotEmpty
+	protected String role = "";
+	
 	public Utilisateur()
 	{
 		this.chat = new Chat();
 		this.getChat().setChatID(1);
+		this.role = "Utilisateur";
 	}
 	
 	public Utilisateur(String userName, String passWord, int userID)
@@ -197,6 +200,16 @@ public class Utilisateur {
 			System.out.println(this.userName + " : " + "Deconnecté.");
 		}
 	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
+	
 	
 //	public Partie creerPartie()
 //	{

@@ -15,11 +15,9 @@ import com.loupgarou.divers.fonctions;
 
 public class Cupidon extends Villageois{
 	
-	private String role = "Cupidon";
-	
 	public Cupidon()
 	{
-		
+		this.role = "Cupidon";
 	}
 	public Cupidon(int userId, String userName, String passWord, String role, Partie partie)
 	{

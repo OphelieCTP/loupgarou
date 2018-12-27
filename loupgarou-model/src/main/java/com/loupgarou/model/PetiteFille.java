@@ -12,11 +12,9 @@ import com.loupgarou.divers.fonctions;
 
 public class PetiteFille extends Villageois{
 	
-	private String role = "PetiteFille";
-
 	public PetiteFille()
 	{
-	
+		role = "PetiteFille";
 	}
 	
 	public PetiteFille(int userId, String userName, String passWord, String role, Partie partie)

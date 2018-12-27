@@ -9,27 +9,13 @@ import javax.validation.constraints.*;
 import com.loupgarou.divers.fonctions;
 
 
-//@Entity
-@SecondaryTable(name = "villageois")
-@MappedSuperclass
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="VILL_ROLE", discriminatorType = DiscriminatorType.STRING)
+@Entity
+@DiscriminatorValue("Villageois")
 
-@PrimaryKeyJoinColumn(name="VILL_USER_ID", referencedColumnName="UTIL_ID")
-
-//@AttributeOverrides({
-//	@AttributeOverride(name="id", column=@Column(name="VILL_USER_ID"))
-//})
 
 public class Villageois extends Utilisateur{
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="VILL_ID")
 	protected int villID;
-	
-	@Column(name="VILL_ROLE", length = 50)
-	@NotEmpty
-	protected String role = "";
 	
 	@Column(name="VILL_AMOUREUX")
 	@NotEmpty
@@ -63,12 +49,6 @@ public class Villageois extends Utilisateur{
 	@JoinColumn(name="VILL_PARTIE_ID")
 	protected Partie partie;
 	
-	
-	
-	public String getRole() {
-		return role;
-	}
-
 	public int getVillID() {
 		return villID;
 	}
@@ -119,7 +99,7 @@ public class Villageois extends Utilisateur{
 
 	public Villageois()
 	{
-		
+		this.role = "Villageois";
 	}
 	
 	public Villageois(int user_id, String userName, String passWord, String role, Partie partie)

@@ -12,11 +12,9 @@ import com.loupgarou.divers.fonctions;
 
 public class Loup extends Villageois{
 	
-	private String role = "Loup";
-	
 	public Loup()
 	{
-		
+		this.role = "Loup";
 	}
 	
 	public Loup(int userId, String userName, String passWord, String role, Partie partie)

@@ -16,11 +16,9 @@ import javax.validation.constraints.*;
 
 public class Voyante extends Villageois{
 	
-	private String role = "Voyante";
-	
 	public Voyante()
 	{
-		
+		this.role = "Voyante";
 	}
 	
 	public Voyante(int userId, String userName, String passWord, String role, Partie partie)

@@ -12,14 +12,11 @@ import com.loupgarou.divers.fonctions;
 @DiscriminatorValue("Chasseur")
 
 
-public class Chasseur extends Villageois{
-	
-	private String role = "Chasseur";
-	
+public class Chasseur extends Villageois{	
 	
 	public Chasseur()
 	{
-		
+		this.role = "Chasseur";
 	}
 	
 	public Chasseur(int userId, String userName, String passWord, String role, Partie partie)

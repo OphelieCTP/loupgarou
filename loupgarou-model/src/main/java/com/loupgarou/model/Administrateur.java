@@ -4,13 +4,13 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("1")
+@DiscriminatorValue("Administrateur")
 
 public class Administrateur extends Utilisateur{
 	
 	public Administrateur()
 	{
-		
+		this.role = "Administrateur";
 	}
 	
 	public Administrateur(String userName, String passWord, int userId)

@@ -10,12 +10,10 @@ import com.loupgarou.divers.fonctions;
 @DiscriminatorValue("Sorciere")
 
 public class Sorciere extends Villageois{
-	
-	private String role = "Sorciere";
-	
+		
 	public Sorciere()
 	{
-		
+		this.role = "Sorciere";
 	}
 	
 	public Sorciere(int userId, String userName, String passWord, String role, Partie partie)
