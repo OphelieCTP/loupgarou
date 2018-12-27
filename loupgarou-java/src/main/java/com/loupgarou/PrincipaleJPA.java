@@ -112,9 +112,11 @@ public class PrincipaleJPA {
 		}
 	}
 	
-	public static Partie creerPartie(IDAOPartie daoPartie) {
+	public static Partie creerPartie(IDAOPartie daoPartie, IDAOChat daoChat) {
 		Partie p = new Partie();
+		p.setChat(new Chat());
 		p.setId(0);
+		daoChat.save(p.getChat());
 		daoPartie.save(p);
 		return p;
 	}
@@ -135,8 +137,14 @@ public class PrincipaleJPA {
 		return v;
 	}
 	
-	public static void jouer(IDAOPartie daoPartie) {
+	public static void jouer(IDAOPartie daoPartie, Partie p) {
 		System.out.println("en cours de paramétrage"); 
+	}
+	
+	public static void controleOuverturePartie(IDAOPartie daoPartie, Partie p) {
+		p.getDateCreation();
+		System.out.println("en cours de paramétrage"); 
+		System.out.println(p.getDateCreation()); 
 	}
 
 	
@@ -184,21 +192,27 @@ public class PrincipaleJPA {
 						case 1 : actualiserCompteUtilisateur(currentUser, daoUtilisateur);
 							break;
 						case 2 : voirJoueursConnectes(daoUtilisateur);
-						case 3 : Partie p = creerPartie(daoPartie);
-							p.setEtat(true);
-							ajouterVillageois(currentUser, "Villageois", p, daoVillageois);
-							//int i = p.getDateCreation().getMinutes()+5;
-							
-							Timer timer = new Timer();
-							TimerTask timers = new TimerTask() {
-								public void run() {
-									p.setEtat(false);
-								}
-							};
-							if(p.getEtat()==false) {
-								jouer(daoPartie);
-							}
-							timer.schedule(timers, (5*60*1000));
+						case 3 : Partie p = creerPartie(daoPartie, daoChat);
+							System.out.println("-------------------");
+							controleOuverturePartie(daoPartie, p);
+						
+						// "timer" s'enclenche
+//							p.setEtat(true);
+//							ajouterVillageois(currentUser, "Villageois", p, daoVillageois);
+//							//int i = p.getDateCreation().getMinutes()+5;
+//							
+//							Timer timer = new Timer();
+//							TimerTask timers = new TimerTask() {
+//								public void run() {
+//									p.setEtat(false);
+//								}
+//							};
+//							
+//							timer.schedule(timers, (5*60*1000));
+//							if(p.getEtat()==false) {
+//								jouer(daoPartie, p);
+//							}
+//							
 							
 							
 							//timeLimit.setMinutes(p.getDateCreation().getMinutes()+5);
