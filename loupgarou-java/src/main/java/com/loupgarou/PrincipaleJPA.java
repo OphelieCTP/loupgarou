@@ -143,6 +143,10 @@ public class PrincipaleJPA {
 		IDAOMessage daoMessage = new DAOMessageJPA(emf);
 		IDAOChat daoChat = new DAOChatJPA(emf);
 		
+		//Creation du chat par default
+		Chat chatdefault = new Chat();
+		daoChat.save(chatdefault);
+		
 		List<Villageois> vill = daoVillageois.findAll();
 		System.out.println("Test : list villageois ");
 		for (Villageois v : vill) {
