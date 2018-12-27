@@ -45,7 +45,7 @@ public class Partie {
 	
 	
 	@Column(name="PART_DATE")
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@NotEmpty
 	private Date dateCreation = new Date();
 	
