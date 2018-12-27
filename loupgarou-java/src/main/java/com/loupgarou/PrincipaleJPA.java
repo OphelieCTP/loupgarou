@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import java.lang.Object;
 
 import javax.persistence.*;
 
@@ -70,11 +74,14 @@ public class PrincipaleJPA {
 			System.out.println("Nouvelle valeur ?");
 			switch(choix) {
 			case 1 : u.setPassWord(fonctions.lireChaine());
+				break;
 			case 2 : u.setEmail(fonctions.lireChaine());
+				break;
 			case 3 : System.out.println("Pas encore fonctionnel ");
+				break;
 				//u.setDateNaissance(fonctions.lireChaine());
 			case 4 : u.setUserName(fonctions.lireChaine());
-			case 5 : break; // ligne utile ?? 
+				break;
 			}
 		}
 		daoUtilisateur.save(u);
@@ -105,11 +112,26 @@ public class PrincipaleJPA {
 		}
 	}
 	
-	public static void creerPartie(IDAOPartie daoPartie) {
+	public static Partie creerPartie(IDAOPartie daoPartie) {
 		Partie p = new Partie();
 		p.setId(0);
 		daoPartie.save(p);
+		return p;
 	}
+	
+//	public static List<Villageois> lireVillageoisPartie(Utilisateur u, String role, Partie p, IDAOVillageois daoVillageois) {
+//		//
+//		return v;
+//	}
+	
+	public static Villageois ajouterVillageois(Utilisateur u, String role, Partie p, IDAOVillageois daoVillageois) {
+		System.out.println(" getUserID "+u.getUserID());
+		Villageois v = new Villageois(u.getUserID(), u.getUserName(), u.getPassWord(), role, p);
+		v.setVillID(0);
+		daoVillageois.save(v);
+		return v;
+	}
+
 	
 	public static void main(String[] args) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("LoupGarouPU");
@@ -149,14 +171,32 @@ public class PrincipaleJPA {
 						choix = menu();
 						switch(choix) {
 						case 1 : actualiserCompteUtilisateur(currentUser, daoUtilisateur);
+							break;
 						case 2 : voirJoueursConnectes(daoUtilisateur);
-						case 3 : creerPartie(daoPartie);
+						case 3 : Partie p = creerPartie(daoPartie);
+//							p.setEtat(true);
+//							ajouterVillageois(currentUser, "Villageois", p, daoVillageois);
+//							Boolean timeOut = false;
+//							while (new Date()<p.getDateCreation())
+//							Timer timer = new Timer();
+//							
+//							// deux cas : fermeture manuelle et time limite
+//						
+//							Date timeLimit = new Date();
+//							Date timeLim = DateUtils.addHours(timeLimit, 3);
+//							p.getDateCreation();
+//							// créer partie
+//							// créer temps pendant lequel la partie sera ouverte
+//							
+//							// démarer la partie
 						case 4 : voirParties(daoPartie);
+						case 5 : System.out.println("en cours de developpement"); //
 							
 						}
 					}
 				}
-			
+			break;
+
 			case 2 :
 				//Code pour s'inscrire 
 				boolean dispo = false;
