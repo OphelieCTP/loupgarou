@@ -115,6 +115,18 @@ public class Villageois extends Utilisateur{
 
 	}
 	
+	
+	public Villageois(Utilisateur util, String role, Partie partie)
+	{
+		super(util.getUserName(), util.getPassWord(), util.getUserID(), util.getNbPlaintes(), util.getIsBanni(), util.getIsConnected(), util.getEmail(), util.getDateNaissance());
+		this.role = role;
+		this.partie = partie;		
+		this.amoureux = false;
+		this.vivant = true;
+		this.endormit = false;
+		this.capitaine = false;
+	}
+	
 	public void setRole(String role) {
 		this.role = role;
 	}

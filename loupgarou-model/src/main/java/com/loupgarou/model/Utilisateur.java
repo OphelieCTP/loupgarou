@@ -98,7 +98,18 @@ public class Utilisateur {
 		this.getChat().setChatID(1);
 	}
 
-	
+	public Utilisateur(String userName, String passWord, int userID, int nbPlaintes, Boolean isBanni, Boolean isConnected, String email, Date dateNaissance)
+	{
+		this.chat = new Chat();
+		this.userID = userID;
+		this.userName = userName;
+		this.passWord = passWord;
+		this.nbPlaintes = nbPlaintes;
+		this.isConnected = isConnected;
+		this.isBanni = isBanni;
+		this.email = email;
+		this.dateNaissance = dateNaissance;
+	}
 	
 	public Date getDateNaissance() {
 		return dateNaissance;
