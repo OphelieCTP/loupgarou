@@ -2,6 +2,7 @@ package com.loupgarou.dao.jpa;
 
 import java.util.List;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
@@ -10,7 +11,7 @@ import javax.persistence.TypedQuery;
 import com.loupgarou.dao.IDAOUtilisateur;
 import com.loupgarou.model.Utilisateur;
 import com.loupgarou.model.Villageois;
-import com.surfy.model.Produit;
+
 
 public class DAOUtilisateurJPA implements IDAOUtilisateur{
 
