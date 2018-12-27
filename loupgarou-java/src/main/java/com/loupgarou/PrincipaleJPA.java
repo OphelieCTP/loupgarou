@@ -119,6 +119,8 @@ public class PrincipaleJPA {
 		return p;
 	}
 	
+	
+	
 //	public static List<Villageois> lireVillageoisPartie(Utilisateur u, String role, Partie p, IDAOVillageois daoVillageois) {
 //		//
 //		return v;
@@ -130,6 +132,10 @@ public class PrincipaleJPA {
 		v.setVillID(0);
 		daoVillageois.save(v);
 		return v;
+	}
+	
+	public static Partie jouer(IDAOPartie daoPartie) {
+		System.out.println("en cours de paramétrage");
 	}
 
 	
@@ -178,8 +184,24 @@ public class PrincipaleJPA {
 							break;
 						case 2 : voirJoueursConnectes(daoUtilisateur);
 						case 3 : Partie p = creerPartie(daoPartie);
-//							p.setEtat(true);
-//							ajouterVillageois(currentUser, "Villageois", p, daoVillageois);
+							p.setEtat(true);
+							ajouterVillageois(currentUser, "Villageois", p, daoVillageois);
+							int i = p.getDateCreation().getMinutes()+5;
+							
+							Timer timer = new Timer();
+							TimerTask timers = new TimerTask() {
+								public void run() {
+									p.setEtat(false);
+								}
+							};
+							if(p.getEtat()==false) {
+								jouer(daoPartie);
+							}
+							timer.schedule(timers, (5*60*1000));
+							
+							
+							//timeLimit.setMinutes(p.getDateCreation().getMinutes()+5);
+							
 //							Boolean timeOut = false;
 //							while (new Date()<p.getDateCreation())
 //							Timer timer = new Timer();
