@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
@@ -77,11 +78,21 @@ public class DAOUtilisateurJPA implements IDAOUtilisateur{
 
 	@Override
 	public Utilisateur findByUsername(String userName) {
-		Utilisateur util = new Utilisateur();
+		Utilisateur util = null;
 		TypedQuery<Utilisateur> myQuery = em.createQuery("SELECT u FROM Utilisateur u WHERE u.userName = :userName", Utilisateur.class);
 		myQuery.setParameter("userName", userName);
-		util = myQuery.getSingleResult();
-		return util;
+		try
+		{
+			util = myQuery.getSingleResult();
+		}
+		catch (NoResultException ex)
+		{
+			System.out.println("Nom d'utilisateur disponible");
+		}
+		finally
+		{
+			return util;
+		}
 	}
 	
 }
