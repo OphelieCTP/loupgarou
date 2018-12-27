@@ -298,13 +298,13 @@ public class Partie {
 //		
 //	}
 //	
-//	public void designerCapitaine()
-//	{
-//		//generation d'un nombbre aléatoire compris entre 0 et le nombre de joueurs
-//		int rd = (int)Math.round(Math.random() * (this.joueurs.size() - 0));
-//		
-//		this.joueurs.get(rd-1).setCapitaine(true);
-//	}
+	public void designerCapitaine()
+	{
+		//generation d'un nombbre aléatoire compris entre 0 et le nombre de joueurs
+		int rd = (int)Math.round(Math.random() * (this.joueurs.size() - 0));
+		
+		this.joueurs.get(rd-1).setCapitaine(true);
+	}
 	
 	public Date getDateCreation() {
 		return dateCreation;
