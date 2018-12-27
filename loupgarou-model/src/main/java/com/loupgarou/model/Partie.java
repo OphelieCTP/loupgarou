@@ -18,6 +18,8 @@ import com.loupgarou.divers.*;
 @Table(name = "partie")
 @DiscriminatorValue("Partie")
 
+
+
 public class Partie {
 
 	@Id
@@ -50,8 +52,7 @@ public class Partie {
 	
 	@OneToMany(mappedBy="partie")
 	private List<Villageois> joueurs;
-	
-	
+		
 	public Partie()
 	{
 		nbVillageois = 0;
@@ -60,10 +61,23 @@ public class Partie {
 		chat = new Chat();
 		
 	}
+	
+	
 
-//	public static int getNbPartie() {
-//		return nbPartie;
-//	}
+	public int getNbPartie() {
+	@NamedQueries({
+		@NamedQuery(
+				name = "Partie.nbParties",
+				query = " select count(p) from Partie p"
+				)
+	})
+
+
+	Query myquery = this.em.createNamedQuery("Partie.nbParties", Partie.class);
+
+
+		return (int);
+	}
 //
 //	public static void setNbPartie(int nbPartie) {
 //		Partie.nbPartie = nbPartie;

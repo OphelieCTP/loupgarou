@@ -59,5 +59,6 @@ public class DAOPartieJPA implements IDAOPartie {
 		element.setId(id);
 		this.delete(element);
 	}
+	
 
 }
