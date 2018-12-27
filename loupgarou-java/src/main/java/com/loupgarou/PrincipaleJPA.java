@@ -18,7 +18,7 @@ import com.loupgarou.dao.jpa.*;
 public class PrincipaleJPA {
 	
 	public static void main(String[] args) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("loupGarou2");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("LoupGarouPU");
 		EntityManager em = emf.createEntityManager();
 		IDAOVillageois daoVillageois = new DAOVillageoisJPA(emf);
 		
