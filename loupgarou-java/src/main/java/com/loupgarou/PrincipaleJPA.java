@@ -134,8 +134,8 @@ public class PrincipaleJPA {
 		return v;
 	}
 	
-	public static Partie jouer(IDAOPartie daoPartie) {
-		System.out.println("en cours de paramétrage");
+	public static void jouer(IDAOPartie daoPartie) {
+		System.out.println("en cours de paramétrage"); 
 	}
 
 	
@@ -186,7 +186,7 @@ public class PrincipaleJPA {
 						case 3 : Partie p = creerPartie(daoPartie);
 							p.setEtat(true);
 							ajouterVillageois(currentUser, "Villageois", p, daoVillageois);
-							int i = p.getDateCreation().getMinutes()+5;
+							//int i = p.getDateCreation().getMinutes()+5;
 							
 							Timer timer = new Timer();
 							TimerTask timers = new TimerTask() {
