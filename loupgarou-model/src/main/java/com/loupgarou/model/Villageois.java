@@ -161,30 +161,32 @@ public class Villageois extends Utilisateur{
 		this.capitaine = capitaine;
 	}
 	
-//	public void voter(){
-//		ArrayList<Villageois> village = new ArrayList<Villageois>();
-//		village = this.partie.getListJoueurs(this.partie.getJoueurs());
-//		while(this.aVote==false) {
-//			System.out.println("Pour quel joueur souhaitez vous voter ?");
-//			Villageois v = this.partie.getVillageois(village, fonctions.lireChaine());
-//			if(v.getVivant()==true) {
-//				this.setaVote(true);
-//			}
-//			else {
-//				System.out.println("Vous ne pouvez voter contre ce joueur, il est mort");
-//			}
-//		}
-//		IDAOVillageois daoVillageois = new DAOVillageoisSQL();
-//		daoVillageois.save(this);
-//		System.out.println(this.userName + " a voté contre " +daoVillageois.findById(this.getVote()));
-//	}
-//	
-//	public Villageois mourrir(Villageois v) {
-//		v.setVivant(false);
-//		IDAOVillageois daoVillageois = new DAOVillageoisSQL();
-//		daoVillageois.save(v);
-//		return v;
-//	}
+	public Villageois voter(){
+		List<Villageois> village = new ArrayList<Villageois>();
+		village = this.partie.getJoueurs();
+		while(this.aVote==false) {
+			System.out.println("Pour quel joueur souhaitez vous voter ?");
+			String cible = fonctions.lireChaine();
+			for (Villageois v : village) {
+				if(v.getUserName()==cible) {
+					if(v.getVivant()==true) { 
+						this.setaVote(true); 
+						this.setVote(v.getVillID());
+						System.out.println(this.userName + " a voté contre "+v.getUserName());
+						return v;
+						}
+					else { System.out.println("Vous ne pouvez voter contre ce joueur, il est mort"); }
+					break;
+				}
+			}
+		}
+		return null;
+	}
+	
+	public Villageois mourrir(Villageois v) {
+		v.setVivant(false);
+		return v;
+	}
 	
 //	public void tuerEtSeFaireTuer(){ // 3 cas a gérer : par vote, loups, chasseur et amoureux
 //		ArrayList<Villageois> village = new ArrayList<Villageois>();
