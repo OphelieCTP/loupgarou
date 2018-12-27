@@ -62,7 +62,7 @@ public class DAOUtilisateurJPA implements IDAOUtilisateur{
 	@Override
 	public Utilisateur authentification(String userName, String password) {
 		Utilisateur util = new Utilisateur();
-		TypedQuery<Utilisateur> myQuery = em.createQuery("select u from Utilisateur WHERE u.userName = :userName AND u.passWord = :passWord AND u.isBanni = false", Utilisateur.class);
+		TypedQuery<Utilisateur> myQuery = em.createQuery("select u from Utilisateur u WHERE u.userName = :userName AND u.passWord = :passWord AND u.isBanni = false", Utilisateur.class);
 		myQuery.setParameter("userName", userName);
 		myQuery.setParameter("passWord", password);
 		//gestion esxceptions
@@ -72,8 +72,11 @@ public class DAOUtilisateurJPA implements IDAOUtilisateur{
 
 	@Override
 	public Utilisateur findByUsername(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		Utilisateur util = new Utilisateur();
+		TypedQuery<Utilisateur> myQuery = em.createQuery("SELECT u FROM Utilisateur u WHERE u.userName = :userName", Utilisateur.class);
+		myQuery.setParameter("userName", userName);
+		util = myQuery.getSingleResult();
+		return util;
 	}
 	
 }
