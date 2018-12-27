@@ -7,20 +7,20 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/x
 	<persistence-unit name="SurfyPU" transaction-type="RESOURCE_LOCAL">
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-	<class>fr.formation.model.Administrateur</class>
-	<class>fr.formation.model.Chasseur</class>
-	<class>fr.formation.model.Chat</class>
-	<class>fr.formation.model.Cupidon</class>
-	<class>fr.formation.model.Loup</class>
-	<class>fr.formation.model.Message</class>
-	<class>fr.formation.model.Mort</class>
-	<class>fr.formation.model.Partie</class>
-	<class>fr.formation.model.PetiteFille</class>
-	<class>fr.formation.model.Sorciere</class>
-	<class>fr.formation.model.Utilisateur</class>
-	<class>fr.formation.model.Villageois</class>
-	<class>fr.formation.model.Visible</class>
-	<class>fr.formation.model.Voyante</class>
+	<class>com.loupgarou.model.Administrateur</class>
+	<class>com.loupgarou.model.Chasseur</class>
+	<class>com.loupgarou.model.Chat</class>
+	<class>com.loupgarou.model.Cupidon</class>
+	<class>com.loupgarou.model.Loup</class>
+	<class>com.loupgarou.model.Message</class>
+	<class>com.loupgarou.model.Mort</class>
+	<class>com.loupgarou.model.Partie</class>
+	<class>com.loupgarou.model.PetiteFille</class>
+	<class>com.loupgarou.model.Sorciere</class>
+	<class>com.loupgarou.model.Utilisateur</class>
+	<class>com.loupgarou.model.Villageois</class>
+	<class>com.loupgarou.model.Visible</class>
+	<class>com.loupgarou.model.Voyante</class>
 	
 
 		<properties>
