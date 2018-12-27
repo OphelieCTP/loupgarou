@@ -1,6 +1,7 @@
 package com.loupgarou.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 import javax.persistence.*;
@@ -24,30 +25,34 @@ public class Cupidon extends Villageois{
 		super(userId, userName, passWord, role, partie);
 	}
 	
-//	public void tomberAmoureux(ArrayList<Villageois> village, String name) {
-//		IDAOVillageois daoVillageois = new DAOVillageoisSQL();
-//		for (Villageois v : village) {
-//			if(v.getUserName()==name) {
-//				v.setAmoureux(true);
-//				daoVillageois.save(v);
-//			}
-//		}
-//	}
+	public Villageois chercherAmoureux(List<Villageois> village, String name) {
+		for (Villageois v : village) {
+			if(v.getUserName()==name) {
+				v.setAmoureux(true);
+				return v;
+			}
+		}
+		return null;
+	}
 	
-//	public void formerCoupler() {
-//		System.out.println("Formez un couple.");
-//		System.out.println("Choisissez le premier amoureux.");
-//		ArrayList<Villageois> village = new ArrayList<Villageois>();
-//		village = this.partie.getListJoueurs(this.partie.getJoueurs());
-//		String choix1 = fonctions.lireChaine();
-//		tomberAmoureux(village, choix1);
-//		System.out.println("Choisissez le second amoureux.");
-//		String choix2 = fonctions.lireChaine();
-//		while (choix1==choix2) {
-//			System.out.println("Choisissez un joueur different.");
-//			choix2 = fonctions.lireChaine();
-//		}
-//		tomberAmoureux(village, choix2);
-//	}
+	public void formerCoupler() {
+		System.out.println("Formez un couple.");
+		List<Villageois> village = new ArrayList<Villageois>();
+		village = this.partie.getJoueurs();
+		System.out.println("Choisissez le premier amoureux.");
+		Villageois vi = chercherAmoureux(village, fonctions.lireChaine());
+		while(vi==null) {
+			System.out.println("Ce villageois n'est pas présent.");
+			System.out.println("Choisissez le premier amoureux.");
+			vi = chercherAmoureux(village, fonctions.lireChaine());
+		}
+		System.out.println("Choisissez le second amoureux.");
+		String choix2 = fonctions.lireChaine();
+		while (vi.getUserName()==choix2) {
+			System.out.println("Choisissez un joueur different.");
+			choix2 = fonctions.lireChaine();
+		}
+		chercherAmoureux(village, choix2);
+	}
 	
 }
