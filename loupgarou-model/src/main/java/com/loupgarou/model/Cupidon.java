@@ -54,5 +54,6 @@ public class Cupidon extends Villageois{
 		}
 		chercherAmoureux(village, choix2);
 	}
+	/// PRB !!! ne renvoit rien, doit pouvoir renvoyer chaque villageois pour etre modifié
 	
 }
