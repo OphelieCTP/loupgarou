@@ -20,4 +20,9 @@ public class Sorciere extends Villageois{
 	{
 		super(userId, userName, passWord, role, partie);
 	}
+	
+	public Sorciere(Villageois v)
+	{
+		super(v);
+	}
 }

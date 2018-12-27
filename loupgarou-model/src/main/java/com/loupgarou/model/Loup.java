@@ -21,6 +21,11 @@ public class Loup extends Villageois{
 	{
 		super(userId, userName, passWord, role, partie);
 	}
+	
+	public Loup(Villageois v)
+	{
+		super(v);
+	}
 
 	//lireMessage()
 	

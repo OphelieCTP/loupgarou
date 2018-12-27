@@ -21,4 +21,9 @@ public class PetiteFille extends Villageois{
 	{
 		super(userId, userName, passWord, role, partie);
 	}
+	
+	public PetiteFille(Villageois v)
+	{
+		super(v);
+	}
 }

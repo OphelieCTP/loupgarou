@@ -24,6 +24,11 @@ public class Chasseur extends Villageois{
 		super(userId, userName, passWord, role, partie);
 	}
 	
+	public Chasseur(Villageois v)
+	{
+		super(v);
+	}
+	
 	public String demanderVictime()
 	{		
 		System.out.println("Quelle personne voulez vous tuez ?");

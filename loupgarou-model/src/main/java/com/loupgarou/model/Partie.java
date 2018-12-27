@@ -194,109 +194,109 @@ public class Partie {
 //		}
 //	}
 //	
-//	public void distribuerRole()
-//	{
-//		//1- Villageois
-//		//2- LoupGarou
-//		//3- Cupidon
-//		//4- Sorcière
-//		//5- Voyante
-//		//6- Chasseur
-//		//7- Petite fille
-//		List<Integer> roles = Arrays.asList(1, 1, 2, 2, 3);
-//		if(this.joueurs.size() >= 6)
+	public void distribuerRole()
+	{
+		//1- Villageois
+		//2- LoupGarou
+		//3- Cupidon
+		//4- Sorcière
+		//5- Voyante
+		//6- Chasseur
+		//7- Petite fille
+		List<Integer> roles = Arrays.asList(1, 1, 2, 2, 3);
+		if(this.joueurs.size() >= 6)
+		{
+			roles.add(4);
+		}
+		if(this.joueurs.size() >= 7)
+		{
+			roles.add(5);
+		}
+		if(this.joueurs.size() >= 8)
+		{
+			roles.add(2);
+		}
+		if(this.joueurs.size() >= 9)
+		{
+			roles.add(6);
+		}
+		if(this.joueurs.size() >= 10)
+		{
+			roles.add(7);
+		}
+		if(this.joueurs.size() >= 11)
+		{
+			while(roles.size() < this.joueurs.size())
+			{
+				double tmpdb = Math.random();
+				int tmp = (int)Math.round(tmpdb);
+				roles.add(tmp);
+			}
+		}
+		
+		Collections.shuffle(roles);
+		
+		//Mise a jour des rôles des joueurs
+		ArrayList<Villageois> newJoueurs = new ArrayList<Villageois>();
+		
+		for(int i = 0; i < this.joueurs.size(); i++)
+		{
+			switch(roles.get(i))
+			{
+			//Villageois
+			case 1 :
+				this.joueurs.get(i).setRole("Villageois");
+				newJoueurs.add(this.joueurs.get(i)); 				
+				break;
+			//Loup
+			case 2 :
+				Loup nouvLoup = new Loup(this.joueurs.get(i));
+				newJoueurs.add(nouvLoup);
+				break;
+			//Cupidon
+			case 3 :
+				Cupidon nouvCupidon = new Cupidon(this.joueurs.get(i));
+				newJoueurs.add(nouvCupidon);
+				break;
+			//Sorcière
+			case 4 :
+				Sorciere nouvSorciere = new Sorciere(this.joueurs.get(i));
+				newJoueurs.add(nouvSorciere);
+				break;
+		
+			//Voyante
+			case 5 :
+				Voyante nouvVoyante = new Voyante(this.joueurs.get(i));
+				newJoueurs.add(nouvVoyante);
+				break;
+				
+			//Chasseur
+			case 6 :
+				Chasseur nouvChasseur = new Chasseur(this.joueurs.get(i));
+				newJoueurs.add(nouvChasseur);
+				break;
+				
+			//Petite fille
+			case 7 :
+				PetiteFille nouvPetiteFille = new PetiteFille(this.joueurs.get(i));
+				newJoueurs.add(nouvPetiteFille);
+				break;
+			default :
+				this.joueurs.get(i).setRole("Villageois");
+				newJoueurs.add(this.joueurs.get(i)); 				
+				break;
+			}
+		}
+		
+		this.joueurs = newJoueurs;
+		
+//		for(Villageois j : this.joueurs)
 //		{
-//			roles.add(4);
+//			System.out.println(j.getUserName() + " : " + j.getRole());
 //		}
-//		if(this.joueurs.size() >= 7)
-//		{
-//			roles.add(5);
-//		}
-//		if(this.joueurs.size() >= 8)
-//		{
-//			roles.add(2);
-//		}
-//		if(this.joueurs.size() >= 9)
-//		{
-//			roles.add(6);
-//		}
-//		if(this.joueurs.size() >= 10)
-//		{
-//			roles.add(7);
-//		}
-//		if(this.joueurs.size() >= 11)
-//		{
-//			while(roles.size() < this.joueurs.size())
-//			{
-//				double tmpdb = Math.random();
-//				int tmp = (int)Math.round(tmpdb);
-//				roles.add(tmp);
-//			}
-//		}
-//		
-//		Collections.shuffle(roles);
-//		
-//		//Mise a jour des rôles des joueurs
-//		ArrayList<Villageois> newJoueurs = new ArrayList<Villageois>();
-//		
-//		for(int i = 0; i < this.joueurs.size(); i++)
-//		{
-//			switch(roles.get(i))
-//			{
-//			//Villageois
-//			case 1 :
-//				this.joueurs.get(i).setRole("Villageois");
-//				newJoueurs.add(this.joueurs.get(i)); 				
-//				break;
-//			//Loup
-//			case 2 :
-//				Loup nouvLoup = new Loup(this.joueurs.get(i).getUserName(), this.joueurs.get(i).getPassWord(), "Loup", this);
-//				newJoueurs.add(nouvLoup);
-//				break;
-//			//Cupidon
-//			case 3 :
-//				Cupidon nouvCupidon = new Cupidon(this.joueurs.get(i).getUserName(), this.joueurs.get(i).getPassWord(), "Cupidon", this);
-//				newJoueurs.add(nouvCupidon);
-//				break;
-//			//Sorcière
-//			case 4 :
-//				Sorciere nouvSorciere = new Sorciere(this.joueurs.get(i).getUserName(), this.joueurs.get(i).getPassWord(), "Sorciere", this);
-//				newJoueurs.add(nouvSorciere);
-//				break;
-//		
-//			//Voyante
-//			case 5 :
-//				Voyante nouvVoyante = new Voyante(this.joueurs.get(i).getUserName(), this.joueurs.get(i).getPassWord(), "Voyante", this);
-//				newJoueurs.add(nouvVoyante);
-//				break;
-//				
-//			//Chasseur
-//			case 6 :
-//				Chasseur nouvChasseur = new Chasseur(this.joueurs.get(i).getUserName(), this.joueurs.get(i).getPassWord(), "Chasseur", this);
-//				newJoueurs.add(nouvChasseur);
-//				break;
-//				
-//			//Petite fille
-//			case 7 :
-//				PetiteFille nouvPetiteFille = new PetiteFille(this.joueurs.get(i).getUserName(), this.joueurs.get(i).getPassWord(), "PetiteFille", this);
-//				newJoueurs.add(nouvPetiteFille);
-//				break;
-//			default :
-//				this.joueurs.get(i).setRole("Villageois");
-//				newJoueurs.add(this.joueurs.get(i)); 				
-//				break;
-//			}
-//		}
-//		
-//		this.joueurs = newJoueurs;
-//		
-////		for(Villageois j : this.joueurs)
-////		{
-////			System.out.println(j.getUserName() + " : " + j.getRole());
-////		}
-//		
-//		
-//	}
+		
+		
+	}
 //	
 //	public void designerCapitaine()
 //	{

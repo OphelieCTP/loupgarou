@@ -127,6 +127,20 @@ public class Villageois extends Utilisateur{
 		this.capitaine = false;
 	}
 	
+	public Villageois(Villageois v)
+	{
+		super(v.getUserName(), v.getPassWord(), v.getUserID(), v.getNbPlaintes(), v.getIsBanni(), v.getIsConnected(), v.getEmail(), v.getDateNaissance());
+		//this.role = v.getRole();
+		this.partie = v.getPartie();	
+		this.amoureux = v.getAmoureux();
+		this.vivant = v.getVivant();
+		this.vote = v.getVote();
+		this.peutVoter = v.getPeutVoter();
+		this.aVote = v.getaVote();
+		this.endormit = v.getEndormit();
+		this.capitaine = v.getCapitaine();
+	}
+	
 	public void setRole(String role) {
 		this.role = role;
 	}
