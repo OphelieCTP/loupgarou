@@ -20,7 +20,11 @@ public class PrincipaleJPA {
 	public static void main(String[] args) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("LoupGarouPU");
 		EntityManager em = emf.createEntityManager();
+		//IDAOUtilisateur daoUtilisateur = new DAOUtilisateurJPA(emf);
+		IDAOPartie daoPartie = new DAOPartieJPA(emf);
 		IDAOVillageois daoVillageois = new DAOVillageoisJPA(emf);
+		IDAOMessage daoMessage = new DAOMessageJPA(emf);
+		IDAOChat daoChat = new DAOChatJPA(emf);
 		
 		List<Villageois> vill = daoVillageois.findAll();
 		System.out.println("Test : list villageois ");
