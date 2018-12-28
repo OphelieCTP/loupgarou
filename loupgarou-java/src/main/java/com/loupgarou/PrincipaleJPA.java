@@ -168,10 +168,10 @@ public class PrincipaleJPA {
 			times = new Date();
 		}
 		p.setEtat(false);
-		Message annonce = new Message("Recrutement pour la partie "+p.getId()+" termin�.", p.getChat());
-		annonce.setVisible(Visible.Villageois);
-		//System.out.println("Recrutement pour la partie "+p.getId()+" termin�."); 
-		daoMessage.save(annonce);
+		//Message annonce = new Message("Recrutement pour la partie "+p.getId()+" termin�.", p.getChat());
+		//annonce.setVisible(Visible.Villageois);
+		System.out.println("Recrutement pour la partie "+p.getId()+" termin�."); 
+		//daoMessage.save(annonce);
 		return daoPartie.save(p);
 	}
 
