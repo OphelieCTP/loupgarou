@@ -232,6 +232,10 @@ public class PrincipaleJPA {
 								}
 								tentative++;
 							}while(p.getJoueurs().size() < 5 && tentative < 3);
+							if(tentative == 3)
+							{
+								break;
+							}
 							
 							p.setEtat(true);
 //							// d�marer la partie

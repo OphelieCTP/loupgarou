@@ -251,34 +251,40 @@ public class Partie {
 			//Loup
 			case 2 :
 				Loup nouvLoup = new Loup(this.joueurs.get(i));
+				nouvLoup.setRole("Loup");
 				newJoueurs.add(nouvLoup);
 				break;
 			//Cupidon
 			case 3 :
 				Cupidon nouvCupidon = new Cupidon(this.joueurs.get(i));
+				nouvCupidon.setRole("Cupidon");
 				newJoueurs.add(nouvCupidon);
 				break;
 			//Sorcière
 			case 4 :
 				Sorciere nouvSorciere = new Sorciere(this.joueurs.get(i));
+				nouvSorciere.setRole("Sorciere");
 				newJoueurs.add(nouvSorciere);
 				break;
 		
 			//Voyante
 			case 5 :
 				Voyante nouvVoyante = new Voyante(this.joueurs.get(i));
+				nouvVoyante.setRole("Voyante");
 				newJoueurs.add(nouvVoyante);
 				break;
 				
 			//Chasseur
 			case 6 :
 				Chasseur nouvChasseur = new Chasseur(this.joueurs.get(i));
+				nouvChasseur.setRole("Chasseur");
 				newJoueurs.add(nouvChasseur);
 				break;
 				
 			//Petite fille
 			case 7 :
 				PetiteFille nouvPetiteFille = new PetiteFille(this.joueurs.get(i));
+				nouvPetiteFille.setRole("PetiteFille");
 				newJoueurs.add(nouvPetiteFille);
 				break;
 			default :
