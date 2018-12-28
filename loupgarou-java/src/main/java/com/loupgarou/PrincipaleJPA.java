@@ -138,6 +138,22 @@ public class PrincipaleJPA {
 	}
 	
 	public static void jouer(IDAOPartie daoPartie, Partie p) {
+		//voir joueurs associes a la partie
+		//distribuer roles
+		//premier tour : intervention cupidon, voyante
+		// while partie.NbVillageois !=0 et partie.NbLoup !=0
+			// nuit
+				// les loup votent
+				// la petite fille voit
+			// aube : intervention sorciere (sauver)
+			// jour
+				// un villageois est mort (is chasseur ? is amoureux ?)
+				// si NbVilageois =! 0 : villagesois votent
+				// un villageois meurt
+		
+		// PRB : à quel moment fait revelation plus de loup/plus de villageois non loups ?
+		// PRB : intervention paarametre endormit : condition vote de nuit ?
+				
 		System.out.println("en cours de paramétrage"); 
 	}
 	
