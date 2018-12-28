@@ -160,7 +160,7 @@ public class PrincipaleJPA {
 	
 	public static Partie recrutement(IDAOPartie daoPartie, IDAOMessage daoMessage, Partie p) {
 		//Long timeLimit = p.getDateCreation().getTime()+60*5*1000;
-		Long timeLimit = p.getDateCreation().getTime()+30*1000;
+		Long timeLimit = p.getDateCreation().getTime()+10*1000;
 		Date times = new Date();
 		while (times.getTime()<timeLimit) {
 			p.setEtat(true);
@@ -232,10 +232,10 @@ public class PrincipaleJPA {
 								}
 								tentative++;
 							}while(p.getJoueurs().size() < 5 && tentative < 3);
-							if(tentative == 3)
-							{
-								break;
-							}
+//							if(tentative == 3)
+//							{
+//								break;
+//							}
 							
 							p.setEtat(true);
 //							// d�marer la partie
@@ -243,7 +243,9 @@ public class PrincipaleJPA {
 							for(Villageois v : p.getJoueurs())
 							{
 								daoVillageois.updateRole(v);
-								daoVillageois.save(v);
+								System.out.println(v.getUserID());
+								//A CORRIGER : COPIE DANS LA BASE DE DONNEES 
+								//daoVillageois.save(v);								
 							}
 							currentPlayer = daoVillageois.findById(currentPlayer.getUserID());
 							
