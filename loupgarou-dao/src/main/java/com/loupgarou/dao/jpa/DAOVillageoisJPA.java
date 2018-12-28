@@ -42,6 +42,7 @@ public class DAOVillageoisJPA implements IDAOVillageois {
 		}
 		else {
 			entity = this.em.merge(entity);
+
 		}
 		this.em.getTransaction().commit();
 		return entity;
@@ -59,6 +60,17 @@ public class DAOVillageoisJPA implements IDAOVillageois {
 		Villageois element = new Villageois();
 		element.setUserID(id);
 		this.delete(element);
+	}
+	
+	public void updateRole(Villageois v)
+	{
+		this.em.getTransaction().begin();
+		this.em.createQuery("update Utilisateur u set u.role = :role, u.villID = :villId where u.id = :id")
+		.setParameter("role", v.getRole())
+		.setParameter("villId", v.getVillID())
+		.setParameter("id", v.getUserID())
+		.executeUpdate();
+		this.em.getTransaction().commit();
 	}
 	
 

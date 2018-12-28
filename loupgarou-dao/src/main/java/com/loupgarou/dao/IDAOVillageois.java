@@ -36,6 +36,7 @@ public interface IDAOVillageois extends IDAO<Villageois> {
 		// TODO Auto-generated method stub
 		
 	}
+	public void updateRole(Villageois v);
 	
 	
 }

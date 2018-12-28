@@ -59,7 +59,7 @@ public class Partie {
 		nbLoups = 0;
 		etat = true;
 		chat = new Chat();
-		
+		joueurs = new ArrayList<Villageois>();
 	}
 	
 	
