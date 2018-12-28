@@ -29,12 +29,24 @@ public class Chasseur extends Villageois{
 		super(v);
 	}
 	
-	public String demanderVictime()
-	{		
-		System.out.println("Quelle personne voulez vous tuez ?");
-		String victime = fonctions.lireChaine();
-		return victime;
+	public void tuer()
+	{	
+		String victime;
+		Boolean trouve = false;
+		do {
+			System.out.println("Quelle personne voulez-vous tuez ?");
+			victime = fonctions.lireChaine();
 		
+		for(Villageois v : this.getPartie().getJoueurs())
+		{
+			if(v.getUserName().equals(victime))
+			{
+				v.mourrir();
+				trouve = true;
+				break;
+			}
+		}
+		}while(trouve != true);
 	}
 
 //	@Override

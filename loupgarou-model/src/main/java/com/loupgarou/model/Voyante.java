@@ -33,10 +33,8 @@ public class Voyante extends Villageois{
 	
 	public void voirCarte() {
 		System.out.println("Choisissez le joueur dont vous voulez voir la carte.");
-		List<Villageois> village = new ArrayList<Villageois>();
-		village = this.partie.getJoueurs();
 		String name = fonctions.lireChaine();
-		for (Villageois v : village) {
+		for (Villageois v : this.getPartie().getJoueurs()) {
 			if(v.getUserName()==name) {
 				System.out.println("Carte "+v.getUserName() + " : " + v.getRole());
 			}

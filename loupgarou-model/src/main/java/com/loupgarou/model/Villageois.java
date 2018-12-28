@@ -133,6 +133,7 @@ public class Villageois extends Utilisateur{
 	{
 		super(v.getUserName(), v.getPassWord(), v.getUserID(), v.getNbPlaintes(), v.getIsBanni(), v.getIsConnected(), v.getEmail(), v.getDateNaissance());
 		//this.role = v.getRole();
+		this.chat = v.getChat();
 		this.partie = v.getPartie();	
 		this.amoureux = v.getAmoureux();
 		this.vivant = v.getVivant();
