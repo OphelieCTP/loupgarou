@@ -140,6 +140,7 @@ public class PrincipaleJPA {
 	}
 	
 	public static void jouer(IDAOPartie daoPartie, Partie p) {
+		
 		//voir joueurs associes a la partie
 		//distribuer roles
 		//premier tour : intervention cupidon + reconnaissance des amoureux, voyante

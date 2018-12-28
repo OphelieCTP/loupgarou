@@ -312,6 +312,52 @@ public class Partie {
 		this.joueurs.get(rd-1).setCapitaine(true);
 	}
 	
+	public Villageois compterVote() {
+		List<Villageois> cibles = new ArrayList<Villageois>();
+		List<Integer> depouillage = new ArrayList<Integer>();
+		
+		for (Villageois v : this.getJoueurs()) {
+			int added = 1;
+			if (v.getCapitaine()==true) {added = 2;}
+			
+			this.joueurs.get(v.getVote());
+			if(cibles.contains(this.joueurs.get(v.getVote()))==false) {
+				cibles.add(this.joueurs.get(v.getVote()));
+				depouillage.add(added);
+			}
+			else {
+				//cibles.indexOf(this.joueurs.get(v.getVote()));
+				depouillage.set(cibles.indexOf(
+							this.joueurs.get(v.getVote())), 
+							(depouillage.get(cibles.indexOf(this.joueurs.get(v.getVote())))+added));
+			}
+		}
+		
+		Boolean bool = true;
+		Boolean suppress = true;
+		while (bool==true && cibles.size()>2) {
+			if(depouillage.get(0)<depouillage.get(1)) {
+				depouillage.remove(0);
+				cibles.remove(0);
+			}
+			else {
+				if(depouillage.get(0)>depouillage.get(1)) {
+					depouillage.remove(1);
+					cibles.remove(1);
+				}
+			}
+		}
+		
+		cibles.size();
+		//cibles.remove(o)
+		
+		Villageois victime = new Villageois();
+		
+		int count = 0; 
+		this.getJoueurs();
+		return victime;
+	}
+	
 	public Date getDateCreation() {
 		return dateCreation;
 	}
