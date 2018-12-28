@@ -37,7 +37,7 @@ public class DAOVillageoisJPA implements IDAOVillageois {
 	@Override
 	public Villageois save(Villageois entity) {
 		this.em.getTransaction().begin();
-		if (entity.getVillID() == 0) {
+		if (entity.getUserID() == 0) {
 			this.em.persist(entity);
 		}
 		else {
@@ -57,7 +57,7 @@ public class DAOVillageoisJPA implements IDAOVillageois {
 	@Override
 	public void deleteById(int id) {
 		Villageois element = new Villageois();
-		element.setVillID(id);
+		element.setUserID(id);
 		this.delete(element);
 	}
 	
