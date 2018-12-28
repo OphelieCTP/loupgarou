@@ -34,8 +34,8 @@ public class PrincipaleJPA {
 	public static int menu() {
 		System.out.println("  ##########     MENU    ##########  ");
 		System.out.println("1- Actualiser informations compte utilisateur.");
-		System.out.println("2- Voir les autres joueurs connectés.");
-		System.out.println("3- Démarrer une partie.");
+		System.out.println("2- Voir les autres joueurs connectï¿½s.");
+		System.out.println("3- Dï¿½marrer une partie.");
 		System.out.println("4- Rejoindre une partie.");
 //		System.out.println("5- Voir les parties disponibles.");
 //		System.out.println("6- Supprimer compte utilisateur");
@@ -54,7 +54,7 @@ public class PrincipaleJPA {
 	}
 	
 	public static void supprimerCompteUtilisateur(Utilisateur u, IDAOUtilisateur daoUtilisateur) {
-		System.out.println(" Vous êtes certains de vouloir supprimer votre compte ? [Y/N]");
+		System.out.println(" Vous ï¿½tes certains de vouloir supprimer votre compte ? [Y/N]");
 		if(fonctions.lireChaine()=="Y") {
 			daoUtilisateur.deleteById(u.getUserID());
 			//deconnexion();
@@ -89,7 +89,7 @@ public class PrincipaleJPA {
 	
 	public static void voirJoueursConnectes(IDAOUtilisateur daoUtilisateur) {
 		List<Utilisateur> user = daoUtilisateur.findAll();
-		System.out.println("Joueurs connectés :");
+		System.out.println("Joueurs connectï¿½s :");
 		for (Utilisateur u : user) {
 			if(u.getIsConnected()==true) {
 				System.out.println("-----------------");
@@ -106,7 +106,7 @@ public class PrincipaleJPA {
 			System.out.println("La partie "+p.getId());
 			System.out.println("Avec : "+p.getJoueurs().size()+" joueurs actuellement.");
 			String etatPartie = "";
-			if(p.getEtat()==false) { etatPartie = "fermée, vous ne pouvez la rejoindre."; }
+			if(p.getEtat()==false) { etatPartie = "fermï¿½e, vous ne pouvez la rejoindre."; }
 			else { etatPartie = "ouverte, vous pouvez la rejoindre"; }
 			System.out.println("Elle est actuellement : "+etatPartie);
 		}
@@ -153,10 +153,10 @@ public class PrincipaleJPA {
 				// si NbVilageois =! 0 : villagesois votent
 				// un villageois meurt
 		
-		// PRB : à quel moment fait revelation plus de loup/plus de villageois non loups ?
+		// PRB : ï¿½ quel moment fait revelation plus de loup/plus de villageois non loups ?
 		// PRB : intervention parametre endormit : condition vote de nuit ?
 				
-		System.out.println("en cours de paramétrage"); 
+		System.out.println("en cours de paramï¿½trage"); 
 	}
 	
 	public static Partie recrutement(IDAOPartie daoPartie, IDAOMessage daoMessage, Partie p) {
@@ -168,8 +168,9 @@ public class PrincipaleJPA {
 			times = new Date();
 		}
 		p.setEtat(false);
-		Message annonce = new Message("Recrutement pour la partie "+p.getId()+" terminé.");
-		//System.out.println("Recrutement pour la partie "+p.getId()+" terminé."); 
+		Message annonce = new Message("Recrutement pour la partie "+p.getId()+" terminï¿½.", p.getChat());
+		annonce.setVisible(Visible.Villageois);
+		//System.out.println("Recrutement pour la partie "+p.getId()+" terminï¿½."); 
 		daoMessage.save(annonce);
 		return daoPartie.save(p);
 	}
@@ -229,7 +230,7 @@ public class PrincipaleJPA {
 								tentative++;
 							}while(p.getJoueurs().size() < 5 || tentative < 3);
 							p.setEtat(true);
-//							// démarer la partie
+//							// dï¿½marer la partie
 							p.distribuerRole();
 							for(Villageois v : p.getJoueurs())
 							{

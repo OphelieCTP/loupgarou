@@ -215,6 +215,27 @@ public class Villageois extends Utilisateur{
 		return this;
 	}
 	
+	public Message creerMessage(Message message) {
+		Message post = new Message(fonctions.lireChaine(), this.getChat());
+		post.setVisible(Visible.Villageois);
+		if(this.role=="Loup") { post.setVisible(Visible.Loup); }
+		if(this.vivant==false) { post.setVisible(Visible.Mort); }
+		return post;
+	}
+	
+	public void lireMessages(Message message) {
+		if(message.getVisible()!=Visible.Villageois) {
+			if(this.role=="Loup" || this.vivant==false) {
+				System.out.println(message.getContenu());
+			}
+		}
+		else {
+			System.out.println(message.getContenu());
+		}
+	}
+	
+	
+
 //	public void tuerEtSeFaireTuer(){ // 3 cas a g�rer : par vote, loups, chasseur et amoureux
 //		ArrayList<Villageois> village = new ArrayList<Villageois>();
 //		village = this.partie.getListJoueurs(this.partie.getJoueurs());
