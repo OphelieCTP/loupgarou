@@ -52,6 +52,11 @@ public class Message {
 		
 	}
 	
+	public Message(String contenu)
+	{
+		this.contenu = contenu;
+	}
+	
 	public String getContenu() {
 		return contenu;
 	}
