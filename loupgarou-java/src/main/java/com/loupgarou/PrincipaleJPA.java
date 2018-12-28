@@ -140,24 +140,24 @@ public class PrincipaleJPA {
 	public static void jouer(IDAOPartie daoPartie, Partie p) {
 		//voir joueurs associes a la partie
 		//distribuer roles
-		//premier tour : intervention cupidon, voyante
+		//premier tour : intervention cupidon + reconnaissance des amoureux, voyante
 		// while partie.NbVillageois !=0 et partie.NbLoup !=0
 			// nuit
 				// les loup votent
 				// la petite fille voit
-			// aube : intervention sorciere (sauver)
+			// aube : intervention sorciere (apprend qui est le mort : sauver, tuer)
 			// jour
 				// un villageois est mort (is chasseur ? is amoureux ?)
 				// si NbVilageois =! 0 : villagesois votent
 				// un villageois meurt
 		
 		// PRB : à quel moment fait revelation plus de loup/plus de villageois non loups ?
-		// PRB : intervention paarametre endormit : condition vote de nuit ?
+		// PRB : intervention parametre endormit : condition vote de nuit ?
 				
 		System.out.println("en cours de paramétrage"); 
 	}
 	
-	public static Partie recrutement(IDAOPartie daoPartie, Partie p) {
+	public static Partie recrutement(IDAOPartie daoPartie, IDAOMessage daoMessage, Partie p) {
 		//Long timeLimit = p.getDateCreation().getTime()+60*5*1000;
 		Long timeLimit = p.getDateCreation().getTime()+30*1000;
 		Date times = new Date();
@@ -166,7 +166,9 @@ public class PrincipaleJPA {
 			times = new Date();
 		}
 		p.setEtat(false);
-		System.out.println("Recrutement pour la partie "+p.getId()+" terminé."); 
+		Message annonce = new Message("Recrutement pour la partie "+p.getId()+" terminé.");
+		//System.out.println("Recrutement pour la partie "+p.getId()+" terminé."); 
+		daoMessage.save(annonce);
 		return daoPartie.save(p);
 	}
 
@@ -221,7 +223,7 @@ public class PrincipaleJPA {
 							Villageois currentPlayer = ajouterVillageois(currentUser, "Villageois", p, daoVillageois);
 							//test si le nombre de joueurs est sufissant
 							do {
-								p = recrutement(daoPartie, p);
+								p = recrutement(daoPartie, daoMessage, p);
 								tentative++;
 							}while(p.getJoueurs().size() < 5 || tentative < 3);
 							p.setEtat(true);
