@@ -30,4 +30,10 @@ public class Loup extends Villageois{
 	//lireMessage()
 	
 	//envoyerMessageCaché()
+	public Message envoyerMessageCache() {
+		Message annonce = new Message(fonctions.lireChaine(), this.getChat());
+		annonce.setVisible(Visible.Loup);
+		return annonce;
+	}
+	
 }

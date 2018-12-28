@@ -52,9 +52,10 @@ public class Message {
 		
 	}
 	
-	public Message(String contenu)
+	public Message(String contenu, Chat chat)
 	{
 		this.contenu = contenu;
+		this.chat = chat;
 	}
 	
 	public String getContenu() {

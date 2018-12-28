@@ -185,7 +185,7 @@ public class Villageois extends Utilisateur{
 					if(v.getVivant()==true && v.getPeutVoter() == true) { 
 						this.setaVote(true); 
 						this.setVote(v.getUserID());
-						System.out.println(this.userName + " a voté contre "+v.getUserName());
+						System.out.println(this.userName + " a votï¿½ contre "+v.getUserName());
 						return v;
 						}
 					else { System.out.println("Vous ne pouvez voter contre ce joueur, il est mort"); }
@@ -198,7 +198,8 @@ public class Villageois extends Utilisateur{
 	
 	public Villageois mourrir() {
 		this.setVivant(false);
-		System.out.println(this.getUserName() + " a été tué ! Il était : " + this.getRole());
+		Message annonce = new Message(this.getUserName() + " a ï¿½tï¿½ tuï¿½ !", this.getChat());
+		annonce.setVisible(Visible.Villageois);
 		if(this.getAmoureux() == true)
 		{
 			for(Villageois v : this.getPartie().getJoueurs())
@@ -206,14 +207,14 @@ public class Villageois extends Utilisateur{
 				if(v.getAmoureux() == true && v.getVivant() == true)
 				{
 					v.setVivant(false);
-					System.out.println(this.getUserName() + " a également été tué ! Il était : " + this.getRole());
+					System.out.println(this.getUserName() + " a ï¿½galement ï¿½tï¿½ tuï¿½ ! Il ï¿½tait : " + this.getRole());
 				}
 			}
 		}
 		return this;
 	}
 	
-//	public void tuerEtSeFaireTuer(){ // 3 cas a gérer : par vote, loups, chasseur et amoureux
+//	public void tuerEtSeFaireTuer(){ // 3 cas a gï¿½rer : par vote, loups, chasseur et amoureux
 //		ArrayList<Villageois> village = new ArrayList<Villageois>();
 //		village = this.partie.getListJoueurs(this.partie.getJoueurs());
 //		if (this.amoureux==true) {
@@ -227,7 +228,7 @@ public class Villageois extends Utilisateur{
 //		if (this.role=="Chasseur") {
 //			System.out.println("Vous pouvez tuer quelqu'un");
 //			
-//			// PRB : ne doit tuer que la première fois qu'il est considéré comme mort
+//			// PRB : ne doit tuer que la premiï¿½re fois qu'il est considï¿½rï¿½ comme mort
 //		}
 //		
 //	}
