@@ -198,4 +198,10 @@ public Villageois save(Villageois entity) {
 			e.printStackTrace();
 		}		 
 	}
+
+	@Override
+	public void updateRole(Villageois v) {
+		// TODO Auto-generated method stub
+		
+	}
 }
