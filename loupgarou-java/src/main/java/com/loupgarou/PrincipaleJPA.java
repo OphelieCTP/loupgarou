@@ -155,7 +155,6 @@ public class PrincipaleJPA {
 		
 		// PRB : � quel moment fait revelation plus de loup/plus de villageois non loups ?
 		// PRB : intervention parametre endormit : condition vote de nuit ?
-				
 		System.out.println("en cours de param�trage"); 
 	}
 	
@@ -226,9 +225,14 @@ public class PrincipaleJPA {
 							Villageois currentPlayer = ajouterVillageois(currentUser, "Villageois", p, daoVillageois);
 							//test si le nombre de joueurs est sufissant
 							do {
+								p.setDateCreation(new Date());
 								p = recrutement(daoPartie, daoMessage, p);
+								if(p.getJoueurs().size() < 5) {
+									System.out.println("Pas assez de joueurs, relancement du processus de recrutement.");
+								}
 								tentative++;
-							}while(p.getJoueurs().size() < 5 || tentative < 3);
+							}while(p.getJoueurs().size() < 5 && tentative < 3);
+							
 							p.setEtat(true);
 //							// d�marer la partie
 							p.distribuerRole();
