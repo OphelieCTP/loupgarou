@@ -1,6 +1,7 @@
 package com.loupgarou.model;
 import java.util.ArrayList;
 
+
 import java.util.List;
 
 import javax.persistence.*;
@@ -176,16 +177,14 @@ public class Villageois extends Utilisateur{
 	}
 	
 	public Villageois voter(){
-		List<Villageois> village = new ArrayList<Villageois>();
-		village = this.partie.getJoueurs();
 		while(this.aVote==false) {
 			System.out.println("Pour quel joueur souhaitez vous voter ?");
 			String cible = fonctions.lireChaine();
-			for (Villageois v : village) {
+			for (Villageois v : this.getPartie().getJoueurs()) {
 				if(v.getUserName()==cible) {
-					if(v.getVivant()==true) { 
+					if(v.getVivant()==true && v.getPeutVoter() == true) { 
 						this.setaVote(true); 
-						this.setVote(v.getVillID());
+						this.setVote(v.getUserID());
 						System.out.println(this.userName + " a voté contre "+v.getUserName());
 						return v;
 						}
@@ -197,9 +196,21 @@ public class Villageois extends Utilisateur{
 		return null;
 	}
 	
-	public Villageois mourrir(Villageois v) {
-		v.setVivant(false);
-		return v;
+	public Villageois mourrir() {
+		this.setVivant(false);
+		System.out.println(this.getUserName() + " a été tué !");
+		if(this.getAmoureux() == true)
+		{
+			for(Villageois v : this.getPartie().getJoueurs())
+			{
+				if(v.getAmoureux() == true && v.getVivant() == true)
+				{
+					v.setVivant(false);
+					System.out.println(this.getUserName() + " a également été tué !");
+				}
+			}
+		}
+		return this;
 	}
 	
 //	public void tuerEtSeFaireTuer(){ // 3 cas a gérer : par vote, loups, chasseur et amoureux
