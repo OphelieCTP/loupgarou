@@ -198,7 +198,7 @@ public class Villageois extends Utilisateur{
 	
 	public Villageois mourrir() {
 		this.setVivant(false);
-		System.out.println(this.getUserName() + " a été tué !");
+		System.out.println(this.getUserName() + " a été tué ! Il était : " + this.getRole());
 		if(this.getAmoureux() == true)
 		{
 			for(Villageois v : this.getPartie().getJoueurs())
@@ -206,7 +206,7 @@ public class Villageois extends Utilisateur{
 				if(v.getAmoureux() == true && v.getVivant() == true)
 				{
 					v.setVivant(false);
-					System.out.println(this.getUserName() + " a également été tué !");
+					System.out.println(this.getUserName() + " a également été tué ! Il était : " + this.getRole());
 				}
 			}
 		}
