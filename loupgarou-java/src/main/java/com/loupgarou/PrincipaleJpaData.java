@@ -50,6 +50,7 @@ public class PrincipaleJpaData {
 	
 	public int menu() {
 		System.out.println("  ##########     MENU    ##########  ");
+		System.out.println("0- Deconnexion");
 		System.out.println("1- Actualiser informations compte utilisateur.");
 		System.out.println("2- Voir les autres joueurs connect�s.");
 		System.out.println("3- D�marrer une partie.");
@@ -152,9 +153,7 @@ public class PrincipaleJpaData {
 		//v.setVillID(0);
 		System.out.println("ID du nouveau villageois : " + v.getUserID());
 		daoVillageois.updateRole(v);
-		System.out.println("ID du nouveau villageois 2 : " + v.getUserID());
 		daoVillageois.save(v);
-		System.out.println("ID du nouveau villageois 3 : " + v.getUserID());
 		return v;
 	}
 	
@@ -236,6 +235,8 @@ public class PrincipaleJpaData {
 					while (choix != 0) {
 						choix = menu();
 						switch(choix) {
+						case 0 : 
+							break;
 						case 1 : actualiserCompteUtilisateur(currentUser, daoUtilisateur);
 							break;
 						case 2 : voirJoueursConnectes(daoUtilisateur);
