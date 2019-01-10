@@ -50,7 +50,7 @@ public class Partie {
 	private Date dateCreation = new Date();
 	
 	
-	@OneToMany(mappedBy="partie")
+	@OneToMany(mappedBy="partie", cascade = CascadeType.ALL)
 	private List<Villageois> joueurs;
 		
 	public Partie()
