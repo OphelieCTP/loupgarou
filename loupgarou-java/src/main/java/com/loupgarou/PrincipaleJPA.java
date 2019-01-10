@@ -132,7 +132,7 @@ public class PrincipaleJPA {
 		System.out.println(" getUserID "+u.getUserID());
 		Villageois v = new Villageois(u, role, p);
 		p.getJoueurs().add(v);
-		v.setVillID(0);
+		//v.setVillID(0);
 		System.out.println("ID du nouveau villageois : " + v.getUserID());
 		daoVillageois.updateRole(v);
 		daoVillageois.save(v);

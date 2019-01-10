@@ -15,8 +15,8 @@ import com.loupgarou.divers.fonctions;
 
 
 public class Villageois extends Utilisateur{
-	@Column(name="VILL_ID")
-	protected int villID;
+//	@Column(name="VILL_ID")
+//	protected int villID;
 	
 	@Column(name="VILL_AMOUREUX")
 	@NotEmpty
@@ -50,15 +50,15 @@ public class Villageois extends Utilisateur{
 	@JoinColumn(name="VILL_PARTIE_ID")
 	protected Partie partie;
 	
-	public int getVillID() {
-		return villID;
-	}
-
-
-
-	public void setVillID(int villID) {
-		this.villID = villID;
-	}
+//	public int getVillID() {
+//		return villID;
+//	}
+//
+//
+//
+//	public void setVillID(int villID) {
+//		this.villID = villID;
+//	}
 
 
 
