@@ -158,7 +158,8 @@ public class PrincipaleJpaData {
 	}
 	
 	public void jouer(IDAOPartie daoPartie, Partie p) {
-		
+		System.out.println("Bienvenue a Thiercelieux ! La partie peut commencer ! =) ");
+		System.out.println("Bienvenue a Thiercelieux ! La partie peut commencer ! =) ");
 		//voir joueurs associes a la partie
 		//distribuer roles
 		//premier tour : intervention cupidon + reconnaissance des amoureux, voyante
@@ -258,22 +259,27 @@ public class PrincipaleJpaData {
 								}
 								tentative++;
 							}while(p.getJoueurs().size() < 5 && tentative < 3);
-//							if(tentative == 3)
-//							{
-//								break;
-//							}
 							
-							p.setEtat(true);
-//							// d�marer la partie
-							p.distribuerRole();
-							for(Villageois v : p.getJoueurs())
-							{
-								daoVillageois.updateRole(v);
-								System.out.println(v.getUserID());
-								//A CORRIGER : COPIE DANS LA BASE DE DONNEES 
-								//daoVillageois.save(v);								
+							if(p.getJoueurs().size() < 5) {
+								terminerPartie();
+								System.out.println("Pas assez de joueurs apres 3 sessions de recrutement. Suppression de la partie.");
+								daoPartie.delete(p);
+								break;
 							}
-							currentPlayer = daoVillageois.findById(currentPlayer.getUserID()).get();
+							else {
+								// demarrer la partie
+								p.setEtat(true);
+								p.distribuerRole();
+								for(Villageois v : p.getJoueurs())
+								{
+									daoVillageois.updateRole(v);
+									System.out.println(v.getUserID());
+									//A CORRIGER : COPIE DANS LA BASE DE DONNEES 
+									//daoVillageois.save(v);								
+								}
+								currentPlayer = daoVillageois.findById(currentPlayer.getUserID()).get();
+								
+							}
 							
 							break;
 						case 4 : voirParties(daoPartie);
