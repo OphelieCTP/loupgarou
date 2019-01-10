@@ -50,7 +50,8 @@ public class Partie {
 	private Date dateCreation = new Date();
 	
 	
-	@OneToMany(mappedBy="partie", cascade = CascadeType.ALL)
+	//, cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}
+	@OneToMany(mappedBy="partie",fetch=FetchType.EAGER)
 	private List<Villageois> joueurs;
 		
 	public Partie()

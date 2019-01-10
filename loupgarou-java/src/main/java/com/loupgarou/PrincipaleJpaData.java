@@ -279,9 +279,16 @@ public class PrincipaleJpaData {
 							}while(p.getJoueurs().size() < 5 && tentative < 3);
 							
 							if(p.getJoueurs().size() < 5) {
-								p.terminerPartie();
+								for(Villageois v  : p.getJoueurs())
+								{
+									v.setRole("Utilisateur");
+									v.setPartie(null);
+									daoVillageois.updateRole(v);
+									//daoVillageois.save(v);
+								}
+								
 								System.out.println("Pas assez de joueurs apres 3 sessions de recrutement. Suppression de la partie.");
-								daoPartie.delete(p);
+								daoPartie.deleteById(p.getId());
 								break;
 							}
 							else {

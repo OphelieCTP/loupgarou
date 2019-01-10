@@ -16,7 +16,7 @@ public interface IDAOVillageois extends JpaRepository<Villageois, Integer>  {
 	
 	@Modifying
 	@Transactional
-	@Query("update Utilisateur u set u.role = :#{#v.role} where u.userID = :#{#v.userID}")
+	@Query("update Utilisateur u set u.role = :#{#v.role}, u.partie = :#{#v.partie} where u.userID = :#{#v.userID}")
 	public void updateRole(@Param("v") Villageois v);
 
 }

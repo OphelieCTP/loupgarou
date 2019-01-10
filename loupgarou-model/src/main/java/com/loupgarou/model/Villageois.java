@@ -235,6 +235,11 @@ public class Villageois extends Utilisateur{
 		}
 	}
 	
+	public void quitterPartie()
+	{
+		this.setPartie(null);
+	}
+	
 	
 
 //	public void tuerEtSeFaireTuer(){ // 3 cas a g�rer : par vote, loups, chasseur et amoureux
