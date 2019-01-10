@@ -16,8 +16,8 @@ import org.springframework.orm.jpa.vendor.*;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories("fr.formation.dao")
-@ComponentScan("fr.formation.dao")
+@EnableJpaRepositories("com.loupgarou.datajpa")
+@ComponentScan("com.loupgarou.datajpa")
 @PropertySource("classpath:data-source.properties")
 public class JPAConfig {
 	@Autowired
