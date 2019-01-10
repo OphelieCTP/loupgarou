@@ -218,6 +218,8 @@ public class PrincipaleJpaData {
 		while(choixMenuLogin != 0) {
 			choixMenuLogin = menuBienvenue();
 			switch(choixMenuLogin) {
+			case 0 :
+				break;
 			case 1 :
 				System.out.println("Veuillez saisir votre nom d'utilisateur :");
 				String userName = fonctions.lireChaine();
@@ -236,6 +238,8 @@ public class PrincipaleJpaData {
 						choix = menu();
 						switch(choix) {
 						case 0 : 
+							currentUser.seDeconnecter();
+							daoUtilisateur.save(currentUser);
 							break;
 						case 1 : actualiserCompteUtilisateur(currentUser, daoUtilisateur);
 							break;
@@ -279,7 +283,7 @@ public class PrincipaleJpaData {
 							break;
 						case 5 : System.out.println("en cours de developpement"); //
 							break;
-							
+						
 						}
 					}
 				}
