@@ -152,7 +152,9 @@ public class PrincipaleJpaData {
 		//v.setVillID(0);
 		System.out.println("ID du nouveau villageois : " + v.getUserID());
 		daoVillageois.updateRole(v);
+		System.out.println("ID du nouveau villageois 2 : " + v.getUserID());
 		daoVillageois.save(v);
+		System.out.println("ID du nouveau villageois 3 : " + v.getUserID());
 		return v;
 	}
 	
