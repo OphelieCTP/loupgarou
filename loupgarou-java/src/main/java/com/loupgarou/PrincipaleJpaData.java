@@ -43,7 +43,7 @@ public class PrincipaleJpaData {
 		System.out.println(" ########## MENU ##########");
 		System.out.println("1- Se connecter");
 		System.out.println("2- S'inscrire");
-		
+		System.out.println("0- Quitter");
 		return fonctions.lireEntier();
 	}
 	
@@ -56,7 +56,7 @@ public class PrincipaleJpaData {
 		System.out.println("3- D�marrer une partie.");
 		System.out.println("4- Rejoindre une partie.");
 //		System.out.println("5- Voir les parties disponibles.");
-//		System.out.println("6- Supprimer compte utilisateur");
+		System.out.println("6- Supprimer compte utilisateur");
 //		System.out.println("-----------------");
 //		System.out.println("7- Ajouter partie");
 //		System.out.println("8- Ajouter villageois");
@@ -283,7 +283,9 @@ public class PrincipaleJpaData {
 							break;
 						case 5 : System.out.println("en cours de developpement"); //
 							break;
-						
+						case 6 : supprimerCompteUtilisateur(currentUser, daoUtilisateur);
+							break;
+							
 						}
 					}
 				}
