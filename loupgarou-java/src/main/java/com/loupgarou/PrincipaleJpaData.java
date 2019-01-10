@@ -159,7 +159,25 @@ public class PrincipaleJpaData {
 	
 	public void jouer(IDAOPartie daoPartie, Partie p) {
 		System.out.println("Bienvenue a Thiercelieux ! La partie peut commencer ! =) ");
-		System.out.println("Bienvenue a Thiercelieux ! La partie peut commencer ! =) ");
+		System.out.println("Le village est actuellement constituee de : ");
+		for (Villageois v : p.getJoueurs()) {
+			String etat = "vivant";
+			if (v.getVivant()==false) { etat = "mort"; }
+			System.out.println(v.getUserName()+" actuellement "+etat);
+		}
+		
+		System.out.println("Premier tour de jeu ! ");
+		System.out.println("Repartition des roles... ");
+		p.distribuerRole();
+		p.setNbLoups(0);
+		p.setNbVillageois(0);
+		for (Villageois v : p.getJoueurs()) {
+			if(v.getRole()=="Loup") { p.setNbLoups(p.getNbLoups()+1); }
+			else {p.setNbVillageois(p.getNbVillageois()+1);}
+		}
+		System.out.println("Il y a actuellement : "+p.getNbVillageois()+" villageois et "+p.getNbLoups()+" loups.");
+		// Préciser roles spécifiques ?? 
+		
 		//voir joueurs associes a la partie
 		//distribuer roles
 		//premier tour : intervention cupidon + reconnaissance des amoureux, voyante
@@ -272,7 +290,7 @@ public class PrincipaleJpaData {
 								p.distribuerRole();
 								for(Villageois v : p.getJoueurs())
 								{
-									daoVillageois.updateRole(v);
+									//daoVillageois.updateRole(v);
 									System.out.println(v.getUserID());
 									//A CORRIGER : COPIE DANS LA BASE DE DONNEES 
 									//daoVillageois.save(v);								
