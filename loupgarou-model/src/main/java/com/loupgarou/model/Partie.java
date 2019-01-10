@@ -397,5 +397,12 @@ public class Partie {
 //			return null;
 //		}
 //		
+		public void terminerPartie()
+		{
+			for(Villageois v : this.joueurs)
+			{
+				v.setRole("Utilisateur");
+			}
+		}
 
 }

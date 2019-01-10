@@ -261,7 +261,7 @@ public class PrincipaleJpaData {
 							}while(p.getJoueurs().size() < 5 && tentative < 3);
 							
 							if(p.getJoueurs().size() < 5) {
-								terminerPartie();
+								p.terminerPartie();
 								System.out.println("Pas assez de joueurs apres 3 sessions de recrutement. Suppression de la partie.");
 								daoPartie.delete(p);
 								break;
