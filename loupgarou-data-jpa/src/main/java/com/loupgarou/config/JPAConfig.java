@@ -1,4 +1,4 @@
-package fr.formation.config;
+package com.loupgarou.config;
 
 import java.util.Properties;
 
