@@ -332,10 +332,8 @@ public class Partie {
 							(depouillage.get(cibles.indexOf(this.joueurs.get(v.getVote())))+added));
 			}
 		}
-		
-		Boolean bool = true;
-		Boolean suppress = true;
-		while (bool==true && cibles.size()>2) {
+		Boolean difference = true;
+		while (difference==true && cibles.size()>1) {
 			if(depouillage.get(0)<depouillage.get(1)) {
 				depouillage.remove(0);
 				cibles.remove(0);
@@ -345,16 +343,24 @@ public class Partie {
 					depouillage.remove(1);
 					cibles.remove(1);
 				}
+				else {
+					difference = false;
+				}
 			}
 		}
-		
-		cibles.size();
-		//cibles.remove(o)
-		
-		Villageois victime = new Villageois();
-		
-		int count = 0; 
-		this.getJoueurs();
+		Villageois victime = null;
+		if(cibles.size()==1) {
+			System.out.println("Un villageois a ete lynche =)");
+			victime = cibles.get(0);
+			System.out.println(victime.getUserName()+" a donc ete tue avec "+depouillage.get(0)+" votes.");
+		}
+		else {
+			System.out.println("Egalites de votes avec : ");
+			for (Villageois v : cibles) {
+				System.out.println(v.getUserName()+" avec "+depouillage.get(cibles.indexOf(v))+" votes.");
+			}
+			System.out.println("Vote relance.");
+		}
 		return victime;
 	}
 	
