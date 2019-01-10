@@ -166,7 +166,6 @@ public class PrincipaleJpaData {
 			System.out.println(v.getUserName()+" actuellement "+etat);
 		}
 		
-		System.out.println("Premier tour de jeu ! ");
 		System.out.println("Repartition des roles... ");
 		p.distribuerRole();
 		p.setNbLoups(0);
@@ -176,7 +175,25 @@ public class PrincipaleJpaData {
 			else {p.setNbVillageois(p.getNbVillageois()+1);}
 		}
 		System.out.println("Il y a actuellement : "+p.getNbVillageois()+" villageois et "+p.getNbLoups()+" loups.");
-		// Préciser roles spécifiques ?? 
+		for (Villageois v : p.getJoueurs()) {
+			if(v.getRole()!="Loup" && v.getRole()!="Villageois") {System.out.println("On retrouve egalement 1 "+v.getRole());}
+		}
+		System.out.println("Votre capitaine pour cette partie sera : "+p.designerCapitaine().getUserName());
+		
+		//Premier tour
+		System.out.println("Premier tour de jeu ! ");
+		System.out.println("Thiercelieux s'endort...");
+		
+		Cupidon cup = new Cupidon(daoVillageois.findByPartieIDAndRole("Cupidon", p.getId()));
+		cup.formerCoupler(); 
+		
+		while (p.getNbVillageois()!=0 || p.getNbLoups()!=0) {
+			//JOUR
+			
+			
+			//NUIT
+		}
+		
 		
 		//voir joueurs associes a la partie
 		//distribuer roles
@@ -294,16 +311,17 @@ public class PrincipaleJpaData {
 							else {
 								// demarrer la partie
 								p.setEtat(true);
-								p.distribuerRole();
-								for(Villageois v : p.getJoueurs())
-								{
-									//daoVillageois.updateRole(v);
-									System.out.println(v.getUserID());
-									//A CORRIGER : COPIE DANS LA BASE DE DONNEES 
-									//daoVillageois.save(v);								
-								}
-								currentPlayer = daoVillageois.findById(currentPlayer.getUserID()).get();
-								
+								jouer(daoPartie, p);
+								//p.distribuerRole();
+//								for(Villageois v : p.getJoueurs())
+//								{
+//									//daoVillageois.updateRole(v);
+//									System.out.println(v.getUserID());
+//									//A CORRIGER : COPIE DANS LA BASE DE DONNEES 
+//									//daoVillageois.save(v);								
+//								}
+//								currentPlayer = daoVillageois.findById(currentPlayer.getUserID()).get();
+//								
 							}
 							
 							break;

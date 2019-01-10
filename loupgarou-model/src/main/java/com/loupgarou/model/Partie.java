@@ -305,8 +305,28 @@ public class Partie {
 		
 	}
 //	
-	public Villageois designerCapitaine()
-	{
+	
+	public void endormirVillage() {
+		for (Villageois v : this.getJoueurs()) {
+			v.setEndormit(true);
+			// peut être utilise pour endormir villageois et loups durant leurs phases de jeux 
+		}
+	}
+	
+	public void reveillerVillage() {
+		for (Villageois v : this.getJoueurs()) {
+			v.setEndormit(false);
+		}
+	}
+	
+	public void reveillerLoup() {
+		for (Villageois v : this.getJoueurs()) {
+			if(v.getRole()=="Loup") { v.setEndormit(false); }
+		}
+	}
+	
+	
+	public Villageois designerCapitaine() {
 		//generation d'un nombbre aléatoire compris entre 0 et le nombre de joueurs
 		int rd = (int)Math.round(Math.random() * (this.joueurs.size() - 0));
 		
