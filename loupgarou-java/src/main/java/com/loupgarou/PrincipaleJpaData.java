@@ -224,7 +224,7 @@ public class PrincipaleJpaData {
 				String password = fonctions.lireChaine();
 				
 				
-				currentUser = daoUtilisateur.findByUserNameAndPassWordAndIsBanni(userName, password, false); 
+				currentUser = daoUtilisateur.findByUserNameAndPassWordAndIsBanni(userName, password, false).get(); 
 				if(currentUser != null){
 					System.out.println("Bienvenue " + userName + " !");
 					currentUser.setIsConnected(true);
@@ -266,13 +266,13 @@ public class PrincipaleJpaData {
 								//A CORRIGER : COPIE DANS LA BASE DE DONNEES 
 								//daoVillageois.save(v);								
 							}
-							currentPlayer = daoVillageois.findById(currentPlayer.getUserID());
+							currentPlayer = daoVillageois.findById(currentPlayer.getUserID()).get();
 							
 							break;
 						case 4 : voirParties(daoPartie);
 							System.out.println("Quelle partie voulez-vous rejoindre ? ");
 							int selected = fonctions.lireEntier();
-							Partie partie = daoPartie.findById(selected);
+							Partie partie = daoPartie.findById(selected).get();
 							break;
 						case 5 : System.out.println("en cours de developpement"); //
 							break;
@@ -290,7 +290,7 @@ public class PrincipaleJpaData {
 				{
 					System.out.println("Veuillez saisir un nom d'utilisateur");
 					newName = fonctions.lireChaine();
-					currentUser = daoUtilisateur.findByUsername(newName);
+					currentUser = daoUtilisateur.findByUserName(newName);
 					if(currentUser != null)
 					{
 						System.out.println("Le nom d'utilisateur n'est pas disponible.");
