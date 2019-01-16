@@ -109,6 +109,8 @@ var crudAjouterJS = function(){
 
 var crudModifierJS = function(id){
 	alert("modification joueur "+id);
+	tentative = prompt("test ?")
+	alert(tentative);
 	// get liste de tt les joueurs et recup par id
 //	var nouveauJoueur = {
 //			id:10,
