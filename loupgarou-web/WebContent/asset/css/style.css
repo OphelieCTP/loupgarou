@@ -6,10 +6,10 @@ table tbody tr td div p {
 	line-height: 10pt;
 }
 
-/* div {
+ div {
 	border-style: solid;
 	align-content: center;
-}  */
+}  
 
 #container-fluid{
 	display : flex;
@@ -34,4 +34,8 @@ table tbody tr td div p {
 
 #connexion-valid{
 	margin:0 auto;
+}
+
+#centered-button{
+	text-align: center;
 }
