@@ -1,3 +1,7 @@
+body {
+	background: #F90330;
+}
+
 td {
   vertical-align: middle;
 }
@@ -5,11 +9,6 @@ td {
 table tbody tr td div p {
 	line-height: 10pt;
 }
-
- div {
-	border-style: solid;
-	align-content: center;
-}  
 
 #container-fluid{
 	display : flex;
@@ -38,4 +37,34 @@ table tbody tr td div p {
 
 #centered-button{
 	text-align: center;
+}
+
+#statpart {
+	background:#0B0B3B;
+}
+
+header {
+	height: 200px;
+	background-image: url("../../img/header.jpg");
+	background-position: right bottom;
+	background-repeat: no-repeat;
+} 
+
+#statpart {
+	position : bottom;
+}
+
+#chat {
+	height:600px;
+	max-height:600px;
+	background: rgba(99,99,99,0.78);
+	overflow-y:scroll;
+	color: black;
+	font-weight:bold;
+}
+
+#page-center {
+	background-image: url("../../img/center_bc.png");
+	background-position: center top;
+	background-repeat: no-repeat;
 }
