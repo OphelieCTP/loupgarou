@@ -2,9 +2,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="asset/css/crud.css" />
-<title>CRUD Manipulation</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+<title> CRUD Manipulation </title>
 </head>
 <body>
 
@@ -19,40 +20,47 @@
 			<h1>
 				Joueurs
 			</h1>
+			
+			<p> </p>
+			<div class="col-xs-3">
+				<input type="submit" class="btn btn-primary btn-md btn-block" value = "Ajouter Joueur" onclick="crudAjouterJS(); return false;" >
+			</div>
+			<p> </p>
+			
 			<table class="table">
 			  <thead>
 			    <tr>
-			      <th scope="col">ID</th>
-			      <th scope="col">Nom Utilisateur</th>
-			      <th scope="col">Mot de Passe</th>
-			      <th scope="col">Statut Connexion</th>
-			      <th scope="col">Statut Banni</th>
-			      <th scope="col">Nombre de plaintes</th>
-			      <th scope="col">Date Naissance</th>
-			      <th scope="col">Actions possibles</th>
+			      <th class="align-middle" scope="col">ID</th>
+			      <th class="align-middle" scope="col">Nom Utilisateur</th>
+			      <th class="align-middle" scope="col">Mot de Passe</th>
+			      <th class="align-middle" scope="col">Statut Connexion</th>
+			      <th class="align-middle" scope="col">Statut Banni</th>
+			      <th class="align-middle" scope="col">Nombre de plaintes</th>
+			      <th class="align-middle" scope="col">Date Naissance</th>
+			      <th class="align-middle" scope="col">Actions possibles</th>
 			    </tr>
 			  </thead>
 			  <tbody>
 			    <tr>
-			      <td>ID</td>
-			      <td>Nom Utilisateur</td>
-			      <td>Mot de Passe</td>
-			      <td>Statut Connexion</td>
-			      <td>Statut Banni</td>
-			      <td>Nombre de plaintes</td>
-			      <td>Date Naissance</td>
-			      <td>
+			      <td class="align-middle" >ID </td>
+			      <td class="align-middle" >Nom Utilisateur</td>
+			      <td class="align-middle" >Mot de Passe</td>
+			      <td class="align-middle" >Statut Connexion</td>
+			      <td class="align-middle" >Statut Banni</td>
+			      <td class="align-middle" >Nombre de plaintes</td>
+			      <td class="align-middle" >Date Naissance</td>
+			      <td class="align-middle" >
 				      <div>
 				      	<div class="col-xs-3">
-				      		<input type="submit" class="btn btn-primary btn-md btn-block" value = "Modifier" onclick="crudModifierJS(); return false;" ></button>
+				      		<input type="submit" class="btn btn-primary btn-md btn-block" value = "Modifier" onclick="crudModifierJS(); return false;" >
 				      	</div>
-				      	<span> </span>
+				      	<p> </p>
 				      	<div class="col-xs-3">
-				      		<input type="submit" class="btn btn-primary btn-md btn-block" value = "Banir" onclick="crudBanirJS(); return false;"></button>
+				      		<input type="submit" class="btn btn-primary btn-md btn-block" value = "Banir" onclick="crudBanirJS(); return false;">
 				      	</div>
-				      	<span> </span>
+				      	<p> </p>
 				      	<div class="col-xs-3">
-					      	<input type="submit" class="btn btn-primary btn-md btn-block" value = "Supprimer" onclick="crudSupprimerJS(); return false;"></button>
+					      	<input type="submit" class="btn btn-primary btn-md btn-block" value = "Supprimer" onclick="crudSupprimerJS(); return false;">
 				      	</div>
 			      </div>
 			      </td>
@@ -78,9 +86,6 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
-   id="svg10"
-   width="1572"
-   height="1256"
    viewBox="0 0 1572 1256"
    sodipodi:docname="Loup.svg"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
@@ -140,9 +145,6 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
-   id="svg9"
-   width="804"
-   height="1408"
    viewBox="0 0 804 1408"
    sodipodi:docname="Villageois.svg"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">

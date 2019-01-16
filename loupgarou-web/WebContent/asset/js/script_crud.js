@@ -9,6 +9,11 @@ var runnerPathNodetype = "";
 
 //console.log($("svg path d"))
 
+
+var crudAjouterJS = function(){
+	alert("ajouter joueur");
+}
+
 var crudModifierJS = function(){
 	alert("modification joueur");
 }
