@@ -2,6 +2,10 @@ var databaseLink = "http://192.168.1.117/loupgarou-web/crud.html";
 
 var eventSource = new EventSource("http://192.168.1.117/loupgarou-web/crud.html");
 
+var pursuerPathD = "";
+var runnerPathD = "";
+var pursuerPathNodetype = "";
+var runnerPathNodetype = "";
 
 var crudModifierJS = function(){
 	alert("modification joueur");
