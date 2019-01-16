@@ -7,6 +7,8 @@ var runnerPathD = "";
 var pursuerPathNodetype = "";
 var runnerPathNodetype = "";
 
+//console.log($("svg path d"))
+
 var crudModifierJS = function(){
 	alert("modification joueur");
 }
