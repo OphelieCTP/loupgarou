@@ -5,3 +5,17 @@ td {
 table tbody tr td div p {
 	line-height: 10pt;
 }
+
+div {
+	border-style: solid;
+	align-content: center;
+}
+
+#container-fluid{
+	display : flex;
+}
+
+#chat, #edit, #menu, #statJoueur, #vote{
+	margin:0 auto;
+}
+
