@@ -9,23 +9,41 @@
 </head>
 <body>
 
-	<div  class="container-fluid">
+	<div class="container-fluid">
 	
 	<div>
 	</div>
 	
 	<!-- but du jeu : creer page ou administrateur peut voir liste des joueurs et choisir de les banir ou non -->
-		<section>
-		
 			<h1>
 				Joueurs
 			</h1>
 			
 			<p> </p>
 			<div class="col-xs-3">
-				<input type="submit" class="btn btn-primary btn-md btn-block" value = "Ajouter Joueur" onclick="crudAjouterJS(); return false;" >
+				<input type="submit" id="add" class="btn btn-primary btn-md btn-block" value = "Ajouter Joueur" >
 			</div>
 			<p> </p>
+			
+			<section id="addUser">
+				<div>
+					<form>
+						<div> 
+							<label for="nom"> Nom Utilisateur : </label>
+							<input type="text" id="nom" placeholder="Le nom ..." required/>
+						</div>
+						<div> 
+							<label for="wp"> Mot de Passe : </label> 
+							<input type="text" id="wp" placeholder="Le mot de passe ..." required/>
+						</div>
+						<div> 
+							<label for="naissance">  Date Naissance : </label> 
+							<input type="text" id="naissance" placeholder="0000-00-00" required/>
+						</div>
+						<input type="submit" value="Enregister" onclick="crudAjouterJS(); return false;"/>
+					</form>
+				</div>
+			</section>
 			
 			<table class="table">
 			  <thead>
@@ -42,14 +60,14 @@
 			  </thead>
 			  <tbody>
 			    <tr>
-			      <td class="align-middle" >ID </td>
-			      <td class="align-middle" >Nom Utilisateur</td>
-			      <td class="align-middle" >Mot de Passe</td>
-			      <td class="align-middle" >Statut Connexion</td>
-			      <td class="align-middle" >Statut Banni</td>
-			      <td class="align-middle" >Nombre de plaintes</td>
-			      <td class="align-middle" >Date Naissance</td>
-			      <td class="align-middle" >
+			      <td class="align-middle" id="ID" >ID </td>
+			      <td class="align-middle" id="user" >Nom Utilisateur</td>
+			      <td class="align-middle" id="wp" >Mot de Passe</td>
+			      <td class="align-middle" id="connexion" >Statut Connexion</td>
+			      <td class="align-middle" id="bani" >Statut Banni</td>
+			      <td class="align-middle" id="plaintes" >Nombre de plaintes</td>
+			      <td class="align-middle" id="naissance" >Date Naissance</td>
+			      <td class="align-middle" id="actions" >
 				      <div>
 				      	<div class="col-xs-3">
 				      		<input type="submit" class="btn btn-primary btn-md btn-block" value = "Modifier" onclick="crudModifierJS(); return false;" >
@@ -62,7 +80,7 @@
 				      	<div class="col-xs-3">
 					      	<input type="submit" class="btn btn-primary btn-md btn-block" value = "Supprimer" onclick="crudSupprimerJS(); return false;">
 				      	</div>
-			      </div>
+			      	  </div>
 			      </td>
 			    </tr>
 			  </tbody>
