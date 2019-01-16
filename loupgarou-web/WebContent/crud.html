@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<title>CRUD Manipulation</title>
+</head>
+<body>
+
+	<div  class="container-fluid">
+	
+	<div>
+	</div>
+	
+	<!-- but du jeu : creer page ou administrateur peut voir liste des joueurs et choisir de les banir ou non -->
+		<section>
+		
+			<h1>
+				Joueurs
+			</h1>
+			<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">ID</th>
+			      <th scope="col">Nom Utilisateur</th>
+			      <th scope="col">Mot de Passe</th>
+			      <th scope="col">Statut Connexion</th>
+			      <th scope="col">Statut Banni</th>
+			      <th scope="col">Nombre de plaintes</th>
+			      <th scope="col">Date Naissance</th>
+			      <th scope="col">Actions possibles</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td>ID</td>
+			      <td>Nom Utilisateur</td>
+			      <td>Mot de Passe</td>
+			      <td>Statut Connexion</td>
+			      <td>Statut Banni</td>
+			      <td>Nombre de plaintes</td>
+			      <td>Date Naissance</td>
+			      <td>
+			      	<div class="col-xs-3">
+			      		<input type="submit" class="btn btn-primary" value = "Modifier" onclick="crudModifierJS(); return false;"></button>
+			      	</div>
+			      	<div class="col-xs-3">
+			      		<input type="submit" class="btn btn-primary" value = "Banir" onclick="crudBanirJS(); return false;"></button>
+			      	</div>
+			      	<div class="col-xs-3">
+				      	<input type="submit" class="btn btn-primary" value = "Supprimer" onclick="crudSupprimerJS(); return false;"></button>
+			      	</div>
+			      </td>
+			    </tr>
+			  </tbody>
+			</table>
+		
+		</section>
+		
+	</div>
+</body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="asset/js/script_crud.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+
+</html>
