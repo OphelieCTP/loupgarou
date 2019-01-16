@@ -9,6 +9,12 @@ $('input[id=add]').bind('click',function(){
 	return false;
 })
 
+$('input[id=addDone]').bind('click',function(){
+	// alert("declencheur");
+	$('section[id=addUser]').hide();
+	return false;
+})
+
 // si temps pour jouer avec svg
 var pursuerPathD = "";
 var runnerPathD = "";
@@ -16,12 +22,14 @@ var pursuerPathNodetype = "";
 var runnerPathNodetype = "";
 
 //console.log($("svg id='runner' path d"))
-
+//
+//console.log("tentative");
+//jQuery.get('http://localhost/loupgarou-web/', function(data){console.log(data)});
 
 // get Personnages
 
 function createRowUser(user){
-	var newTr = $("<tr />");
+	var newTr = $("<tr id='"+user.id+"' />");
 	var col1 = $("<td class='align-middle' id='ID' />"); // ID
 	var col2 = $("<td class='align-middle' id='user' />"); // userName
 	var col3 = $("<td class='align-middle' id='wp' />"); // wp
@@ -81,7 +89,7 @@ $.ajax({
 var crudAjouterJS = function(){
 	alert("ajouter joueur");
 	var nouveauJoueur = {
-			id:10,
+			//id:10,
 			libelle: $('input[id="nom"]').val(),
 			// wp: $('input[id="wp"]').val(),
 			// connexion:false,
@@ -107,42 +115,66 @@ var crudAjouterJS = function(){
 	})
 }
 
+
+var crudSupprimerJS = function(id){
+	$("table tbody tr[id='"+id+"'] ").remove();
+	alert("supprimer joueur");
+	var cible =  $.ajax({
+			method: 'DELETE',
+			url: databaseLink+"/"+id,
+			success: function(personnages) {
+				console.log(personnages);
+			}
+		})
+}
+
+
 var crudModifierJS = function(id){
 	alert("modification joueur "+id);
-	tentative = prompt("test ?")
-	alert(tentative);
-	// get liste de tt les joueurs et recup par id
-//	var nouveauJoueur = {
-//			id:10,
-//			libelle: $('input[id="nom"]').val(),
-//			// wp: $('input[id="wp"]').val(),
-//			// connexion:false,
-//			// banni:false,
-//			// plaintes:0,
-//			// naissance: $('input[id="naissance"]').val(),
-//			pouvoir: {
-//				id:1,
-//				libelle:"Loup"
-//			}
-//	}
-//	
-//	console.log(nouveauJoueur)
-//	
-//	var personnages = $.ajax({
-//		method: 'PUT',
-//		url: databaseLink+"/"+id,
-//		contentType: "application/json",
-//		data: JSON.stringify(nouveauJoueur),
-//		success: function(personnage) {
-//			createRowUser(personnage);
-//		}
-//	})
+	
+	var nouveauJoueur = $.ajax({
+		method: 'GET',
+		url: databaseLink,
+		success: function(personnages) {
+			console.log(personnages);
+			for (let personnage of personnages){
+				if(personnage.id===id){
+					var cible = parseInt(prompt("Modifier : 1- Joueur 2-Pouvoir ? "));
+					var att = prompt("Attributs modifiables disponibles : id, libelle. Modifier lequel ? ");
+					var result = prompt("Nouvelle valeur ? ");
+					console.log(typeof parseInt(cible));
+					switch (cible){
+					case 1: 
+						console.log(att);
+						if(att=="id"){personnage.id=result;}
+						else{personnage.libelle=result;}
+						break;
+					case 2: 
+						if(att=="id"){personnage.pouvoir.id=result;}
+						else{personnage.pouvoir.libelle=result;}
+						break;
+					}
+					console.log(personnage);
+					alert(personnage);
+					
+					$.ajax({
+						method: 'PUT',
+						url: databaseLink+"/"+id+"/",
+						contentType: "application/json",
+						data: JSON.stringify(personnage),
+						success: function(personnage) {
+							alert("perso change");
+						}
+					})
+					$("table tbody tr[id='"+id+"'] ").remove();
+					createRowUser(personnage);
+				}
+					
+			}
+		}
+	})
 }
 
-
-var crudSupprimerJS = function(){
-	alert("supprimer joueur");
-}
 
 var crudBanirJS = function(){
 	alert("banir joueur");
