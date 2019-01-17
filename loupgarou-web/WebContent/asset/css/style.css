@@ -1,5 +1,5 @@
 body {
-	background: #F90330;
+	background: #fbfe78;
 }
 
 td {
@@ -126,7 +126,6 @@ svg[id="runner"]:onload{
 	top: 0;
 	left: 0;
 	right: 500px;
-	animation:lightSpeedIn;
 	/*  */
 }
 
@@ -144,6 +143,7 @@ svg[id="pursuer"]{
 }
 
 #menuTitle, #voteTitle, #statJTitle {
+	font-family: 'ZCOOL KuaiLe', cursive;
 	background:#0B0B3B;
 	text-align:center;
 	color:white;
