@@ -27,11 +27,11 @@ table tbody tr td div p {
 	text-align : center;
 }
 
-#connexion-button {
+#connexion-button, #inscription-button{
 	text-align : center;
 }
 
-#connexion-valid{
+#connexion-valid, #inscription-valid {
 	margin:0 auto;
 }
 
