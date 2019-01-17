@@ -44,12 +44,38 @@ var generateForm = function(joueurs) {
 }
 
 
+var displayCarte = function(joueurs) {
+	var wId = 27;
+	for(p of joueurs)
+	{
+		if(p.id == wId)
+		{
+			var imgTag = $("<img id=\"carteJ\" />");
+			var imgLegend = $("<div id=\"imgLegend\" />");
+			
+			if(p.pouvoir.libelle == "Villageois")
+			{
+				imgTag.attr('src', "img/vill.png");
+				imgLegend.html("Villageois");
+			}
+			if(p.pouvoir.libelle == "Loup")
+			{
+				imgTag.attr('src', "img/loupg.png");
+				imgLegend.html("Loup Garou");
+			}
+			$('.carte').append(imgTag);	
+			$('.carte').append(imgLegend);	
+		}
+	}
+}
+
 $.ajax({
 	method: 'GET',
 	url: databaseLink,
 	success: function(personnages) {
 		console.log(personnages);
 		generateForm(personnages);
+		displayCarte(personnages);
 		}
 	}
 )
@@ -59,6 +85,9 @@ $.ajax({
 //var j3 = new Joueur(3, "Hulk");
 //
 //var js = [j1, j2, j3];
+
+
+
 
 
 	

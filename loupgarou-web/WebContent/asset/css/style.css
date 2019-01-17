@@ -137,13 +137,13 @@ svg[id="pursuer"]{
 	/*  */
 }
 
-#menu, #vote {
+#menu, #vote, #statJoueur {
 	background: rgba(99,99,99,0.60);
 	padding-bottom:20px;
 	border-radius: 20px;
 }
 
-#menuTitle, #voteTitle {
+#menuTitle, #voteTitle, #statJTitle {
 	background:#0B0B3B;
 	text-align:center;
 	color:white;
@@ -151,3 +151,14 @@ svg[id="pursuer"]{
     width: calc(100% + 30px);
 }
 
+#carteJ {
+	width: 100%;
+}
+
+#statJoueur {
+	text-align:center;
+}
+
+#imgLegend {
+	font-weight:bold;
+}
