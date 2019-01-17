@@ -120,6 +120,7 @@ nav div ul a li {
 div[class="blockquote-footer"]{
 	color: #000000;
 	font: bold;
+	font-size: x-small;
 }
 
 footer {
