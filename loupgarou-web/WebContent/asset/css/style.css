@@ -65,6 +65,7 @@ table tbody tr td div p {
 	text-align: center;
 	display: flex;
     justify-content: center;
+    min-height: 40px;
 }
 
 header {
@@ -291,3 +292,7 @@ h3 img:hover {
 #rules::-webkit-scrollbar {
  display: none;
  }
+#page-center-index {
+	background: #6699ff;
+	min-height:500px;
+}
