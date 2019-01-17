@@ -62,7 +62,6 @@ table tbody tr td div p {
 
 #statpart {
 	background:#0B0B3B;
-	display: inline-flex;
 	text-align: center;
 	display: flex;
     justify-content: center;
@@ -222,3 +221,52 @@ strong {
 }
 
 
+
+h3{
+	display: flex;
+    justify-content: left;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+}
+
+h4{
+	display: flex;
+    justify-content: left;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+}
+
+h3 span {
+    padding: 10px;
+}
+
+h4 span {
+    padding: 10px;
+}
+
+h4 img {
+	transition: all 0.5s ease;
+}
+
+
+h3 img {
+	transition: all 0.5s ease;
+}
+
+h3 img:hover {
+	transform: rotate(45deg);
+}
+
+h4 img:hover {
+	transform: rotate(45deg);
+}
+
+h3 img:hover {
+	transform: rotate(45deg);
+}
+
+#divRole {
+	width: 10px;
+}
