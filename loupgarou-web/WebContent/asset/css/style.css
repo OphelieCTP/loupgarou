@@ -42,6 +42,7 @@ table tbody tr td div p {
 #statpart {
 	background:#0B0B3B;
 	display: inline-flex;
+	text-align: center;
 }
 
 header {
