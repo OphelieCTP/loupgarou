@@ -33,7 +33,7 @@ table tbody tr td div p {
 	display : flex;
 }
 
-#chat, #edit, #menu, #statJoueur, #vote{
+#chat, #rules, #edit, #menu, #statJoueur, #vote{
 	margin:0 auto;
 }
 
@@ -270,3 +270,24 @@ h3 img:hover {
 #divRole {
 	width: 10px;
 }
+
+/* #chat {
+	height:600px;
+	max-height:600px;
+	background: rgba(99,99,99,0.78);
+	overflow-y:scroll;
+	color: black;
+	font-weight:bold;
+} */
+
+#rules {
+	font-family: 'Shadows Into Light', cursive;
+	overflow-y: scroll;
+	background: rgba(99,99,99,0.78);
+	max-height: 1120px;
+	color: black;
+}
+
+#rules::-webkit-scrollbar {
+ display: none;
+ }
