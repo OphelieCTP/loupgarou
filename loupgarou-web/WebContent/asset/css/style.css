@@ -41,6 +41,7 @@ table tbody tr td div p {
 
 #statpart {
 	background:#0B0B3B;
+	display: inline-flex;
 }
 
 header {
@@ -50,9 +51,6 @@ header {
 	background-repeat: no-repeat;
 } 
 
-#statpart {
-	position : bottom;
-}
 
 #chat {
 	height:600px;
@@ -69,6 +67,15 @@ header {
 	background-repeat: no-repeat;
 }
 
+
+#statpart-zone {
+	position : relative;
+	font: bold;
+	color: #ffffff;
+	font-family: 'ZCOOL KuaiLe', cursive;
+	text-align: center;
+	font-size: medium;
+}
 
 nav div {
 	background-color: #0B0B3B;
@@ -151,11 +158,17 @@ footer {
 
 svg {
 	position: relative;
-	width: 100px;
-	height: 100px;
+	
+}
+
+svg[class="icone"]{
+	padding: 10px 10px 10px 10px;
+	height: 45px;
+	/*  */
 }
 
 svg[id="runner"]{
+	height: 100px;
 	top: 0;
 	left: 0;
 	right: 500px;
@@ -171,6 +184,7 @@ svg[id="runner"]:onload{
 }
 
 svg[id="pursuer"]{
+	height: 100px;
 	top: 0;
 	left: -500px;
 	/*  */
