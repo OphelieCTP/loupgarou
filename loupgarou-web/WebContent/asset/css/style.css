@@ -33,6 +33,11 @@ table tbody tr td div p {
 	margin:0 auto;
 }
 
+#chat {
+	font-family: 'Gochi Hand', cursive;
+	font:normal;
+}
+
 #identification {
 	text-align : center;
 	
@@ -68,7 +73,7 @@ header {
 	background-position: right bottom;
 	background-repeat: no-repeat;
 	color: #ffffff;
-	font-family: 'Shadows Into Light', cursive;
+	font-family: 'Pacifico', cursive;
 } 
 
 
