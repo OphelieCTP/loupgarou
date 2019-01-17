@@ -176,3 +176,17 @@ svg[id="pursuer"]{
 	/*  */
 }
 
+#menu, #vote {
+	background: rgba(99,99,99,0.60);
+	padding-bottom:20px;
+	border-radius: 20px;
+}
+
+#menuTitle, #voteTitle {
+	background:#0B0B3B;
+	text-align:center;
+	color:white;
+	margin-left: -15px;
+    width: calc(100% + 30px);
+}
+
