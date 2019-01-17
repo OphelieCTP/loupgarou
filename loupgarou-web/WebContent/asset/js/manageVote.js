@@ -21,7 +21,7 @@ var generateJoueur = function(j) {
 	
 	
 	label.append(ligne);
-	label.append(j.libelle);
+	label.append("     " + j.libelle);
 	
 	
 	divradio.append(label);

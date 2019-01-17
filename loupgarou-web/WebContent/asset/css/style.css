@@ -181,6 +181,16 @@ svg[id="pursuer"]{
 	text-align:center;
 }
 
-#imgLegend {
+#imgLegend, form[id=voteJ] {
+	font-weight:bold;
+}
+
+.menu-item {
+	transition : all 0.25s ease-in-out;
+}
+
+.menu-item:hover {
+	color:red;
+	text-decoration:none;
 	font-weight:bold;
 }
