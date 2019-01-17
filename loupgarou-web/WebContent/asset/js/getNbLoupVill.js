@@ -9,7 +9,6 @@ $.ajax({
 		villageois = 10;
 		console.log(personnages);
 		console.log(personnages.length);
-		personnages=[];
 		if(personnages.length!==0){
 			for (let personnage of personnages){
 				console.log(personnage.pouvoir.id);
