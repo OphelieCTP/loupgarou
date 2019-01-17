@@ -86,8 +86,41 @@ $.ajax({
 //
 //var js = [j1, j2, j3];
 
+class Message {
+	constructor(writer, content) {
+		var now = new Date();
+		var hour = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+		this.writer = writer;
+		this.content = content;
+		this.date = hour;
+	}
+}
+
+var afficheMessage = function(m) {
+	var divMess = $("<div class=\"mess\" />");
+	divMess.html( "<strong>" + m.writer + " : </strong>" + m.content);
+	$('#chat').append(divMess);	
+}
+
+var afficheNotif = function(notif) {
+	var divMess = $("<div class=\"notif\" />");
+	divMess.html(notif);
+	$('#chat').append(divMess);	
+}
+
+var m1 = new Message("Luke", "Hello !");
+var m2 = new Message("Luke", "Y a quelqu'un ?!");
+var m3 = new Message("Hulk", "Non !");
+var m4 = new Message("Renard", "Bande de noob...");
 
 
-
-
+afficheNotif("La partie vient de commencer !");
+afficheNotif("Luke a rejoins la partie");
+afficheNotif("Hulk a rejoins la partie");
+afficheMessage(m1);
+afficheMessage(m2);
+afficheMessage(m3);
+afficheNotif("Renard a rejoint la partie");
+afficheMessage(m4);
+afficheNotif("Renard a quitté la partie");
 	

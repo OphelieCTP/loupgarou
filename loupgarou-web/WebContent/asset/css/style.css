@@ -14,7 +14,11 @@
 	 */
 
 body {
-	background: #fbfe78;
+	/* background: #fbfe78; */
+	/*background-image: linear-gradient(blue, orange);*/
+	/* background: rgb(189,122,65); */
+	background: rgb(158,158,207);
+	 
 }
 
 td {
@@ -33,10 +37,7 @@ table tbody tr td div p {
 	margin:0 auto;
 }
 
-#chat {
-	font-family: 'Gochi Hand', cursive;
-	font:normal;
-}
+
 
 #identification {
 	text-align : center;
@@ -122,7 +123,8 @@ div[class="blockquote-footer"]{
 }
 
 footer {
-	background-color: #808000;
+	background-color: rgb(219, 173, 128);
+	border-top: 20px solid #0B0B3B;
 }
 
 svg {
@@ -159,7 +161,7 @@ svg[id="pursuer"]{
 }
 
 #menu, #vote, #statJoueur {
-	background: rgba(99,99,99,0.60);
+	background: rgba(99,99,99,0.5);
 	padding-bottom:20px;
 	border-radius: 20px;
 }
@@ -187,6 +189,7 @@ svg[id="pursuer"]{
 
 .menu-item {
 	transition : all 0.25s ease-in-out;
+	color:#0B0B3B;
 }
 
 .menu-item:hover {
@@ -194,3 +197,28 @@ svg[id="pursuer"]{
 	text-decoration:none;
 	font-weight:bold;
 }
+
+.mess {
+	font-family: 'Nothing You Could Do', cursive;
+}
+
+strong {
+	font-family: 'Gochi Hand', cursive;
+	font:normal;
+	font-weight:bold;
+}
+
+.notif {
+	font-weight:bold;
+	font-family: 'Source Code Pro', monospace;
+	text-align: center;
+}
+
+#headertxt {
+	text-align:left;
+	margin-left: 100px;
+	font-size:50px;
+	padding-top: 60px;
+}
+
+
