@@ -1,3 +1,18 @@
+	/* font-family: 'Shadows Into Light', cursive;
+	font-family: 'Dancing Script', cursive;
+	font-family: 'Pacifico', cursive;
+	font-family: 'Gloria Hallelujah', cursive;
+	font-family: 'Gochi Hand', cursive;
+	font-family: 'Sacramento', cursive;
+	font-family: 'Merienda', cursive;
+	font-family: 'VT323', monospace;
+	font-family: 'Neucha', cursive;
+	font-family: 'Caveat Brush', cursive;
+	font-family: 'Covered By Your Grace', cursive;
+	font-family: 'Nothing You Could Do', cursive;
+	font-family: 'ZCOOL KuaiLe', cursive;
+	 */
+
 body {
 	background: #fbfe78;
 }
@@ -52,6 +67,8 @@ header {
 	background-image: url("../../img/header.jpg");
 	background-position: right bottom;
 	background-repeat: no-repeat;
+	color: #ffffff;
+	font-family: 'Shadows Into Light', cursive;
 } 
 
 
