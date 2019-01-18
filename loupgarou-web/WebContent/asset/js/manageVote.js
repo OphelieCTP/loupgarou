@@ -45,7 +45,7 @@ var generateForm = function(joueurs) {
 
 
 var displayCarte = function(joueurs) {
-	var wId = 27;
+	var wId = 25;
 	for(p of joueurs)
 	{
 		if(p.id == wId)
