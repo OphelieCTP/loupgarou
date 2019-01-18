@@ -141,6 +141,8 @@ var crudSupprimerJS = function(id){
 
 
 var crudModifierJS = function(id){
+	//passer plutot formulaire que alertes
+	
 	alert("modification joueur "+id);
 	
 	var nouveauJoueur = $.ajax({
