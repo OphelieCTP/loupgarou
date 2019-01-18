@@ -86,16 +86,16 @@ function createRowUser(user){
 }
 
 
-$.ajax({
-	method: 'GET',
-	url: databaseLink,
-	success: function(personnages) {
-		console.log(personnages);
-		for (let personnage of personnages){
-			createRowUser(personnage);
-		}
-	}
-})
+//$.ajax({
+//	method: 'GET',
+//	url: databaseLink,
+//	success: function(personnages) {
+//		console.log(personnages);
+//		for (let personnage of personnages){
+//			createRowUser(personnage);
+//		}
+//	}
+//})
 
 var crudAjouterJS = function(){
 	// alert("ajouter joueur");
