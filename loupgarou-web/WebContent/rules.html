@@ -141,20 +141,20 @@
 			</p>
 			 
 			<h2> Les rôles, cartes</h2>
-				Les rôles sont répartis au hasard entre les différents joueurs en début da partie. La rôle de chaque joueur est tenu secret, chacun d'entre eux apparaissant comme simple villageois. C'est aux différents joueurs de relever les indices permettant de démasquer chacun, afin de judicieusement voter contre le villageois à lyncher.
+				Les rôles sont répartis au hasard entre les différents joueurs en début de la partie. La rôle de chaque joueur est tenu secret, chacun d'entre eux apparaissant comme simple villageois. C'est aux différents joueurs de relever les indices permettant de démasquer chacun, afin de judicieusement voter contre le villageois à lyncher.
 				<h3> 
-					<div class="divRole"> <img class="carteJ" src="./img/loupg.png" width="42"> </div> 
+					<div class="divRole"> <img class="carteJ" src="./img/loupg.png" width="42" id="loupIMG"> </div> 
 					<span> Loup Garou </span> 
 				</h3>
-					<p> Chaque nuit, ils égorgent un Villageois. Le jour ils se font passer pour des Villageois afin de ne pas être démasqués. </p>
+					<p> Le jour ils se font passer pour des Villageois afin de ne pas être démasqués, tandis que chaque nuit ils en égorgent un.  Il arrive que les loup désignent l'un des leurs comme victime. Selon le zoologiste Konrad Lorenz, le canibalisme inhérent à cette espèce serait à mettre en relation avec l'instabilité de la balance hormonale native héréditaire. Toutefois, des observations du magicologiste HJ Potter Weasley, mettant en évidence des phases lunaires non violentes chez des individus de cette espèce ont aboutit à la conclusion qu'il ne s'agissait en réalité que d'un besoin sadique bipolaire et psychopathique de tuer, quel que soit l'individus en face de leurs machoires. Ce qui entre toutefois en contradiction avec l'importance du respect de la démocratie au sein de cette espèce. Ces deux comportements se retrouvent chez les loups de Thiercelieux, capables de tuer n'importe quel joueur, tant qu'il est élu par la meute à la majorité relative par un vote populaire démocratique. </p>
 				
 				<h3> Villageois </h3>
 					<p>
-					Chaque nuit, l’un d’entre eux est égorgé par le ou les Loups-Garous. Il est alors éliminé du jeu, et ne peut plus participer aux débats. Les Villageois survivants doivent chaque jour lyncher un des joueur, dans l’espoir qu’il soit Loup-Garou.
+						Chaque nuit, l’un d’entre eux est égorgé par le ou les Loups-Garous. Il est alors éliminé du jeu, et ne peut plus participer aux débats. Les Villageois survivants doivent chaque jour lyncher un des joueur, dans l’espoir qu’il soit Loup-Garou.
 					</p>
 					
 					<h4>
-						<div class="divRole"> <img class="carteJ" src="./img/vill.png" width="42"> </div> 
+						<div class="divRole"> <img class="carteJ" src="./img/vill.png" width="42" id="villageoisIMG"> </div> 
 						<span> Simple Villageois  </span>
 					 </h4>
 					<p>
@@ -162,15 +162,15 @@
 					</p>
 					
 					<h4>
-						<div class="divRole"> <img class="carteJ" src="./img/voyante.png" width="42"> </div> 
+						<div class="divRole"> <img class="carteJ" src="./img/voyante.png" width="42" id="voyanteIMG"> </div> 
 						<span> Voyante </span>
 					 </h4>
 					<p>
-						Chaque nuit, elle peut révéler le rôle d’un joueur de son choix, et doit s'en servir pour aider les Villageois, sans être démasquée par les Loups-Garous.
+						Chaque nuit, elle peut révéler le rôle d’un joueur de son choix, et doit s'en servir pour aider les Villageois, sans être démasquée par les loups.
 					</p>
 					
 					<h4>
-						<div class="divRole"> <img class="carteJ" src="./img/chasseur.png" width="42"> </div> 
+						<div class="divRole"> <img class="carteJ" src="./img/chasseur.png" width="42" id="chasseurIMG"> </div> 
 						<span> Chasseur &copy;  </span>
 					 </h4>
 					<p>
@@ -178,22 +178,19 @@
 					</p>
 					
 					<h4>
-						<div class="divRole"> <img class="carteJ" src="./img/cupidon.png" width="42"> </div> 
+						<div class="divRole"> <img class="carteJ" src="./img/cupidon.png" width="42" id="cupidonIMG"> </div> 
 						<span> Cupidon &copy;  </span>
 					 </h4>
 					<p>
-						Il a pour rôle 
-						La première nuit, il désigne 2 joueurs qui seront follement Amoureux l’un de l’autre. Si l’un d’eux meurt, l’autre meurt de chagrin immédiatement. Un Loup-Garou et un villageois peuvent être Amoureux l'un de l'autre. Ils jouent alors contre tous les autres, Loups-Garous et Villageois.Si les amoureux survivent, alors ce sont eux qui gagnent. Le cupidon peut se désigner lui-même comme un des 2 Amoureux.
+						Son travail étant de désigner des amoureux, c'est ce qu'il fait. La première nuit, hors de l'attention des loups et des villageois, il désigne 2 joueurs qui seront follement amoureux l’un de l’autre, quel que soit leur rôle. Si l’un d’eux meurt, l’autre meurt de chagrin immédiatement. Un Loup-Garou et un villageois peuvent donc être amoureux l'un de l'autre et jouent alors contre tous les autres, loup et villageois. S'ils survivent, alors ils gagnent. Le cupidon peut se désigner lui-même comme un des 2 amoureux.
 					</p>
 
 					<h4>
-						<div class="divRole"> <img class="carteJ" src="./img/sorciere.png" width="42"> </div> 
+						<div class="divRole"> <img class="carteJ" src="./img/sorciere.png" width="42" id="sorciereIMG"> </div> 
 						<span> Sorcière </span>
 					 </h4>
 					<p>
-						Elle sait concocter 2 potions extrêmement puissantes : 
-						une potion de guérison, pour ressusciter le joueur tué par les Loups-Garous, 
-						une potion d’empoisonnement, utilisée la nuit pour éliminer un joueur. La Sorcière doit utiliser chaque potion 1 seule fois dans la partie. Elle peut se servir des ses 2 potions la même nuit. Le matin suivant l’usage de ce pouvoir, il pourra donc y avoir soit 0 mort, 1 mort ou 2 morts. La sorcière peut utiliser les potions à son profit, et donc se guérir elle-même.
+						Elle intervient à l'aube, après que les loups aient massacré un villageois et se soient endormis et avant que le reste du village ne se réveille. Elle peut alors concocter 2 potions extrêmement puissantes : une de guérison, pour ressusciter le joueur tué par les loups, et une potion d’empoisonnement pour éliminer un joueur. Ces pouvoir peuvent être utilisés quel que soit le rôle du joueur cible mais sont à usage unique au cours de la partie. Elle peut se servir des ses 2 potions la même nuit. Le matin suivant l’usage de ce pouvoir, il pourra donc y avoir soit 0, 1 ou 2 morts. La sorcière peut utiliser les potions à son profit, et se guérir elle-même.
 					</p>
 
 					<!-- <h4> Voleur &copy; </h4>
@@ -203,57 +200,65 @@
 					</p> -->
 					
 					<h4>
-						<div class="divRole"> <img class="carteJ" src="./img/pfille.png" width="42"> </div> 
+						<div class="divRole"> <img class="carteJ" src="./img/pfille.png" width="42" id="petitefilleIMG"> </div> 
 						<span> Petite fille &copy;  </span>
 					 </h4>
 					<p>
-						Elle a le droit, la nuit, au moment où les Loups-Garous désignent leur victime, de lesespionner (en entrouvant les yeux, etc). Si elle se fait surprendre par un des Loups-Garous, elle meurt immédiatement (en silence), à la place de la victime désignée.
+						Etant insomniaque, elle peut, la nuit, au moment où les loups désignent leur victime, les espionner. N'étant toutefois pas totalement stupide, elle ne pourra le jour faire directement état de ce qu'elle a vu, sous peine qu'elle ne soit démasquée par les loups et ne meurt la prochaine nuit. Si elle se fait surprendre par les loups, elle hérite d'office tristement du rôle de victime tel un bouc émissaire malchanceux.
 					</p>
 					
 					<h4>
-						<div class="divRole"> <img class="carteJ" src="./img/capitaine.jpg" width="42"> </div> 
-						<span> Capitaine  </span>
+						<div class="divRole"> <img class="carteJ" src="./img/capitaine.jpg" width="42" id="capitaineIMG"> </div> 
+						<span> Capitaine </span>
 					 </h4>
 					<p>
-						Cette carte est confiée à un des joueurs, en plus de sa carte personnage. Le Capitaine est élu par vote, à la majorité relative. On ne peut refuser l’honneur d’être capitaine.Dorénavant, les votes de ce joueur comptent pour 2 voix. Si ce joueur se fait éliminer, dans son dernier souffle il désigne son successeur.
+						Il s'agit de l'unique rôle connu en début de partie (à l'exception des évidents villageois). C'est un villageois élu dictatorialement au hasard en début de partie. Cet honneur est tel qu'il ne peut être refusé quel que soit l'état de santé, les convictions et le rôle du joueur. Les privilèges du pouvoir rendent son vonte dans la désignétion du lyché comme plus important, ils comptent alors pour 2 voix. S'il se fait éliminer, il désigne un successeur à qui il transmet la charge.
 					</p>				
 				
 			<h2> Déroulé d'une partie </h2>
 				<p>
-					Répartition des rôles
-					C'est la nuit, le village s'endort.
-					<!-- (Premier tour seulement) Le maître appelle le Voleur.
-						Il se réveille et regarde discrètement les 2 cartes cachées du milieu, puis change éventuellement de personnage.
-						Le Voleur se rendort. -->
-					(Premier tour seulement) Le maître appelle le Cupidon. Il se réveille et désigne 2 joueurs (dont éventuellement lui-même). Le maître fait le tour de la table et touche discrètement le dos des 2 Amoureux. 
-						Cupidon se rendort.
-					(Premier tour seulement) Le maître appelle les Amoureux. Ils se réveillent, se reconnaissent, et se rendorment.
-					(Tous les tours) Le maître appelle la Voyante.
-						Elle se réveille, et désigne un joueur à sonder. Le maître montre à la Voyante la carte du joueur, ou lui mime son identité cachée.
-						La Voyante se rendort.
-					(Tous les tours) Le maître appelle les Loups-Garous. Eux (et eux seulement) lèvent la tête, ouvrent les yeux se concertent silencieusement et désigne une victime. Ils peuvent éventuellement ne pas ouvrir les yeux et ne pas désigner de victime pour réduire le risque de se faire espionner. Si un des Loups-Garous est désigné comme victime par un ou les autres, tant pis pour lui, il meurt!!!.
-						Si aucun Loup-Garou n'ouvre les yeux, ils meurent tous de faim, et les Villageois ont donc gagné.
-						Durant ce tour, la Petite fille peut espionner les Loups-Garous (en clignant des yeux, regardant entre ses doigts etc), elle n’y est pas obligée, si elle se fait prendre elle meurt, à la place de la victime éventellement choisie.
-						Les Loups Garous se rendorment.
-					(Tous les tours) Le meneur appelle la Sorcière.
-						Le meneur dit : “la Sorcière se réveille, je lui montre la victime des Loups-Garous. Va-t-elle user de sa potion de guérison, ou d’empoisonnement ?”Le meneur montre à la Sorcière la victime des Loups-Garous. La Sorcière n’est pas obligée d’user de son pouvoir à un tour spécifique. Si elle utilise une potion, elle doit désigner au meneur sa cible avec le pouce tendu vers le haut pour la guérison, ou vers le bas pour l’empoisonnement. Le meneur révélera son effet éventuel le matin suivant
-					C’EST LE JOUR, le village se réveille, tout le monde lève la tête et ouvre les yeux. Le maître désigne le joueur qui a été victime des Loups-Garous durant la nuit. Ce joueur révèle sa carte, et est éliminé du jeu. Quel que soit son personnage, il ne pourra plus communiquer avec les autres joueurs sous quelque forme que se soit.
-						• Si ce joueur est le Chasseur, il a le droit de répliquer et tue immédiatement un autre joueur de son choix.
-						• Si ce joueur est un des 2 Amoureux, l’autre Amoureux se suicide immédiatement.
-					Les joueurs à force de débats doivent désigner l’un d’entre eux, qui sera éliminé d’après le vote. 
-						• Les Villageois tentent de démasquer un loup-garou et de faire voter pour son élimination.
-						• Les Loups-Garous doivent à force de bluff et mensonges, se faire passer pour des Villageois.
-						• La Voyante ainsi que la Petite fille doivent aider les Villageois, mais sans mettre trop tôt leur vie en danger en exposant leur identité.
-						• Les Amoureux doivent se protéger l’un l’autre.
-						En cas d’égalité, s’il est présent, le vote du Capitaine désigne la victime. Sinon, les joueurs votent à nouveau (y compris les joueurs en cause) pour départager les ex-aequo.
-					Le joueur désigné par la majorité des voix est éliminé, il révèle sa carte et ne pourra plus communiquer avec les autres joueurs sous quelque forme que se soit. En cas d’égalité, les joueurs revotent pour départager les ex-æquo.
-					C’EST LA NUIT, tous les joueurs vivants se rendorment. (Les autres regardent mais se taisent…)
-					Le jeu reprend au début de la nuit
+					<ol>
+						<li> Répartition des rôles </li>
+						<li> Première nuit. 
+							<ol>
+								<li> Le village s'endort </li>
+								<li> Cupidon, dans un accès de somnabulisme, se réveille totalement planant et oublie qu'il est en vacances. Il désigne deux joueurs avant de retourner titubant dans son hôtel. </li>
+								<li> Frappés, la amoureux prennent conscience de leur nature et sont révélés l'un à l'autre. </li>
+								<li> La voyante, frappée d'extralucisme, se réveille en sursaut. Appréciant les potins et frustrée d'être révéillée en pleine nuit, elle désigne un joueur, dont son pouvoir lui révèlera le rôle avant de se rendormir. </li>
+							</ol>
+						</li>
+						<li> La lune est pleine ...
+							<ol>
+								<li> Les loups se réveillent. Affamés, ils désigne leur victime qui sera dévorée. Pendant ce temps, l'insomiaque gamine se réveille et peut les espionner.</li>
+								<li> Les loups se rendorment. </li>
+							</ol>
+						</li>
+						<li> L'aube arrive...
+							<ol> <li> La sorcière se réveille et constate l'identité de la victime. Elle peut alors choisir d'utiliser, ou non, ses potions. </li> </ol>
 							
+						</li>
+						<li> Le jour se lève...
+							<ol>
+								<li> Le village se réveille et constate, assez ennuyé, que les loups ont encore frappé. Le rôle de la victime, s'il y en a (merci la Sorcière) est révélé avant qu'il ne passe définitivement dans le camps des morts. En tant que fantôme, il ne peut alors plus prendre part à aucuns débats, mais peut rester pour hanter les lieux et constater à quel point ses concitoyens galère à trouver les loups. Toutefois, assez remonté, en fonction de son rôle, accomplir différentes actions avant de devenir un fantôme.
+									<ol>
+										<li> S'il est le Chasseur, assez remonté, il emporte dans la tombe l'un de ses congénères. </li>
+										<li> S'il est l'un des deux amoureux, désespéré à l'idée que sa moitié survive sans lui, il la tue immédiatement dans un ac
+									</ol> 
+								<li> Les villageois restant, constatant pragmatiquement que le lynchage de la veille n'a pas suffit à éliminer les loups, votent pour élire un nouveau lynché. Les villageois discutent toutefois entre eux afin de désigner la victime idéale, il ne s'agit tout de même pas de tuer un innocent entre gens civilisés. 
+									Rien n'oblige les loups, cachés sous la peau de villageois, à dire la vérité, ils cherchent donc à influencer le vote afin qu'un villageois se fasse lycher à leur place 
+									Les villageois ayant des informations, telles que la voyante et la fillette, ne doivent ni exposer leur identité en participant au débat, ni désigner explicitement un loup. Il ne s'agirait tout de même pas de se faire lyncher.
+									Les amoureux, chacun conscient de la nature instable de leur partenaire, le protégeront afin d'éviter un suicide collectif. 
+									2tant dans un système semi dictatirial à privilège hérités, le vote du Capitaine compte double.
+									En cas d'égalité, un nouveau vote est organisé. </li>
+								</li>
+								<li> Le joueur lynché est éliminé, il révèle son rôle, et, s'il dispose du pouvoir, tue un autre joueur avant de rejoindre les morts. </li>
+							</ol>
+						</li>
+						<li> La nuit tombe et la lune est pleine ...
+							<ol> <li> L'enchaînement des actions reprend à lorsque la lune est pleine... </li> </ol>
+						</li>
+					</ol>
 				</p>
-				
-
- 	
 			</div>
 			
 			<br/>
