@@ -52,10 +52,10 @@ function createRowUser(user){
 	
 	var newactDivSupp = $("<div />");
 	var newactDivSub = $("<div class='col-xs-3' />");
-	var newactinputModif = $("<input type='submit' class='btn btn-primary btn-md btn-block' value = 'Modifier' onclick='crudModifierJS("+user.id+"); return false;'>");
+	var newactinputModif = $("<input type='submit' class='btn btn-success btn-md btn-block' value = 'Modifier' onclick='crudModifierJS("+user.id+"); return false;'>");
 	var newactinputSpace = $("<p> </p>") ;
-	var newactinputBanir = $("<input type='submit' class='btn btn-primary btn-md btn-block' value = 'Banir' onclick='crudBanirJS("+user.id+"); return false;'>");
-	var newactinputSupprimer = $("<input type='submit' class='btn btn-primary btn-md btn-block' value = 'Supprimer' onclick='crudSupprimerJS("+user.id+"); return false;'>");
+	var newactinputBanir = $("<input type='submit' class='btn btn-warning btn-md btn-block' value = 'Banir' onclick='crudBanirJS("+user.id+"); return false;'>");
+	var newactinputSupprimer = $("<input type='submit' class='btn btn-danger btn-md btn-block' value = 'Supprimer' onclick='crudSupprimerJS("+user.id+"); return false;'>");
 	
 	newactDivSub.append(newactinputModif);
 	newactDivSub.append(newactinputSpace);
