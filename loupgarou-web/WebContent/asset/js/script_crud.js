@@ -98,7 +98,7 @@ $.ajax({
 })
 
 var crudAjouterJS = function(){
-	alert("ajouter joueur");
+	// alert("ajouter joueur");
 	var nouveauJoueur = {
 			//id:10,
 			libelle: $('input[id="nom"]').val(),
@@ -142,16 +142,18 @@ var crudSupprimerJS = function(id){
 
 var crudModifierJS = function(id){
 	//passer plutot formulaire que alertes
-	
-	alert("modification joueur "+id);
-	
-	var nouveauJoueur = $.ajax({
+//	console.log(this);
+//	console.log("test");
+	//alert("modification joueur "+id);
+	$.ajax({
 		method: 'GET',
 		url: databaseLink,
 		success: function(personnages) {
 			console.log(personnages);
 			for (let personnage of personnages){
 				if(personnage.id===id){
+					// .parent()
+					//$("table tbody tr[id='"+id+"'] ").append();
 					var cible = parseInt(prompt("Modifier : 1- Joueur 2-Pouvoir ? "));
 					var att = prompt("Attributs modifiables disponibles : id, libelle. Modifier lequel ? ");
 					var result = prompt("Nouvelle valeur ? ");
@@ -180,6 +182,7 @@ var crudModifierJS = function(id){
 						}
 					})
 					$("table tbody tr[id='"+id+"'] ").remove();
+					// prendre ici, ajouter formulaire et adapter ??
 					createRowUser(personnage);
 				}
 					
