@@ -15,6 +15,8 @@ $('section').hide();
 $('#identification').show();
 
 $('#identification a').bind('click', event);
+$('#inscription-valid a').bind('click', event);
+$('#connexion-valid a').bind('click', event);
 
 var confirmMDP = document.querySelector('#passwordCheck');
 

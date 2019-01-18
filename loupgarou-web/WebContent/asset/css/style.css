@@ -297,3 +297,19 @@ h3 img:hover {
 	background: #6699ff;
 	min-height:500px;
 }
+
+#tableCartes img {
+	width:100px;
+}
+
+#tableCartes td {
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:50px;
+	padding-bottom:20px;
+}
+
+#tableCartes table {
+	text-align: center;
+	width:100%;
+}
