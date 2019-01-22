@@ -1,4 +1,4 @@
-var databaseLink = "http://192.168.1.110/loupgarou-ajax/personnage";
+//var databaseLink = "http://192.168.1.110/loupgarou-ajax/personnage";
 //var eventSource = new EventSource("http://192.168.1.110/loupgarou-ajax/personnage/listen-new");
 
 $('section[id=addUser]').hide();
@@ -51,7 +51,7 @@ function createRowUser(user){
 	var col8 = $("<td class='align-middle' id='actions' />"); // actions possibles
 	
 	var newactDivSupp = $("<div />");
-	var newactDivSub = $("<div class='col-xs-3' />");
+	var newactDivSub = $("<div class='col-xs-3'>");
 	var newactinputModif = $("<input type='submit' class='btn btn-success btn-md btn-block' value = 'Modifier' onclick='crudModifierJS("+user.id+"); return false;'>");
 	var newactinputSpace = $("<p> </p>") ;
 	var newactinputBanir = $("<input type='submit' class='btn btn-warning btn-md btn-block' value = 'Banir' onclick='crudBanirJS("+user.id+"); return false;'>");
@@ -140,6 +140,48 @@ var crudSupprimerJS = function(id){
 }
 
 
+var addModifierForm = function(id){
+	//$("<tr id='"+id+"' />").find('img');
+	//var newForm = 
+	$("table tbody tr[id='"+id+"'] ").find('td[id="ID"]')
+		.append($('<div class="form-group"><input type="text" class="form-control" id="ID"> </div>'));
+	$("table tbody tr[id='"+id+"'] ").find('td[id="user"]')
+	.append($('<div class="form-group"><input type="text" class="form-control" id="user"> </div>'));
+	$("table tbody tr[id='"+id+"'] ").find('td[id="wp"]')
+	.append($('<div class="form-group"><input type="text" class="form-control" id="wp"> </div>'));
+	
+	$("table tbody tr[id='"+id+"'] ").find('td[id="connexion"]')
+	.append($('<form><div class="form-group"><select multiple class="form-control" id="connexion"> <option>true</option> <option>false</option> </select></div></form>'));
+	
+	$("table tbody tr[id='"+id+"'] ").find('td[id="bani"]')
+	.append($('<form><div class="form-group"><select multiple class="form-control" id="bani"> <option>true</option> <option>false</option> </select></div></form>'));
+	
+	$("table tbody tr[id='"+id+"'] ").find('td[id="plaintes"]')
+	.append($('<div class="form-group"><input type="text" class="form-control" id="plaintes"> </div>'));
+	$("table tbody tr[id='"+id+"'] ").find('td[id="naissance"]')
+	.append($('<div class="form-group"><input type="text" class="form-control" id="naissance"> </div>'));
+	
+	$("table tbody tr[id='"+id+"'] ").find('td[id="actions"]')
+	.append($('<hr/> <div class="col-xs-3"> <input type="submit" class="btn btn-primary btn-md btn-block" value = "Submit" onclick="deleteModifierForm(0); return false;" > </div>'));
+	
+}
+
+
+var deleteModifierForm = function(id){
+	//$("<tr id='"+id+"' />").find('img');
+	//var newForm = 
+	$("table tbody tr[id='"+id+"'] ").find('td[id="ID"]').remove($('.form-group'));
+	$("table tbody tr[id='"+id+"'] ").find('td[id="user"]').remove($('.form-group'));
+	$("table tbody tr[id='"+id+"'] ").find('td[id="wp"]').remove($('.form-group'));
+	
+	$("table tbody tr[id='"+id+"'] ").find('td[id="connexion"]').remove($('.form-group'));	
+	$("table tbody tr[id='"+id+"'] ").find('td[id="bani"]').remove($('.form-group'));
+	
+	$("table tbody tr[id='"+id+"'] ").find('td[id="plaintes"]').remove($('.form-group'));
+	$("table tbody tr[id='"+id+"'] ").find('td[id="naissance"]').remove($('.form-group'));
+}
+
+
 var crudModifierJS = function(id){
 	//passer plutot formulaire que alertes
 //	console.log(this);
@@ -154,6 +196,10 @@ var crudModifierJS = function(id){
 				if(personnage.id===id){
 					// .parent()
 					//$("table tbody tr[id='"+id+"'] ").append();
+					// 
+					//var newForm = $('<div class="form-group"> <label for="usr">Name:</label> <input type="text" class="form-control" id="usr"> </div>')
+					//$(this).append(newForm);
+					//addModifierForm(id);
 					var cible = parseInt(prompt("Modifier : 1- Joueur 2-Pouvoir ? "));
 					var att = prompt("Attributs modifiables disponibles : id, libelle. Modifier lequel ? ");
 					var result = prompt("Nouvelle valeur ? ");
