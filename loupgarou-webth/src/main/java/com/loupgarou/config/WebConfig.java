@@ -19,6 +19,7 @@ public class WebConfig implements WebMvcConfigurer{
 	{
 		registry.addResourceHandler("/asset/css/**").addResourceLocations("/asset/css/");
 		registry.addResourceHandler("/img/**").addResourceLocations("/img/");
+		registry.addResourceHandler("/asset/js/**").addResourceLocations("/asset/js/");
 	}
 		
 	@Bean
@@ -27,6 +28,7 @@ public class WebConfig implements WebMvcConfigurer{
 		SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
 		templateResolver.setPrefix("/WEB-INF/templates/");
 		templateResolver.setSuffix(".html");
+		templateResolver.setCharacterEncoding("UTF-8");
 		return templateResolver;
 	}
 	

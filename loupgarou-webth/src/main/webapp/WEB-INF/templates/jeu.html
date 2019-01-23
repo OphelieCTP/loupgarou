@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 	<title>Plateau de jeu</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-	<link rel="stylesheet" href="../../asset/css/style.css"/>
-	<link rel="stylesheet" href="../../asset/css/animate.css"/>
+	<link rel="stylesheet" href="asset/css/style.css"/>
+	<link rel="stylesheet" href="asset/css/animate.css"/>
 	<link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe|Caveat+Brush|Covered+By+Your+Grace|Dancing+Script|Gloria+Hallelujah|Gochi+Hand|Merienda|Neucha|Nothing+You+Could+Do|Pacifico|Sacramento|Shadows+Into+Light|VT323" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
 </head>
@@ -123,10 +123,34 @@
 				<div class="container-fluid" id="statJTitle">
 				Rôle
 				</div>
-				<br/>
 				
-				<div class="carte">
-					<!-- <img src="./img/loupg.png"> -->
+				<div class="carte" th:if="${ currentUser.role == 'Villageois' }">
+					<div id="imgLegend" >Villageois</div>
+					<img id="carteJ" src="img/vill.png"  />				
+				</div>
+				<div class="carte" th:if="${ currentUser.role == 'Loup' }">
+					<div id="imgLegend" >Loup Garou</div>
+					<img id="carteJ" src="img/loupg.png"  />				
+				</div>
+				<div class="carte" th:if="${ currentUser.role == 'Chasseur' }">
+					<div id="imgLegend" >Chasseur</div>
+					<img id="carteJ" src="img/chasseur.png"  />				
+				</div>
+				<div class="carte" th:if="${ currentUser.role == 'Cupidon' }">
+					<div id="imgLegend" >Cupidon</div>
+					<img id="carteJ" src="img/cupidon.png"  />				
+				</div>
+				<div class="carte" th:if="${ currentUser.role == 'PetiteFille' }">
+					<div id="imgLegend" >Petite Fille</div>
+					<img id="carteJ" src="img/pfille.png"  />				
+				</div>
+				<div class="carte" th:if="${ currentUser.role == 'Sorciere' }">
+					<div id="imgLegend" >Sorcière</div>
+					<img id="carteJ" src="img/sorciere.png"  />				
+				</div>
+				<div class="carte" th:if="${ currentUser.role == 'Voyante' }">
+					<div id="imgLegend" >Voyante</div>
+					<img id="carteJ" src="img/voyante.png"  />				
 				</div>
 				
 			</div>
