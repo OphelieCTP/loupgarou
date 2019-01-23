@@ -19,7 +19,7 @@ public interface IDAOVillageois extends JpaRepository<Villageois, Integer>  {
 	@Query("update Utilisateur u set u.role = :#{#v.role}, u.partie = :#{#v.partie} where u.userID = :#{#v.userID}")
 	public void updateRole(@Param("v") Villageois v);
 	
-	@Query("select Utilisateur u where u.role = :role and u.partie_ID = :id")
+	@Query("select v from Villageois v where v.role = :role and v.partie.id = :id")
 	public Villageois findByPartieIDAndRole(@Param("role") String role, @Param("id") Integer id);
 	
 
