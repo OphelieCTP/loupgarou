@@ -179,7 +179,7 @@
 				<div class="container-fluid" id="voteTitle">
 				Vote
 				</div>
-				<form id="voteJ">
+				<form id="voteJ" method="post" action="jeu/vote">
 						
 					<div class="radio" th:each="v : ${listVills}">
 						<input type="radio" name="vote" th:value="${v?.userID}" />
@@ -189,9 +189,6 @@
 					<div id="centered-button">
 					<button type="submit" class="btn btn-info">Voter</button>
 					</div>
-					
-
-					
 				</form>
 			</div>
 		</div>
