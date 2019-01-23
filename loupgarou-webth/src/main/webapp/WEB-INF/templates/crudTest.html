@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="asset/css/style.css" />
@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="asset/css/animate.css"/>
 <link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe|Caveat+Brush|Covered+By+Your+Grace|Dancing+Script|Gloria+Hallelujah|Gochi+Hand|Merienda|Neucha|Nothing+You+Could+Do|Pacifico|Sacramento|Shadows+Into+Light|VT323" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
-<title> CRUD Manipulation </title>
+<title> CRUD User Operations </title>
 </head>
 
 
@@ -47,7 +47,7 @@
 			<h1>
 				Joueurs
 			</h1>
-			
+						
 			<p> </p>
 			<div class="col-xs-3">
 				<input type="submit" id="add" class="btn btn-primary btn-md btn-block" value = "Ajouter Joueur" >
@@ -56,20 +56,26 @@
 			
 			<section id="addUser">
 				<div>
-					<form>
+					<form method="post">
 						<div> 
 							<label for="nom"> Nom Utilisateur : </label>
-							<input type="text" id="nom" placeholder="Le nom ..." required/>
+							<input type="text" id="nom" th:value="${utilisateur?.userName}" placeholder="Le nom ..." name="userName" required/>
 						</div>
 						<div> 
 							<label for="wp"> Mot de Passe : </label> 
-							<input type="text" id="wp" placeholder="Le mot de passe ..." required/>
+							<input type="text" id="wp" th:value="${utilisateur?.passWord}" placeholder="Le mot de passe ..." name="passWord" required/>
 						</div>
 						<div> 
-							<label for="naissance">  Date Naissance : </label> 
-							<input type="text" id="naissance" placeholder="0000-00-00" required/>
+							<label for="naissance"> Date Naissance : </label> 
+							<!-- <input type="date" id="naissance" th:value="${#dates.formatISO(utilisateur?.dateNaissance)}" placeholder="0000-00-00" name="dateNaissance" required/> -->
+							<input type="date" id="naissance" th:value="${datenaiss}" placeholder="0000-00-00" name="datenaiss" required/>
+							<!-- "${#dates.format(sdf.parse(utilisateur?.dateNaissance), 'yyyy-MM-dd')}" -->
+						</div> <!-- ${#dates.formatISO(standardDate)} -->
+						<div> 
+							<label for="email"> Email : </label> 
+							<input type="text" id="email" th:value="${utilisateur?.email}" placeholder="bidule@truc.machin" name="email" required/>
 						</div>
-						<input type="submit" id="addDone" value="Enregister" onclick="crudAjouterJS(); return false;"/>
+						<input type="submit" id="addDone" th:value="Enregister"/>
 					</form>
 				</div>
 			</section>
@@ -84,11 +90,39 @@
 			      <th class="align-middle" scope="col">Statut Banni</th>
 			      <th class="align-middle" scope="col">Nombre de plaintes</th>
 			      <th class="align-middle" scope="col">Date Naissance</th>
+			      <th class="align-middle" scope="col">Email</th>
 			      <th class="align-middle" scope="col">Actions possibles</th>
 			    </tr>
 			  </thead>
 			  <tbody>
-			   
+			    <tr th:each="user : ${utilisateurs}" th:id="${user.userID}">
+			      <td class="align-middle" id="ID" th:text="${user.userID}" />
+			      <td class="align-middle" id="user" th:text="${user.userName}" />
+			      <td class="align-middle" id="wp" th:text="${user.passWord}" />
+			      <td class="align-middle" id="connexion" th:text="${user.isConnected}" />
+			      <td class="align-middle" id="bani" th:text="${user.isBanni}" />
+			      <td class="align-middle" id="plaintes" th:text="${user.nbPlaintes}" />
+			      <td class="align-middle" id="naissance" th:text="${user.dateNaissance}" />
+			      <td class="align-middle" id="email" th:text="${user.email}" />
+			      <td class="align-middle" id="actions">
+			      	<div>
+			      	
+			      	</div>
+				      <!-- <div>
+				      	<div class="col-xs-3">
+				      		<input type="submit" class="btn btn-primary btn-md btn-block" value = "Modifier" onclick="addModifierForm(${user.id}); return false;" >
+				      	</div>
+				      	<p> </p>
+				      	<div class="col-xs-3">
+				      		<input type="submit" class="btn btn-primary btn-md btn-block" value = "Banir" onclick="crudBanirJS(${user.id}); return false;">
+				      	</div>
+				      	<p> </p>
+				      	<div class="col-xs-3">
+					      	<input type="submit" class="btn btn-primary btn-md btn-block" value = "Supprimer" onclick="crudSupprimerJS(${user.id}); return false;">
+				      	</div>
+			      	  </div> -->
+			      </td>
+			    </tr>
 			  </tbody>
 			</table>
 		
@@ -190,7 +224,7 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="asset/js/script_crud.js"></script>
+<!-- <script src="asset/js/scriptCrud.js"></script> -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
