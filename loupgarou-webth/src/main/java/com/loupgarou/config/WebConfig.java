@@ -17,8 +17,8 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 public class WebConfig implements WebMvcConfigurer{
 	public void addResourceHandlers(ResourceHandlerRegistry registry) 
 	{
-		registry.addResourceHandler("/css/**").addResourceLocations("/css/");
-		registry.addResourceHandler("/images/**").addResourceLocations("/images/");
+		registry.addResourceHandler("/asset/css/**").addResourceLocations("/asset/css/");
+		registry.addResourceHandler("/img/**").addResourceLocations("/img/");
 	}
 		
 	@Bean
