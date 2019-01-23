@@ -45,7 +45,7 @@ public class CrudTestController {
 //		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 //		Date date = sdf.parse(utilisateur.getDateNaissance());
 //		System.out.println(datenaiss);
-//		utilisateur.setDateNaissance(datenaiss);
+		utilisateur.setDateNaissance(datenaiss);
 		if(result.hasErrors()) {
 			System.out.println("User invalide");
 			return "crudTest";
