@@ -1,0 +1,332 @@
+	/* font-family: 'Shadows Into Light', cursive;
+	font-family: 'Dancing Script', cursive;
+	font-family: 'Pacifico', cursive;
+	font-family: 'Gloria Hallelujah', cursive;
+	font-family: 'Gochi Hand', cursive;
+	font-family: 'Sacramento', cursive;
+	font-family: 'Merienda', cursive;
+	font-family: 'VT323', monospace;
+	font-family: 'Neucha', cursive;
+	font-family: 'Caveat Brush', cursive;
+	font-family: 'Covered By Your Grace', cursive;
+	font-family: 'Nothing You Could Do', cursive;
+	font-family: 'ZCOOL KuaiLe', cursive;
+	 */
+
+body {
+	/* background: #fbfe78; */
+	/*background-image: linear-gradient(blue, orange);*/
+	/* background: rgb(189,122,65); */
+	background: rgb(158,158,207);
+	 
+}
+
+td {
+  vertical-align: middle;
+}
+
+table tbody tr td div p {
+	line-height: 10pt;
+}
+
+#container-fluid{
+	display : flex;
+}
+
+#chat, #rules, #edit, #menu, #statJoueur, #vote{
+	margin:0 auto;
+}
+
+
+
+#identification {
+	text-align : center;
+	
+}
+
+#connexion h2 {
+	text-align : center;
+}
+
+#connexion-button, #inscription-button, #changeMDP-button, #changeEmail-button {
+	text-align : center;
+}
+
+#connexion-valid, #inscription-valid, #changeMDP-valid, #changeEmail-valid {
+	margin:0 auto;
+}
+
+#centered-button{
+	text-align: center;
+}
+
+#statpart {
+	background:#0B0B3B;
+	text-align: center;
+	display: flex;
+    justify-content: center;
+    min-height: 40px;
+}
+
+header {
+	height: 200px;
+	background-image: url("../../img/header.jpg");
+	background-position: right bottom;
+	background-repeat: no-repeat;
+	color: #ffffff;
+	font-family: 'Pacifico', cursive;
+} 
+
+
+#chat {
+	height:600px;
+	max-height:600px;
+	background: rgba(99,99,99,0.78);
+	overflow-y:scroll;
+	color: black;
+	font-weight:bold;
+}
+
+#page-center {
+	background-image: url("../../img/center_bc.png");
+	background-position: center top;
+	background-repeat: no-repeat;
+}
+
+
+#statpart-zone {
+	position : relative;
+	font: bold;
+	color: #ffffff;
+	font-family: 'ZCOOL KuaiLe', cursive;
+	text-align: center;
+	font-size: medium;
+}
+
+nav div {
+	background-color: #0B0B3B;
+}
+
+nav div ul a {
+	background-color: #0B0B3B;
+	font: bold;
+}
+
+nav div ul a li {
+	color: #ffffff;
+	background-color: #0B0B3B;
+}
+
+div[class="blockquote-footer"]{
+	color: #000000;
+	font: bold;
+	font-size: x-small;
+}
+
+footer {
+	background-color: rgb(219, 173, 128);
+	border-top: 20px solid #0B0B3B;
+}
+
+svg {
+	position: relative;
+	
+}
+
+svg[class="icone"]{
+	padding: 10px 10px 10px 10px;
+	height: 45px;
+	/*  */
+}
+
+svg[id="runner"]{
+	height: 100px;
+	top: 0;
+	left: 0;
+	right: 500px;
+	/*  */
+}
+
+svg[id="runner"]:onload{
+	top: 0;
+	left: 0;
+	right: 500px;
+	/*  */
+}
+
+svg[id="pursuer"]{
+	height: 100px;
+	top: 0;
+	left: -500px;
+	/*  */
+}
+
+#menu, #vote, #statJoueur {
+	background: rgba(99,99,99,0.5);
+	padding-bottom:20px;
+	border-radius: 20px;
+}
+
+#menuTitle, #voteTitle, #statJTitle {
+	font-family: 'ZCOOL KuaiLe', cursive;
+	background:#0B0B3B;
+	text-align:center;
+	color:white;
+	margin-left: -15px;
+    width: calc(100% + 30px);
+}
+
+#carteJ {
+	width: 100%;
+}
+
+#statJoueur {
+	text-align:center;
+}
+
+#imgLegend, form[id=voteJ] {
+	font-weight:bold;
+}
+
+.menu-item {
+	transition : all 0.25s ease-in-out;
+	color:#0B0B3B;
+}
+
+.menu-item:hover {
+	color:red;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+.mess {
+	font-family: 'Nothing You Could Do', cursive;
+}
+
+strong {
+	font-family: 'Gochi Hand', cursive;
+	font:normal;
+	font-weight:bold;
+}
+
+.notif {
+	font-weight:bold;
+	font-family: 'Source Code Pro', monospace;
+	text-align: center;
+}
+
+#headertxt {
+	text-align:left;
+	margin-left: 100px;
+	font-size:50px;
+	padding-top: 60px;
+}
+
+
+
+h3{
+	display: flex;
+    justify-content: left;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+}
+
+h4{
+	display: flex;
+    justify-content: left;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+}
+
+h3 span {
+    padding: 10px;
+}
+
+h4 span {
+    padding: 10px;
+}
+
+h4 img {
+	transition: all 0.5s ease;
+}
+
+
+h3 img {
+	transition: all 0.5s ease;
+}
+
+h3 img:hover {
+	transform: rotate(45deg);
+}
+
+h4 img:hover {
+	transform: rotate(45deg);
+}
+
+h3 img:hover {
+	transform: rotate(45deg);
+}
+
+#divRole {
+	width: 10px;
+}
+
+/* #chat {
+	height:600px;
+	max-height:600px;
+	background: rgba(99,99,99,0.78);
+	overflow-y:scroll;
+	color: black;
+	font-weight:bold;
+} */
+
+#rules {
+	font-family: 'Caveat Brush', cursive;
+	overflow-y: scroll;
+	background: rgba(99,99,99,0.78);
+	max-height: 1120px;
+	color: black;
+}
+
+#rules::-webkit-scrollbar {
+ display: none;
+ }
+#page-center-index {
+	background: #6699ff;
+	min-height:500px;
+}
+
+#tableCartes img {
+	width:100px;
+}
+
+#tableCartes td {
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:50px;
+	padding-bottom:20px;
+}
+
+#tableCartes table {
+	text-align: center;
+	width:100%;
+}
+
+#infoCompte {
+	padding-top : 20px;
+	padding-left : 20px;
+	padding-right : 20px;
+	font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.compteItem {
+	padding-top : 5px;
+}
+
+.changeButton {
+	padding-top: 30px;
+	text-align: center;
+	font-family: sans-serif;
+}
