@@ -22,5 +22,6 @@ public interface IDAOVillageois extends JpaRepository<Villageois, Integer>  {
 	@Query("select v from Villageois v where v.role = :role and v.partie.id = :id")
 	public Villageois findByPartieIDAndRole(@Param("role") String role, @Param("id") Integer id);
 	
-
+	@Query("select v from Villageois v where v.partie.id = :id")
+	public List<Villageois> findByPartieID(@Param("id") Integer id);
 }

@@ -1,5 +1,7 @@
 package com.loupgarou.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +20,10 @@ public class JeuController {
 	public String afficherJeu(Model model) {
 		Villageois currPlayer = daoVillageois.findById(7).get();
 		model.addAttribute("currentUser", currPlayer);
-		System.out.println(currPlayer.getRole());
+		
+		List<Villageois> vills = daoVillageois.findByPartieID(1); 
+		model.addAttribute("listVills", vills);
+		
 		return "jeu";
 	}
 }
