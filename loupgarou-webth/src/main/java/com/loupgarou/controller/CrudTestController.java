@@ -34,17 +34,9 @@ public class CrudTestController {
 		return "crudTest";
 	}
 	
-//	@GetMapping({"/crudTest"})
-//	public String redirAjoutUser(Model model) {
-//		return "crudTest";
-//	}
-	
 	@PostMapping("/crudTest")
 	public String ajouterUser(@Valid @ModelAttribute Utilisateur utilisateur, BindingResult result, Model model, 
 			@DateTimeFormat(pattern = "yyyy-MM-dd") Date datenaiss) { // possibilité de fabriquer les element a partir des parametres recuperes 
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-//		Date date = sdf.parse(utilisateur.getDateNaissance());
-//		System.out.println(datenaiss);
 		utilisateur.setDateNaissance(datenaiss);
 		if(result.hasErrors()) {
 			System.out.println("User invalide");
@@ -58,12 +50,12 @@ public class CrudTestController {
 		}		
 	}
 	
-//	@GetMapping("/crudTest")
-//	public String deleteUser(@RequestParam(value="id", required=false, defaultValue="0") Integer id, Model model) {
-//		daoUtilisateur.deleteById(id);
-//		return "crudTest";
-//	}
-//	
-//	
+	@GetMapping("/crudTest")
+	public String deleteUser(@RequestParam(value="idSpr", required=false, defaultValue="0") Integer id, Model model) {
+		daoUtilisateur.deleteById(id);
+		return "crudTest";
+	}
+	
+	
 
 }
