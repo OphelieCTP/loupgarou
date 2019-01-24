@@ -125,32 +125,35 @@
 				</div>
 				
 				<div class="carte" th:if="${ currentUser.role == 'Villageois' }">
-					<div id="imgLegend" >Villageois</div>
+					<div id="imgLegend" > [[${ currentUser.userName }]] - Villageois</div>
 					<img id="carteJ" src="img/vill.png"  />				
 				</div>
 				<div class="carte" th:if="${ currentUser.role == 'Loup' }">
-					<div id="imgLegend" >Loup Garou</div>
+					<div id="imgLegend" >[[${ currentUser.userName }]] - Loup Garou</div>
 					<img id="carteJ" src="img/loupg.png"  />				
 				</div>
 				<div class="carte" th:if="${ currentUser.role == 'Chasseur' }">
-					<div id="imgLegend" >Chasseur</div>
+					<div id="imgLegend" >[[${ currentUser.userName }]] - Chasseur</div>
 					<img id="carteJ" src="img/chasseur.png"  />				
 				</div>
 				<div class="carte" th:if="${ currentUser.role == 'Cupidon' }">
-					<div id="imgLegend" >Cupidon</div>
+					<div id="imgLegend" >[[${ currentUser.userName }]] - Cupidon</div>
 					<img id="carteJ" src="img/cupidon.png"  />				
 				</div>
 				<div class="carte" th:if="${ currentUser.role == 'PetiteFille' }">
-					<div id="imgLegend" >Petite Fille</div>
+					<div id="imgLegend" >[[${ currentUser.userName }]] - Petite Fille</div>
 					<img id="carteJ" src="img/pfille.png"  />				
 				</div>
 				<div class="carte" th:if="${ currentUser.role == 'Sorciere' }">
-					<div id="imgLegend" >Sorcière</div>
+					<div id="imgLegend" >[[${ currentUser.userName }]] - Sorcière</div>
 					<img id="carteJ" src="img/sorciere.png"  />				
 				</div>
 				<div class="carte" th:if="${ currentUser.role == 'Voyante' }">
-					<div id="imgLegend" >Voyante</div>
+					<div id="imgLegend" >[[${ currentUser.userName }]] - Voyante</div>
 					<img id="carteJ" src="img/voyante.png"  />				
+				</div>
+				
+				<div th:replace="sorciere" th:if="${ currentUser.role == 'Sorciere' }">
 				</div>
 				
 			</div>

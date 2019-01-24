@@ -330,3 +330,19 @@ h3 img:hover {
 	text-align: center;
 	font-family: sans-serif;
 }
+
+.powerInter {
+	margin-top:15px;
+	margin-bottom:15px;
+}
+
+.powerInter select, .powerInter a, .powerInter button {
+	margin-top:15px;
+	width:100%;
+}
+
+.powerInter a {
+	margin-top:0px;
+}
+
+
