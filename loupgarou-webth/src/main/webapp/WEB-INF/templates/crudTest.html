@@ -38,7 +38,7 @@
 		<br/>
 		
 	</div>
-	<div id="page-center-crud" class="col-sm-8">
+	<div id="page-center-crud" class="col-sm-10">
 	
 	<div>
 	</div>
@@ -59,23 +59,23 @@
 					<form method="post">
 						<div> 
 							<label for="nom"> Nom Utilisateur : </label>
-							<input type="text" id="nom" th:value="${utilisateur?.userName}" placeholder="Le nom ..." name="userName" required/>
+							<input type="text" id="nom" th:value="${utilisateur?.userName}" th:text= "${utilisateur?.getUserName()}" name="userName" required/>
 						</div>
 						<div> 
 							<label for="wp"> Mot de Passe : </label> 
-							<input type="text" id="wp" th:value="${utilisateur?.passWord}" placeholder="Le mot de passe ..." name="passWord" required/>
+							<input type="text" id="wp" th:value="${utilisateur?.passWord}" name="passWord" required/>
 						</div>
 						<div> 
 							<label for="naissance"> Date Naissance : </label> 
 							<!-- <input type="date" id="naissance" th:value="${#dates.formatISO(utilisateur?.dateNaissance)}" placeholder="0000-00-00" name="dateNaissance" required/> -->
-							<input type="date" id="naissance" th:value="${datenaiss}" placeholder="0000-00-00" name="datenaiss" required/>
+							<input type="date" id="naissance" th:value="${datenaiss}" name="datenaiss" required/>
 							<!-- "${#dates.format(sdf.parse(utilisateur?.dateNaissance), 'yyyy-MM-dd')}" -->
 						</div> <!-- ${#dates.formatISO(standardDate)} -->
 						<div> 
 							<label for="email"> Email : </label> 
-							<input type="text" id="email" th:value="${utilisateur?.email}" placeholder="bidule@truc.machin" name="email" required/>
+							<input type="text" id="email" th:value="${utilisateur?.email}" name="email" required/>
 						</div>
-						<input type="submit" id="addDone" th:value="Enregister"/>
+						<input type="submit" id="addDone" th:value="Enregister" />
 					</form>
 				</div>
 			</section>
@@ -107,25 +107,26 @@
 			      <td class="align-middle" id="actions">
 			      	<div>
 			      		<div class="col-xs-3"> <!-- href="produit.jsp" th:href="@{'/supprimer?id='+${prod.id}}"  -->
+			      			<!-- <a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/editUser?idEd='+${user.userID}}"> Modifier </a> -->
+			      			<a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/crudTest?idEd='+${user.userID}}"> Modifier </a>
+			      			<!-- <a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/crudTest'({idEd}{user.userID})"> Modifier </a> -->
+			      			<!-- (id=${order.id}) --> <!-- ({id}{produit.id})} -->
+					    </div>
+					    <p> </p>
+					    <div class="col-xs-3">
+					    	<a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/crudTest?idEd='+${user.userID}}+'&ban=1'"> Banir </a>
+				      	</div>
+					    <p> </p>
+					    <div class="col-xs-3"> <!-- href="produit.jsp" th:href="@{'/supprimer?id='+${prod.id}}"  -->
+			      			<!-- <a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/crudTest?idSpr='+${user.userID}}"> Supprimer </a> -->
 			      			<a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/deleteUser?idSpr='+${user.userID}}"> Supprimer </a>
 					      	<!-- <input type="submit" class="btn btn-primary btn-md btn-block" value = "Supprimer" onclick="crudSupprimerJS(${user.id}); return false;"> -->
 				      	</div>
-				      	<p> </p>
-				      	<div class="col-xs-3"> <!-- href="produit.jsp" th:href="@{'/supprimer?id='+${prod.id}}"  -->
-			      			<a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/editUser?idEd='+${user.userID}}"> Modifier </a>
-					    </div>
 			      	</div>
 				      <!-- <div>
-				      	<div class="col-xs-3">
-				      		<input type="submit" class="btn btn-primary btn-md btn-block" value = "Modifier" onclick="addModifierForm(${user.id}); return false;" >
-				      	</div>
 				      	<p> </p>
 				      	<div class="col-xs-3">
 				      		<input type="submit" class="btn btn-primary btn-md btn-block" value = "Banir" onclick="crudBanirJS(${user.id}); return false;">
-				      	</div>
-				      	<p> </p>
-				      	<div class="col-xs-3">
-					      	<input type="submit" class="btn btn-primary btn-md btn-block" value = "Supprimer" onclick="crudSupprimerJS(${user.id}); return false;">
 				      	</div>
 			      	  </div> -->
 			      </td>
@@ -136,8 +137,7 @@
 		
 		
 	</div>
-	<div id="page-right" class="col-sm-2">
-		</div>
+	
 	</div> <!-- container -->
 	<footer>
 		
