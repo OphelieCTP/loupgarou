@@ -58,8 +58,6 @@ public class CrudTestController {
 		//return redirect;
 	}
 	
-	//	currentUser
-	
 	@PostMapping("/crudTest")
 	public RedirectView editUser(@Valid @ModelAttribute Utilisateur utilisateur, BindingResult result, Model model, 
 			@RequestParam(value="idEd", required=false) Integer id,

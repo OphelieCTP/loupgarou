@@ -34,69 +34,69 @@
 
 		<section id="connexion">
 		
-			<form class="form-horizontal">
+			<form class="form-horizontal" method="post" action="index/connexion">
 				<h2>Connexion</h2>
 				<div class="form-group row">
 					<label for="username" class="col-sm-2 col-form-label"> Nom d'utilisateur :</label>
 					<div class="col-sm-10">
-						<input type="text" name="username" id="username" class="form-control" placeholder="Username" />
+						<input type="text" name="username" id="username" class="form-control" placeholder="Username" th:value="${username}" />
 					</div>
 				</div>
 				
 				<div class="form-group row">
 					<label for="password" class="col-sm-2 col-form-label"> Mot de passe :</label>
 					<div class="col-sm-10">
-						<input type="password" name="password" id="paswword" class="form-control" placeholder="*****" />
+						<input type="password" name="password" id="paswword" class="form-control" placeholder="*****" th:value="${password}" />
 					</div>
 				</div>
 						
 				<div class="form-group" id="connexion-button">
 						<div class="col-sm-10" id="connexion-valid">
-							<input class="btn btn-info" type="submit" value="Se connecter" formaction="rules.html" />
+							<input type="submit" id="addDone" th:value="Connexion" class="btn btn-info" />
 							<a href="#identification" class="btn btn-info" role="button">Annuler</a>
 						</div>
 					</div>
 			</form>
+			<span id="error" th:if="${wrongPW == true}"></span>
 		</section>
 		
 		<section id="inscription">
-		<form class="form-horizontal" method="post">
+		<form class="form-horizontal" method="post" action="index/inscription">
 				<h2>Inscription</h2>
 				<div class="form-group row">
 					<label for="usern" class="col-sm-2 col-form-label"> Nom d'utilisateur :</label>
 					<div class="col-sm-10">
-						<input type="text" name="usern" id="usern" class="form-control" placeholder="Username" />
+						<input type="text" name="usern" id="usern" class="form-control" placeholder="Username" th:value="${newUser?.userName}" required />
 					</div>
 				</div>
 				
 				<div class="form-group row">
 					<label for="password-1" class="col-sm-2 col-form-label"> Mot de passe :</label>
 					<div class="col-sm-10">
-						<input type="password" name="password-1" id="paswword-1" class="form-control" placeholder="*****" />
+						<input type="password" name="pass1" id="pass1" class="form-control" placeholder="*****" th:value="${pass1}" required />
 					</div>
 				</div>
 				
 				<div class="form-group row" id="passwordCheck">
 					<label for="password-2" class="col-sm-2 col-form-label"> Confirmation mot de passe :</label>
 					<div class="col-sm-10">
-						<input type="password" name="password-2" id="paswword-2" class="form-control" placeholder="*****" />
+						<input type="password" name="pass2" id="paswword-2" class="form-control" placeholder="*****" th:value="${pass2}" required />
 					</div>
 				</div>
 				
 				<div class="form-group row">
 					<label for="birthday" class="col-sm-2 col-form-label"> Date de Naissance :</label>
 					<div class="col-sm-10">
-						<input type="date" name="birthday" id="birthday" class="form-control" placeholder="" />
+						<input type="date" name="birthday" id="birthday" class="form-control" th:value="${datenaiss}" />
 					</div>
 				</div>
 				
 				<div class="form-group row">
 					<label for="email" class="col-sm-2 col-form-label"> Adresse e-mail :</label>
 					<div class="col-sm-10">
-						<input type="email" name="email" id="email" class="form-control" placeholder="abc@xyz.com" />
+						<input type="email" name="email" id="email" class="form-control" placeholder="abc@xyz.com" th:value="${newUser?.email}" required />
 					</div>
 				</div>
-				
 				
 				<div class="form-group" id="inscription-button">
 						<div class="col-sm-10" id="inscription-valid">
@@ -211,7 +211,7 @@
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
-<script src="asset/js/afficheIndex.js"></script>
+<!-- <script src="asset/js/afficheIndex.js"></script> -->
 <!-- Scripts jQuery, Popper et Bootstrap, issus du CDN -->
 <!-- autre version jquery -->
 <!-- https://developers.google.com/speed/libraries/ -->
