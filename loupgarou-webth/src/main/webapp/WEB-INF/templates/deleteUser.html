@@ -42,98 +42,9 @@
 	
 	<div>
 	</div>
-	
-	<!-- but du jeu : creer page ou administrateur peut voir liste des joueurs et choisir de les banir ou non -->
 			<h1>
-				Joueurs
+				Delete Joueurs
 			</h1>
-						
-			<p> </p>
-			<div class="col-xs-3">
-				<input type="submit" id="add" class="btn btn-primary btn-md btn-block" value = "Ajouter Joueur" >
-			</div>
-			<p> </p>
-			
-			<section id="addUser">
-				<div>
-					<form method="post">
-						<div> 
-							<label for="nom"> Nom Utilisateur : </label>
-							<input type="text" id="nom" th:value="${utilisateur?.userName}" placeholder="Le nom ..." name="userName" required/>
-						</div>
-						<div> 
-							<label for="wp"> Mot de Passe : </label> 
-							<input type="text" id="wp" th:value="${utilisateur?.passWord}" placeholder="Le mot de passe ..." name="passWord" required/>
-						</div>
-						<div> 
-							<label for="naissance"> Date Naissance : </label> 
-							<!-- <input type="date" id="naissance" th:value="${#dates.formatISO(utilisateur?.dateNaissance)}" placeholder="0000-00-00" name="dateNaissance" required/> -->
-							<input type="date" id="naissance" th:value="${datenaiss}" placeholder="0000-00-00" name="datenaiss" required/>
-							<!-- "${#dates.format(sdf.parse(utilisateur?.dateNaissance), 'yyyy-MM-dd')}" -->
-						</div> <!-- ${#dates.formatISO(standardDate)} -->
-						<div> 
-							<label for="email"> Email : </label> 
-							<input type="text" id="email" th:value="${utilisateur?.email}" placeholder="bidule@truc.machin" name="email" required/>
-						</div>
-						<input type="submit" id="addDone" th:value="Enregister"/>
-					</form>
-				</div>
-			</section>
-			
-			<table class="table">
-			  <thead>
-			    <tr>
-			      <th class="align-middle" scope="col">ID</th>
-			      <th class="align-middle" scope="col">Nom Utilisateur</th>
-			      <th class="align-middle" scope="col">Mot de Passe</th>
-			      <th class="align-middle" scope="col">Statut Connexion</th>
-			      <th class="align-middle" scope="col">Statut Banni</th>
-			      <th class="align-middle" scope="col">Nombre de plaintes</th>
-			      <th class="align-middle" scope="col">Date Naissance</th>
-			      <th class="align-middle" scope="col">Email</th>
-			      <th class="align-middle" scope="col">Actions possibles</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <tr th:each="user : ${utilisateurs}" th:id="${user.userID}">
-			      <td class="align-middle" id="ID" th:text="${user.userID}" />
-			      <td class="align-middle" id="user" th:text="${user.userName}" />
-			      <td class="align-middle" id="wp" th:text="${user.passWord}" />
-			      <td class="align-middle" id="connexion" th:text="${user.isConnected}" />
-			      <td class="align-middle" id="bani" th:text="${user.isBanni}" />
-			      <td class="align-middle" id="plaintes" th:text="${user.nbPlaintes}" />
-			      <td class="align-middle" id="naissance" th:text="${user.dateNaissance}" />
-			      <td class="align-middle" id="email" th:text="${user.email}" />
-			      <td class="align-middle" id="actions">
-			      	<div>
-			      		<div class="col-xs-3"> <!-- href="produit.jsp" th:href="@{'/supprimer?id='+${prod.id}}"  -->
-			      			<a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/deleteUser?idSpr='+${user.userID}}"> Supprimer </a>
-					      	<!-- <input type="submit" class="btn btn-primary btn-md btn-block" value = "Supprimer" onclick="crudSupprimerJS(${user.id}); return false;"> -->
-				      	</div>
-				      	<p> </p>
-				      	<div class="col-xs-3"> <!-- href="produit.jsp" th:href="@{'/supprimer?id='+${prod.id}}"  -->
-			      			<a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/editUser?idEd='+${user.userID}}"> Modifier </a>
-					    </div>
-			      	</div>
-				      <!-- <div>
-				      	<div class="col-xs-3">
-				      		<input type="submit" class="btn btn-primary btn-md btn-block" value = "Modifier" onclick="addModifierForm(${user.id}); return false;" >
-				      	</div>
-				      	<p> </p>
-				      	<div class="col-xs-3">
-				      		<input type="submit" class="btn btn-primary btn-md btn-block" value = "Banir" onclick="crudBanirJS(${user.id}); return false;">
-				      	</div>
-				      	<p> </p>
-				      	<div class="col-xs-3">
-					      	<input type="submit" class="btn btn-primary btn-md btn-block" value = "Supprimer" onclick="crudSupprimerJS(${user.id}); return false;">
-				      	</div>
-			      	  </div> -->
-			      </td>
-			    </tr>
-			  </tbody>
-			</table>
-		
-		
 		
 	</div>
 	<div id="page-right" class="col-sm-2">
