@@ -59,7 +59,7 @@
 					<form method="post">
 						<div> 
 							<label for="nom"> Nom Utilisateur : </label>
-							<input type="text" id="nom" th:value="${utilisateur?.userName}" th:text= "${utilisateur?.getUserName()}" name="userName" required/>
+							<input type="text" id="nom" th:value="${utilisateur?.userName}" name="userName" required/>
 						</div>
 						<div> 
 							<label for="wp"> Mot de Passe : </label> 
@@ -114,7 +114,10 @@
 					    </div>
 					    <p> </p>
 					    <div class="col-xs-3">
-					    	<a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/crudTest?idEd='+${user.userID}}+'&ban=1'"> Banir </a>
+					    	<a class="btn btn-primary btn-md btn-block" role="button" th:if="${user.getIsBanni() == false}" 
+					    	th:href="@{'/crudTest?idEd='+${user.userID}}+'&ban=1'"> Banir </a>
+					    	<a class="btn btn-primary btn-md btn-block" role="button" th:if="${user.getIsBanni() == true}" 
+					    	th:href="@{'/crudTest?idEd='+${user.userID}}+'&ban=0'"> Dé-Banir </a>
 				      	</div>
 					    <p> </p>
 					    <div class="col-xs-3"> <!-- href="produit.jsp" th:href="@{'/supprimer?id='+${prod.id}}"  -->

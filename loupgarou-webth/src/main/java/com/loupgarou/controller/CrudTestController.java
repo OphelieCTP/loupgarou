@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionAttributeStore;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.loupgarou.datajpa.*;
@@ -30,30 +33,44 @@ public class CrudTestController {
 	private IDAOVillageois daoVillageois;
 	
 	@RequestMapping(value="/crudTest", method=RequestMethod.GET)
-	public String users(//@RequestParam(value="idSpr", required=false) Integer id, 
-			Model model) {
+	public String users(Model model, 
+			@RequestParam(value="idEd", required=false) Integer id,
+			@RequestParam(value="ban", required=false) Integer ban
+			) {
 		//RedirectView redirect = new RedirectView("crudTest");
-//		if(id!=null) {
-//			daoUtilisateur.deleteById(id);
-//		}
+		if(ban!=null) { 
+			if(ban==1) {
+				model.addAttribute("utilisateur", daoUtilisateur.findById(id).get());
+				Utilisateur user =  daoUtilisateur.findById(id).get(); 
+				user.setIsBanni(true);
+				daoUtilisateur.save(user);
+				}
+			if(ban==0) {
+				model.addAttribute("utilisateur", daoUtilisateur.findById(id).get());
+				Utilisateur user =  daoUtilisateur.findById(id).get(); 
+				user.setIsBanni(false);
+				daoUtilisateur.save(user);
+				}
+			}
 		model.addAttribute("utilisateurs", daoUtilisateur.findAll());
-		// redirect.setExposeModelAttributes(false);
+		//redirect.setExposeModelAttributes(false);
 		return "crudTest";
+		//return redirect;
 	}
+	
+	//	currentUser
 	
 	@PostMapping("/crudTest")
 	public RedirectView editUser(@Valid @ModelAttribute Utilisateur utilisateur, BindingResult result, Model model, 
 			@RequestParam(value="idEd", required=false) Integer id,
-			@RequestParam(value="ban", required=false) Integer ban,
 			@DateTimeFormat(pattern = "yyyy-MM-dd") Date datenaiss) {
 		RedirectView redirect = new RedirectView("crudTest");
 		if(id!=null) {
 			model.addAttribute("utilisateur", daoUtilisateur.findById(id).get());
 			utilisateur.setUserID(id);
-			if(ban==1) { utilisateur.setIsBanni(true); }
 		}
 		
-		else { utilisateur.setDateNaissance(datenaiss); }
+		utilisateur.setDateNaissance(datenaiss);
 		
 		if(result.hasErrors()) {
 			System.out.println("User invalide");
