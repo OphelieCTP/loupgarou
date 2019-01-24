@@ -19,11 +19,9 @@ public class Villageois extends Utilisateur{
 //	protected int villID;
 	
 	@Column(name="VILL_AMOUREUX")
-	@NotEmpty
 	protected Boolean amoureux;
 	
 	@Column(name="VILL_VIVANT")
-	@NotEmpty
 	protected Boolean vivant;
 	
 	@Column(name="VILL_BULLETIN")
@@ -31,19 +29,15 @@ public class Villageois extends Utilisateur{
 	protected Integer vote;
 	
 	@Column(name="VILL_PEUT_VOTER")
-	@NotEmpty
 	protected Boolean peutVoter = false;
 	
 	@Column(name="VILL_A_VOTE")
-	@NotEmpty
 	protected Boolean aVote = false;
 	
 	@Column(name="VILL_ENDORMIT")
-	@NotEmpty
 	protected Boolean endormit;
 	
 	@Column(name="VILL_CAPITAINE")
-	@NotEmpty
 	protected Boolean capitaine;
 	
 	@ManyToOne

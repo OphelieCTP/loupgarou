@@ -182,8 +182,8 @@
 				<form id="voteJ" method="post" action="jeu/vote">
 						
 					<div class="radio" th:each="v : ${listVills}">
-						<input type="radio" name="vote" th:value="${v?.userID}" />
-						<label>[[${v?.userName}]] </label>
+						<input type="radio" name="vote" th:value="${v?.userID}" th:if="${ currentUser.userID != v.userID }"/>
+						<label th:if="${ currentUser.userID != v.userID }">[[${v?.userName}]] </label>
 					</div>
 					
 					<div id="centered-button">

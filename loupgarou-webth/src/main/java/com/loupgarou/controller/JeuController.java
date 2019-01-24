@@ -2,6 +2,8 @@ package com.loupgarou.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +21,9 @@ public class JeuController {
 	IDAOVillageois daoVillageois;
 	
 	@GetMapping("/jeu")
-	public String afficherJeu(Model model) {
+	public String afficherJeu(Model model, HttpSession session) {
 		Villageois currPlayer = daoVillageois.findById(7).get();
+		session.setAttribute("currentPlayer", currPlayer);
 		model.addAttribute("currentUser", currPlayer);
 		
 		List<Villageois> vills = daoVillageois.findByPartieID(1); 
@@ -30,9 +33,12 @@ public class JeuController {
 	}
 	
 	@PostMapping("/jeu/vote")
-	public String EnregistreVote(@RequestParam Integer vote )
+	public String EnregistreVote(@RequestParam Integer vote, HttpSession session)
 	{
-		
-		return "jeu";
+		Villageois currPlayer = (Villageois)session.getAttribute("currentPlayer");
+		currPlayer.setVote(vote);
+		System.out.println(currPlayer.getEndormit());
+		daoVillageois.save(currPlayer);
+		return "redirect:/jeu";
 	}
 }
