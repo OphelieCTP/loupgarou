@@ -61,14 +61,14 @@ public class CrudTestController {
 		return "redirect:/crudTest";
 	}
 
-	@GetMapping({"/crudTest"})
+	@GetMapping({"/editUser"})
 	public String redirEditProd(@RequestParam(value="idEd", required=false, defaultValue="0") Integer id, Model model) {
 		model.addAttribute("utilisateur", daoUtilisateur.findById(id).get());
-		return "crudTest";
+		return "editUser";
 	}
 
 	
-	@PostMapping("/editUseriter")
+	@PostMapping("/editUser")
 	public String editUser(@RequestParam(value="idEd", required=true, defaultValue="0") int id, 
 			@Valid @ModelAttribute Utilisateur utilisateur, @DateTimeFormat(pattern = "yyyy-MM-dd") Date datenaiss) {
 		utilisateur.setDateNaissance(datenaiss);
