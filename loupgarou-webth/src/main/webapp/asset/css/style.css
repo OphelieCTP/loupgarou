@@ -33,7 +33,7 @@ table tbody tr td div p {
 	display : flex;
 }
 
-#chat, #rules, #edit, #menu, #statJoueur, #vote{
+#chat, #rules, #edit, #menu, #statJoueur, #vote, #listeJoueur{
 	margin:0 auto;
 }
 
@@ -161,13 +161,13 @@ svg[id="pursuer"]{
 	/*  */
 }
 
-#menu, #vote, #statJoueur {
+#menu, #vote, #statJoueur, #listeJoueur {
 	background: rgba(99,99,99,0.5);
 	padding-bottom:20px;
 	border-radius: 20px;
 }
 
-#menuTitle, #voteTitle, #statJTitle {
+#menuTitle, #voteTitle, #statJTitle, #listeJoueurTitle {
 	font-family: 'ZCOOL KuaiLe', cursive;
 	background:#0B0B3B;
 	text-align:center;
@@ -343,6 +343,15 @@ h3 img:hover {
 
 .powerInter a {
 	margin-top:0px;
+}
+
+.liste img {
+	width:25px;
+}
+.liste {
+	padding-top:4px;
+	padding-bottom:4px;
+	text-align:left;
 }
 
 

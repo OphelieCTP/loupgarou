@@ -153,7 +153,16 @@
 					<img id="carteJ" src="img/voyante.png"  />				
 				</div>
 				
-				<div th:replace="sorciere" th:if="${ currentUser.role == 'Sorciere' }">
+				<div th:if="${ currentUser.role == 'Sorciere' }" th:include="sorciere">
+				</div>
+				
+				<div th:if="${ currentUser.role == 'Voyante' }" th:include="voyante">
+				</div>
+				
+				<div th:if="${ currentUser.role == 'Chasseur' }" th:include="chasseur">
+				</div>
+				
+				<div th:if="${ currentUser.role == 'Cupidon' AND cupidonPouv == true }" th:include="cupidon">
 				</div>
 				
 			</div>
@@ -185,8 +194,8 @@
 				<form id="voteJ" method="post" action="jeu/vote">
 						
 					<div class="radio" th:each="v : ${listVills}">
-						<input type="radio" name="vote" th:value="${v?.userID}" th:if="${ currentUser.userID != v.userID }"/>
-						<label th:if="${ currentUser.userID != v.userID }">[[${v?.userName}]] </label>
+						<input type="radio" name="vote" th:value="${v?.userID}" th:if="${ currentUser.userID != v.userID AND v.vivant == true}"/>
+						<label th:if="${ currentUser.userID != v.userID AND v.vivant == true}">[[${v?.userName}]] </label>
 					</div>
 					
 					<div id="centered-button">
@@ -194,6 +203,10 @@
 					</div>
 				</form>
 			</div>
+			
+			<br/>
+			
+			<div th:replace="listeJoueur"></div>
 		</div>
 		
 	</div>
