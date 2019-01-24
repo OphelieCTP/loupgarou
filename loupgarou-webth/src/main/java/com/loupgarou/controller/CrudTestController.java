@@ -1,6 +1,5 @@
 package com.loupgarou.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.validation.Valid;
@@ -16,9 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.support.SessionAttributeStore;
-import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.loupgarou.datajpa.*;
@@ -28,9 +24,6 @@ import com.loupgarou.model.*;
 public class CrudTestController {
 	@Autowired
 	private IDAOUtilisateur daoUtilisateur;
-	
-	@Autowired
-	private IDAOVillageois daoVillageois;
 	
 	@RequestMapping(value="/crudTest", method=RequestMethod.GET)
 	public String users(Model model, 

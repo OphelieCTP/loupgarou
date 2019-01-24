@@ -10,7 +10,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,28 +66,35 @@ public class IndexController {
 	}
 	
 	@PostMapping("/index/inscription")
-	public String inscription(Model model, HttpSession session,
-			@Valid @ModelAttribute Utilisateur newUser, BindingResult result,
-			@RequestParam(value="${pass1}", required=true) String pass1,
-			@RequestParam(value="${pass2}", required=true) String pass2,
-			@DateTimeFormat(pattern = "yyyy-MM-dd") Date datenaiss
+	public RedirectView inscription(Model model, HttpSession session,
+			//@RequestParam(value="pass1", required=true) String pass1,
+			@RequestParam(value="pass2", required=true) String pass2,
+			@DateTimeFormat(pattern = "yyyy-MM-dd") Date datenaiss,
+			@Valid @ModelAttribute Utilisateur newUser, BindingResult result
 			) {
-		if(pass1!=pass2) {
-			return "index";
-		}
-		
-		newUser.setDateNaissance(datenaiss);
-		
-		if(result.hasErrors()) {
-			System.out.println("User invalide");
-			return "index";
+			System.out.println(datenaiss);
+		if(newUser.getPassWord().equals(pass2)) {
+			newUser.setDateNaissance(datenaiss);
+			System.out.println(newUser.getDateNaissance());
+			
+			if(result.hasErrors()) {
+				System.out.println("User invalide");
+				return new RedirectView("/loupgarou-webth/index#inscription");
+			}
+			else {
+				System.out.println("User ok");
+				daoUtilisateur.save(newUser);
+				session.setAttribute("currentUser", newUser);
+				model.addAttribute("utilisateurs", daoUtilisateur.findAll());
+			    return new RedirectView("/loupgarou-webth/rules");
+			}	
 		}
 		else {
-			System.out.println("User ok");
-			daoUtilisateur.save(newUser);
-			model.addAttribute("utilisateurs", daoUtilisateur.findAll());
-		    return "index";
-		}		
+			System.out.println("WP not corresp");
+			return new RedirectView("/loupgarou-webth/index#inscription");
+			
+		}
+		
 	}
 	
 	
