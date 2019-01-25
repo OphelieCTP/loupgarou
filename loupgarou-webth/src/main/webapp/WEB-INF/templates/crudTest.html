@@ -78,25 +78,23 @@
 			      <th class="align-middle" scope="col">Actions possibles</th>
 			    </tr>
 			  </thead>
-			  <tbody>
-			    <tr th:each="user : ${utilisateurs}" th:id="${user.userID}">
-			      <td class="align-middle" id="ID" th:text="${user.userID}"> 
-			      	<div class="form-group" id="addModif"> 
-			      		<input type="text" class="form-control" name="userID" id="ID" th:text="${user.userID}" th:value="${user.userID}"> 
-			      	</div>
-			      </td>
-			      <td class="align-middle" id="user" th:text="${user.userName}" />
-			      <td class="align-middle" id="wp" th:text="${user.passWord}" />
-			      <td class="align-middle" id="connexion" th:text="${user.isConnected}" />
-			      <td class="align-middle" id="bani" th:text="${user.isBanni}" />
-			      <td class="align-middle" id="plaintes" th:text="${user.nbPlaintes}" />
-			      <td class="align-middle" id="naissance" th:text="${user.dateNaissance}" />
+			  <tbody th:each="user : ${utilisateurs}">
+			    <tr th:id="${user.userID}">
+			      <td class="align-middle" id="userID" th:text="${user.userID}" />
+			      <td class="align-middle" id="userName" th:text="${user.userName}" />
+			      <td class="align-middle" id="passWord" th:text="${user.passWord}" />
+			      <td class="align-middle" id="isConnected" th:text="${user.isConnected}" />
+			      <td class="align-middle" id="isBanni" th:text="${user.isBanni}" />
+			      <td class="align-middle" id="nbPlaintes" th:text="${user.nbPlaintes}" />
+			      <td class="align-middle" id="dateNaissance" th:text="${user.dateNaissance}" />
 			      <td class="align-middle" id="email" th:text="${user.email}" />
 			      <td class="align-middle" id="actions">
 			      	<div>
 			      		<div class="col-xs-3"> <!-- href="produit.jsp" th:href="@{'/supprimer?id='+${prod.id}}"  -->
 			      			<!-- <a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/editUser?idEd='+${user.userID}}"> Modifier </a> -->
-			      			<a class="btn btn-primary btn-md btn-block" role="button" id="addModif" th:href="@{'/crudTest?idEd='+${user.userID}}"> Modifier </a>
+			      			<a class="btn btn-primary btn-md btn-block" role="button" id="addModif" 
+			      				th:href="@{'/crudTest?idEd='+${user.userID}}"
+			      				> Modifier </a> <!-- th:onclick="'allowModifierForm('+${user.userID}+')'"  -->
 			      			<!-- <a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/crudTest'({idEd}{user.userID})"> Modifier </a> -->
 					    </div>
 					    <p> </p>
@@ -121,6 +119,45 @@
 			      	  </div> -->
 			      </td>
 			    </tr>
+			    <tr th:id="${user.userID}+'F'" name="formMod" th:if="${idEd}!=null"><!-- th:if="${idEd != null}" --> <!-- mettre th:if ici, si attribute ?? -->
+			      <form method="post">
+			      <td class="align-middle" id="userID"> <input type="text" id="userID" th:value="${utilisateur?.userID}" name="userID"/> </td>
+			      <td class="align-middle" id="userName"> <input type="text" id="userName" th:value="${utilisateur?.userName}" name="userName"/> </td>
+			      <td class="align-middle" id="passWord"> <input type="text" id="passWord" th:value="${utilisateur?.passWord}" name="passWord"/> </td>
+			      <td class="align-middle" id="isConnected"> <input type="text" id="isConnected" th:value="${utilisateur?.isConnected}" name="isConnected"/> </td>
+			      <td class="align-middle" id="isBanni"> <input type="text" id="isBanni" th:value="${utilisateur?.isBanni}" name="isBanni"/> </td>
+			      <td class="align-middle" id="nbPlaintes"> <input type="text" id="nbPlaintes" th:value="${utilisateur?.nbPlaintes}" name="nbPlaintes"/> </td>
+			      <td class="align-middle" id="dateNaissance"> <input type="text" id="dateNaissance" th:value="${utilisateur?.dateNaissance}" name="dateNaissance"/> </td>
+			      <td class="align-middle" id="email"> <input type="text" id="email" th:value="${utilisateur?.email}" name="email"/> </td>
+			      <td class="align-middle" id="actions">
+			      	<div>
+			      		<div class="col-xs-3"> <!-- href="produit.jsp" th:href="@{'/supprimer?id='+${prod.id}}"  -->
+			      			<!-- <a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/editUser?idEd='+${user.userID}}"> Modifier </a> -->
+			      			<!-- <a class="btn btn-primary btn-md btn-block" role="button" id="addModif"  th:onclick="'allowModifierForm('+${user.userID}+')'" th:value="Modifier" > Modifier </a> th:href="@{'/crudTest?idEd='+${user.userID}}" -->
+			      			<!-- <a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/crudTest'({idEd}{user.userID})"> Modifier </a> -->
+			      			<input type="submit" id="addDone" th:value="Enregister" />
+					    </div>
+			      	</div>
+			      </form>
+			      </td>
+			    </tr>
+			    <!-- <form method="post">
+						<div> 
+							<label for="nom"> Nom Utilisateur : </label>
+							<input type="text" id="nom" th:value="${utilisateur?.userName}" name="userName" required/>
+						</div>
+						<div> 
+							<label for="naissance"> Date Naissance : </label> 
+							<input type="date" id="naissance" th:value="${#dates.formatISO(utilisateur?.dateNaissance)}" placeholder="0000-00-00" name="dateNaissance" required/>
+							<input type="date" id="naissance" th:value="${datenaiss}" name="datenaiss" required/>
+							"${#dates.format(sdf.parse(utilisateur?.dateNaissance), 'yyyy-MM-dd')}"
+						</div> ${#dates.formatISO(standardDate)}
+						<div> 
+							<label for="email"> Email : </label> 
+							<input type="text" id="email" th:value="${utilisateur?.email}" name="email" required/>
+						</div>
+						<input type="submit" id="addDone" th:value="Enregister" />
+					</form> -->
 			  </tbody>
 			</table>
 		
