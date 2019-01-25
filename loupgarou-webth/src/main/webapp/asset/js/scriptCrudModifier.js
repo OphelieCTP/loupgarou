@@ -15,9 +15,10 @@ $('input[id=addDone]').bind('click',function(){
 	return false;
 })
 
-$('input[id=addDone]').bind('click',function(){
-	// alert("declencheur");
-	$('div[id=addModif]').hide();
+$('div[id=addModif]').hide();
+
+$('a[id=addModif]').bind('click',function(){
+	$('div[id=addModif]').show();
 	return false;
 })
 

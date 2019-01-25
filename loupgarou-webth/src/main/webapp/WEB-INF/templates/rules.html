@@ -101,37 +101,7 @@
 	</div>
 	<div id="container-fluid" class="col-sm-12">
 	
-	
-		<div id="page-left" class="col-sm-2">
-		<br/>
-			<div id="menu" class="col-sm-11">
-				<div class="container-fluid" id="menuTitle">
-				Menu
-				</div>
-				
-				<ul class="nav nav-pills nav-stacked">
-					 <li role="presentation"><a class="menu-item" href="jeu.html">Demarrer une partie</a></li>
-					 <li role="presentation"><a class="menu-item" href="rules.html">Regles du jeu</a></li>
-					 <li role="presentation"><a class="menu-item" href="crudTest.html">Editer les joueurs</a></li>
-					 <li role="presentation"><a class="menu-item" href="monCompte.html">Mon Compte</a></li>
-					 <li role="presentation"><a class="menu-item" href="index.html">Deconnexion</a></li>
-				</ul>
-			</div>
-		<br/>
-		
-		<!-- <div id="statJoueur" class="col-md-11">
-				<div class="container-fluid" id="statJTitle">
-				Rôle
-				</div>
-				<br/>
-				
-				<div class="carte">
-					<img src="./img/loupg.png">
-				</div>
-				
-			</div> -->
-		
-		</div>
+		<div id="page-left" class="col-sm-2" th:replace="menu.html :: div#page-left"></div>
 		
 		<div id="page-center" class="col-sm-8">
 			<br/>

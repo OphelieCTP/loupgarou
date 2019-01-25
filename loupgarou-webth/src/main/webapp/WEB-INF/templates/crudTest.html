@@ -20,24 +20,8 @@
 	
 	<div id="container-fluid" class="col-sm-12">
 	
-	<div id="page-left" class="col-sm-2">
-		<br/>
-			<div id="menu" class="col-sm-11">
-				<div class="container-fluid" id="menuTitle">
-				Menu
-				</div>
-				
-				<ul class="nav nav-pills nav-stacked">
-					 <li role="presentation"><a class="menu-item" href="jeu.html">Demarrer une partie</a></li>
-					 <li role="presentation"><a class="menu-item" href="rules.html">Regles du jeu</a></li>
-					 <li role="presentation"><a class="menu-item" href="crudTest.html">Editer les joueurs</a></li>
-					 <li role="presentation"><a class="menu-item" href="monCompte.html">Mon Compte</a></li>
-					 <li role="presentation"><a class="menu-item" href="index.html">Deconnexion</a></li>
-				</ul>
-			</div>
-		<br/>
-		
-	</div>
+	<div id="page-left" class="col-sm-2" th:replace="menu.html :: div#page-left"></div>
+	
 	<div id="page-center-crud" class="col-sm-10">
 	
 	<div>
@@ -96,7 +80,11 @@
 			  </thead>
 			  <tbody>
 			    <tr th:each="user : ${utilisateurs}" th:id="${user.userID}">
-			      <td class="align-middle" id="ID" th:text="${user.userID}"> <div class="form-group" id="addModif"><input type="text" class="form-control" id="ID"> </div></td>
+			      <td class="align-middle" id="ID" th:text="${user.userID}"> 
+			      	<div class="form-group" id="addModif"> 
+			      		<input type="text" class="form-control" name="userID" id="ID" th:text="${user.userID}" th:value="${user.userID}"> 
+			      	</div>
+			      </td>
 			      <td class="align-middle" id="user" th:text="${user.userName}" />
 			      <td class="align-middle" id="wp" th:text="${user.passWord}" />
 			      <td class="align-middle" id="connexion" th:text="${user.isConnected}" />
@@ -108,9 +96,8 @@
 			      	<div>
 			      		<div class="col-xs-3"> <!-- href="produit.jsp" th:href="@{'/supprimer?id='+${prod.id}}"  -->
 			      			<!-- <a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/editUser?idEd='+${user.userID}}"> Modifier </a> -->
-			      			<a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/crudTest?idEd='+${user.userID}}" onclick="addModifierForm(${user.userID})"> Modifier </a>
+			      			<a class="btn btn-primary btn-md btn-block" role="button" id="addModif" th:href="@{'/crudTest?idEd='+${user.userID}}"> Modifier </a>
 			      			<!-- <a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/crudTest'({idEd}{user.userID})"> Modifier </a> -->
-			      			<!-- (id=${order.id}) --> <!-- ({id}{produit.id})} -->
 					    </div>
 					    <p> </p>
 					    <div class="col-xs-3">
