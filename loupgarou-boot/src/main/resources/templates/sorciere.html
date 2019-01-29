@@ -1,0 +1,17 @@
+<div class="powerInter">
+		<div id="centered-button">
+			<a class="btn btn-success" th:href="@{jeu/sauver/{id}(id=${enDanger.userID})}"> Sauver [[${enDanger.userName}]] </a>
+		</div>
+		
+		<form method="post" action="jeu/tuer">
+			<select name="atuer" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+				<option th:each="v : ${listVills}" th:value="${v.userID}" th:if="${ currentUser.userID != v.userID }">[[${v.userName}]]</option>
+			</select>
+			
+			<div id="centered-button">
+				<button type="submit" class="btn btn-danger">Tuer</button>
+			</div>
+			
+		</form>
+		
+</div>

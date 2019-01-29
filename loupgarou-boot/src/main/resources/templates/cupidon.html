@@ -1,0 +1,15 @@
+<div class="powerInter">
+		<form method="post" action="jeu/couple">
+			<select name="lover1Id" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+				<option th:each="v : ${listVills}" th:value="${v.userID}" th:if="${ v.vivant == true}">[[${v.userName}]]</option>
+			</select>
+			
+			<select name="lover2Id" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+				<option th:each="v : ${listVills}" th:value="${v.userID}" th:if="${ v.vivant == true}">[[${v.userName}]]</option>
+			</select>
+			
+			<div id="centered-button">
+				<button type="submit" class="btn btn-danger">Mettre en couple</button>
+			</div>
+		</form>
+</div>

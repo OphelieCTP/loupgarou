@@ -1,0 +1,16 @@
+<div id="listeJoueur" class="col-sm-11">
+	<div class="container-fluid" id="listeJoueurTitle">
+		Les Villageois
+	</div>
+	<div class="liste" th:each="v : ${listVills}">
+		<img class="cardlist" src="img/vill.png" th:if="${ v.vivant != true AND v.role == 'Villageois' }"/>
+		<img class="cardlist" src="img/loupg.png" th:if="${ v.vivant != true AND v.role == 'Loup' }"/>
+		<img class="cardlist" src="img/chasseur.png" th:if="${ v.vivant != true AND v.role == 'Chasseur' }"/>
+		<img class="cardlist" src="img/cupidon.png" th:if="${ v.vivant != true AND v.role == 'Cupidon' }"/>
+		<img class="cardlist" src="img/pfille.png" th:if="${ v.vivant != true AND v.role == 'PetiteFille' }"/>
+		<img class="cardlist" src="img/sorciere.png" th:if="${ v.vivant != true AND v.role == 'Sorciere' }"/>
+		<img class="cardlist" src="img/voyante.png" th:if="${ v.vivant != true AND v.role == 'Voyante' }"/>
+		<img class="cardlist" src="img/dos.jpg" th:if="${ v.vivant == true }"/>
+		<label>[[${v?.userName}]]</label>
+	</div>
+</div>
