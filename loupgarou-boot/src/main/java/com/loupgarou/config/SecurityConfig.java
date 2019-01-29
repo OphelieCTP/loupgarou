@@ -19,17 +19,6 @@ import com.loupgarou.security.AuthService;
 @EnableGlobalMethodSecurity(prePostEnabled=true, securedEnabled=true)
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	@Autowired
-	private AuthService authService;
-	
-//	@Override
-//	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.inMemoryAuthentication()
-//		.withUser("user").password("{noop}user").roles("USER")
-//		.and()
-//		.withUser("admin").password("{noop}admin").roles("USER", "ADMIN");
-//	}
-	
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -38,28 +27,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/**").hasAnyRole("ADMIN", "USER")
 		.and()
 		.formLogin()
-			.loginPage("/login")
+			.loginPage("/index")
 			.loginProcessingUrl("/perform_login")
-			.defaultSuccessUrl("/home", true)
-			.failureUrl("/login?error=true")
+			.defaultSuccessUrl("/rules", true)
+			.failureUrl("/index?error=true")
 			.permitAll() //acc�der � la page en �tant d�connect�
 		.and()
 			.logout()
 			.logoutUrl("/logout")
-			.logoutSuccessUrl("/login")
+			.logoutSuccessUrl("/index")
 			.permitAll();
 	}
-//	
-//	@Override
-//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.userDetailsService(this.authService);
-////		auth.inMemoryAuthentication()
-////		.withUser("admin").password("{noop}admin123456").roles("ADMIN")
-////		.and()
-////		.withUser("user").password("{noop}user123456").roles("USER");
-//	}
-//	
-//	
+	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		//System.out.println(new BCryptPasswordEncoder().encode("123456"));
