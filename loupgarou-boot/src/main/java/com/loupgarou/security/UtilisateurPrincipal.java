@@ -29,11 +29,14 @@ public class UtilisateurPrincipal implements UserDetails {
 		List<GrantedAuthority> myAuthorities = new ArrayList<GrantedAuthority>();
 		//myAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 		if(this.utilisateur.getUserID()==1) { 
-			myAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN")); }
+			myAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN")); 
+		}
 		else {
-			if(this.utilisateur.getUserID()==2) { myAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));}
-			else { myAuthorities.add(new SimpleGrantedAuthority("ROLE_USER")); } 
+			if(this.utilisateur.getUserID()==2) 
+				{ myAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 			}
+			else { myAuthorities.add(new SimpleGrantedAuthority("ROLE_USER")); } 
+		}
 				
 		
 		return myAuthorities;
