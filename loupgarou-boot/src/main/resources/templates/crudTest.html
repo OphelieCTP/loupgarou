@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -33,38 +33,35 @@
 			</h1>
 						
 			<p> </p>
-			<div class="col-xs-3">
-				<input type="submit" id="add" class="btn btn-primary btn-md btn-block" value = "Ajouter Joueur" >
-			</div>
-			<p> </p>
 			
-			<div sec:authorize="hasRole('ROLE_ADMIN')">
-			<section id="addUser" >
-				<div>
-					<form method="post">
-					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-						<div> 
-							<label for="nom"> Nom Utilisateur : </label>
-							<input type="text" id="nom" th:value="${utilisateur?.userName}" name="userName" required/>
-						</div>
-						<div> 
-							<label for="wp"> Mot de Passe : </label> 
-							<input type="text" id="wp" th:value="${utilisateur?.passWord}" name="passWord" required/>
-						</div>
-						<div> 
-							<label for="naissance"> Date Naissance : </label> 
-							<!-- <input type="date" id="naissance" th:value="${#dates.formatISO(utilisateur?.dateNaissance)}" placeholder="0000-00-00" name="dateNaissance" required/> -->
-							<input type="date" id="naissance" th:value="${datenaiss}" name="datenaiss" required/>
-							<!-- "${#dates.format(sdf.parse(utilisateur?.dateNaissance), 'yyyy-MM-dd')}" -->
-						</div> <!-- ${#dates.formatISO(standardDate)} -->
-						<div> 
-							<label for="email"> Email : </label> 
-							<input type="text" id="email" th:value="${utilisateur?.email}" name="email" required/>
-						</div>
-						<input type="submit" id="addDone" th:value="Enregister" />
-					</form>
-				</div>
-			</section>
+			<div class="col-xs-3" sec:authorize="hasRole('ROLE_ADMIN')" th:if="${idEd == null}">
+					<input type="submit" id="add" class="btn btn-primary btn-md btn-block" value = "Ajouter Joueur" >
+				<p> </p>
+	
+				<section id="addUser" >
+					<div>
+						<form method="post">
+						<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+							<div> 
+								<label for="nom"> Nom Utilisateur : </label>
+								<input type="text" id="nom" th:value="${utilisateur?.userName}" name="userName" required/>
+							</div>
+							<div> 
+								<label for="wp"> Mot de Passe : </label> 
+								<input type="password" id="wp" th:value="${utilisateur?.passWord}" name="passWord" required/>
+							</div>
+							<div> 
+								<label for="naissance"> Date Naissance : </label> 
+								<input type="date" id="naissance" th:value="${datenaiss}" name="datenaiss" required/>
+							</div>
+							<div> 
+								<label for="email"> Email : </label> 
+								<input type="text" id="email" th:value="${utilisateur?.email}" name="email" required/>
+							</div>
+							<input type="submit" id="addDone" th:value="Enregister" />
+						</form>
+					</div>
+				</section>
 			</div>
 			
 			<table class="table">
@@ -72,20 +69,20 @@
 			    <tr>
 			      <th class="align-middle" scope="col">ID</th>
 			      <th class="align-middle" scope="col">Nom Utilisateur</th>
-			      <th class="align-middle" scope="col">Mot de Passe</th>
+			      <th class="align-middle" scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Mot de Passe</th>
 			      <th class="align-middle" scope="col">Statut Connexion</th>
 			      <th class="align-middle" scope="col">Statut Banni</th>
 			      <th class="align-middle" scope="col">Nombre de plaintes</th>
 			      <th class="align-middle" scope="col">Date Naissance</th>
 			      <th class="align-middle" scope="col">Email</th>
-			      <th class="align-middle" scope="col">Actions possibles</th>
+			      <th class="align-middle" scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Actions possibles</th>
 			    </tr>
 			  </thead>
 			  <tbody th:each="user : ${utilisateurs}">
 			    <tr th:id="${user.userID}">
 			      <td class="align-middle" id="userID" th:text="${user.userID}" />
 			      <td class="align-middle" id="userName" th:text="${user.userName}" />
-			      <td class="align-middle" id="passWord" th:text="${user.passWord}" />
+			      <td class="align-middle" id="passWord" th:text="${user.passWord}" sec:authorize="hasRole('ROLE_ADMIN')" />
 			      <td class="align-middle" id="isConnected" th:text="${user.isConnected}" />
 			      <td class="align-middle" id="isBanni" th:text="${user.isBanni}" />
 			      <td class="align-middle" id="nbPlaintes" th:text="${user.nbPlaintes}" />

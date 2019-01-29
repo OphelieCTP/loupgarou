@@ -9,11 +9,11 @@ $('input[id=add]').bind('click',function(){
 	return false;
 })
 
-$('input[id=addDone]').bind('click',function(){
-	// alert("declencheur");
-	$('section[id=addUser]').hide();
-	return false;
-})
+//$('input[id=addDone]').bind('click',function(){
+//	// alert("declencheur");
+//	$('section[id=addUser]').hide();
+//	return false;
+//})
 
 // event : onload
 

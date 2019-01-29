@@ -1,4 +1,4 @@
-package com.formation.security.annotation;
+package com.loupgarou.security.annotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

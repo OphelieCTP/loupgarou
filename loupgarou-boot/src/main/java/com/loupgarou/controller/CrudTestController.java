@@ -20,16 +20,16 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.loupgarou.dao.IDAOUtilisateur;
 import com.loupgarou.model.*;
 
+import com.loupgarou.security.annotation.IsAdmin;
+
 @Controller
 public class CrudTestController {
 	@Autowired
 	private IDAOUtilisateur daoUtilisateur;
 	
 	@RequestMapping(value="/crudTest", method=RequestMethod.GET)
-	public String users(Model model, 
-			@RequestParam(value="idEd", required=false) Integer id,
-			@RequestParam(value="ban", required=false) Integer ban
-			) {
+	public String users(Model model, @RequestParam(value="idEd", required=false) Integer id,
+			@RequestParam(value="ban", required=false) Integer ban ) {
 		//RedirectView redirect = new RedirectView("crudTest");
 		if(ban!=null) { 
 			if(ban==1) {
@@ -45,18 +45,19 @@ public class CrudTestController {
 				daoUtilisateur.save(user);
 				}
 			}
-		if(id!=null) { model.addAttribute("idEd", id); }
+		if(id!=null) { model.addAttribute("idEd", id);}
 		model.addAttribute("utilisateurs", daoUtilisateur.findAll());
 		//redirect.setExposeModelAttributes(false);
 		return "crudTest";
 		//return redirect;
 	}
 	
+	@IsAdmin
 	@PostMapping("/crudTest")
 	public RedirectView editUser(@Valid @ModelAttribute Utilisateur utilisateur, BindingResult result, Model model, 
 			@RequestParam(value="idEd", required=false) Integer id,
 			@DateTimeFormat(pattern = "yyyy-MM-dd") Date datenaiss) {
-		RedirectView redirect = new RedirectView("crudTest");
+		RedirectView redirect = new RedirectView("crudTest");System.out.println("OK_111111");
 		if(id!=null) {
 			model.addAttribute("utilisateur", daoUtilisateur.findById(id).get());
 			utilisateur.setUserID(id);
@@ -77,8 +78,8 @@ public class CrudTestController {
 		    return redirect;
 		}		
 	}
-	
-	
+
+	@IsAdmin
 	@GetMapping("/deleteUser")
 	public String deleteUser(@RequestParam(value="idSpr", required=true, defaultValue="0") Integer id, Model model) {
 		daoUtilisateur.deleteById(id);
