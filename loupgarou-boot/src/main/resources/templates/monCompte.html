@@ -3,8 +3,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<link rel="stylesheet" href="asset/css/style.css"/>
-<link rel="stylesheet" href="asset/css/animate.css"/>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/animate.css"/>
 <link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe|Caveat+Brush|Covered+By+Your+Grace|Dancing+Script|Gloria+Hallelujah|Gochi+Hand|Merienda|Neucha|Nothing+You+Could+Do|Pacifico|Sacramento|Shadows+Into+Light|VT323" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
 
@@ -20,7 +20,7 @@
 		</div>
 	
 	<div id="container-fluid" class="col-sm-12">
-		<div id="page-left" class="col-sm-2">
+		<div id="page-left" class="col-sm-2" th:replace="menu.html :: div#page-left">
 		<br/>
 			<div id="menu" class="col-sm-11">
 				<div class="container-fluid" id="menuTitle">
@@ -201,17 +201,16 @@
 		
 		<div class="blockquote-footer"> Copyright SopraSteria AJC &copy;  
 				<br>
-				Toutes les cartes marquées &copy; sont copyright des éditions "Lui-même", Philippe des Pallières, Hervé Marly.
+				Toutes les cartes marquÃ©es &copy; sont copyright des Ã©ditions "Lui-mÃªme", Philippe des PalliÃ¨res, HervÃ© Marly.
 				<br>
-				Toutes les illustrations sont copyright des éditions "Lui-même", Alexios Tjoyas, Philippe des Pallières, Hervé Marly,.
+				Toutes les illustrations sont copyright des Ã©ditions "Lui-mÃªme", Alexios Tjoyas, Philippe des PalliÃ¨res, HervÃ© Marly,.
 				<br>
-				Toute utilisation sans l'accord écrit des détenteurs de droits, est strictement interdite.</div>
-		
+				Toute utilisation sans l'accord Ã©crit des dÃ©tenteurs de droits, est strictement interdite.</div>
 	</footer>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
-<script src="asset/js/afficheCompte.js"></script>
+<script src="js/afficheCompte.js"></script>
 <!-- Scripts jQuery, Popper et Bootstrap, issus du CDN -->
 <!-- autre version jquery -->
 <!-- https://developers.google.com/speed/libraries/ -->

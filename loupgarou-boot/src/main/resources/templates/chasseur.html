@@ -1,5 +1,6 @@
 <div class="powerInter">
 		<form method="post" action="jeu/tuer">
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 			<select name="atuer" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
 				<option th:each="v : ${listVills}" th:value="${v.userID}" th:if="${ currentUser.userID != v.userID AND v.vivant == true}">[[${v.userName}]]</option>
 			</select>

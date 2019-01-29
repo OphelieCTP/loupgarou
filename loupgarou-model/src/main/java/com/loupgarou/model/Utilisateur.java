@@ -50,7 +50,7 @@ public class Utilisateur {
 	@Column(name="UTIL_PASSWORD", length=250, nullable=false)
 	@NotEmpty
 	@NotNull
-	@Size(max=50)
+	@Size(max=250)
 	protected String passWord = "";
 	
 	@Column(name="UTIL_NB_PLAINTES")
