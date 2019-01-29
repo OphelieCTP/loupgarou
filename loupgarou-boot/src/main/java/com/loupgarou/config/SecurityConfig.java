@@ -13,6 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.loupgarou.security.AuthService;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
+
 
 @ComponentScan("fr.formation.security")
 //@EnableWebSecurity
@@ -41,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		System.out.println(new BCryptPasswordEncoder().encode("123456"));
+		//System.out.println(new BCryptPasswordEncoder().encode("123456"));
 		return new BCryptPasswordEncoder();
 		
 	}
