@@ -11,7 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import fr.formation.security.AuthService;
+import com.loupgarou.security.AuthService;
+
 
 @ComponentScan("fr.formation.security")
 //@EnableWebSecurity
