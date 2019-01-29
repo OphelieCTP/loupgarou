@@ -38,9 +38,11 @@
 			</div>
 			<p> </p>
 			
-			<section id="addUser">
+			<div sec:authorize="hasRole('ROLE_ADMIN')">
+			<section id="addUser" >
 				<div>
 					<form method="post">
+					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 						<div> 
 							<label for="nom"> Nom Utilisateur : </label>
 							<input type="text" id="nom" th:value="${utilisateur?.userName}" name="userName" required/>
@@ -63,6 +65,7 @@
 					</form>
 				</div>
 			</section>
+			</div>
 			
 			<table class="table">
 			  <thead>
@@ -88,47 +91,81 @@
 			      <td class="align-middle" id="nbPlaintes" th:text="${user.nbPlaintes}" />
 			      <td class="align-middle" id="dateNaissance" th:text="${user.dateNaissance}" />
 			      <td class="align-middle" id="email" th:text="${user.email}" />
-			      <td class="align-middle" id="actions">
+			      <td class="align-middle" id="actions" sec:authorize="hasRole('ROLE_ADMIN')">
 			      	<div>
-			      		<div class="col-xs-3"> <!-- href="produit.jsp" th:href="@{'/supprimer?id='+${prod.id}}"  -->
+			      		<div class="col-xs-3" sec:authorize="hasRole('ROLE_ADMIN')"> <!-- href="produit.jsp" th:href="@{'/supprimer?id='+${prod.id}}"  -->
 			      			<!-- <a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/editUser?idEd='+${user.userID}}"> Modifier </a> -->
-			      			<a class="btn btn-primary btn-md btn-block" role="button" id="addModif" 
+			      			<a class="btn btn-primary btn-md btn-block" role="button" id="addModif"
 			      				th:href="@{'/crudTest?idEd='+${user.userID}}"
-			      				> Modifier </a> <!-- th:onclick="'allowModifierForm('+${user.userID}+')'"  -->
+			      				> Modifier </a> <!-- th:onclick="'allowModifierForm('+${user.userID}+')'" -->
 			      			<!-- <a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/crudTest'({idEd}{user.userID})"> Modifier </a> -->
 					    </div>
 					    <p> </p>
-					    <div class="col-xs-3">
+					    <div class="col-xs-3" sec:authorize="hasRole('ROLE_ADMIN')">
 					    	<a class="btn btn-primary btn-md btn-block" role="button" th:if="${user.getIsBanni() == false}" 
 					    	th:href="@{'/crudTest?idEd='+${user.userID}}+'&ban=1'"> Banir </a>
 					    	<a class="btn btn-primary btn-md btn-block" role="button" th:if="${user.getIsBanni() == true}" 
 					    	th:href="@{'/crudTest?idEd='+${user.userID}}+'&ban=0'"> Dé-Banir </a>
 				      	</div>
 					    <p> </p>
-					    <div class="col-xs-3"> <!-- href="produit.jsp" th:href="@{'/supprimer?id='+${prod.id}}"  -->
+					    <div class="col-xs-3" sec:authorize="hasRole('ROLE_ADMIN')"> <!-- href="produit.jsp" th:href="@{'/supprimer?id='+${prod.id}}"  -->
 			      			<!-- <a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/crudTest?idSpr='+${user.userID}}"> Supprimer </a> -->
 			      			<a class="btn btn-primary btn-md btn-block" role="button" th:href="@{'/deleteUser?idSpr='+${user.userID}}"> Supprimer </a>
 					      	<!-- <input type="submit" class="btn btn-primary btn-md btn-block" value = "Supprimer" onclick="crudSupprimerJS(${user.id}); return false;"> -->
 				      	</div>
 			      	</div>
-				      <!-- <div>
-				      	<p> </p>
-				      	<div class="col-xs-3">
-				      		<input type="submit" class="btn btn-primary btn-md btn-block" value = "Banir" onclick="crudBanirJS(${user.id}); return false;">
-				      	</div>
-			      	  </div> -->
 			      </td>
 			    </tr>
-			    <tr th:id="${user.userID}+'F'" name="formMod" th:if="${idEd}!=null"><!-- th:if="${idEd != null}" --> <!-- mettre th:if ici, si attribute ?? -->
-			      <form method="post">
-			      <td class="align-middle" id="userID"> <input type="text" id="userID" th:value="${utilisateur?.userID}" name="userID"/> </td>
-			      <td class="align-middle" id="userName"> <input type="text" id="userName" th:value="${utilisateur?.userName}" name="userName"/> </td>
-			      <td class="align-middle" id="passWord"> <input type="text" id="passWord" th:value="${utilisateur?.passWord}" name="passWord"/> </td>
-			      <td class="align-middle" id="isConnected"> <input type="text" id="isConnected" th:value="${utilisateur?.isConnected}" name="isConnected"/> </td>
-			      <td class="align-middle" id="isBanni"> <input type="text" id="isBanni" th:value="${utilisateur?.isBanni}" name="isBanni"/> </td>
-			      <td class="align-middle" id="nbPlaintes"> <input type="text" id="nbPlaintes" th:value="${utilisateur?.nbPlaintes}" name="nbPlaintes"/> </td>
-			      <td class="align-middle" id="dateNaissance"> <input type="text" id="dateNaissance" th:value="${utilisateur?.dateNaissance}" name="dateNaissance"/> </td>
-			      <td class="align-middle" id="email"> <input type="text" id="email" th:value="${utilisateur?.email}" name="email"/> </td>
+			    <tr th:id="${user.userID}+'F'" th:name="formMod" th:if="${idEd == user.getUserID()}">
+			      
+			      <td class="align-middle" id="userID"> 
+			      	<form method="post">
+			      		<input type="text" id="userID" th:value="${utilisateur?.userID}" name="userID"/> 
+			      		<input type="submit" id="addDone" th:value="Enregister" />
+			      	</form>
+			      </td>
+			      <td class="align-middle" id="userName"> 
+			      	<form method="post">
+			      		<input type="text" id="userName" th:value="${utilisateur?.userName}" name="userName"/> 
+			      		<input type="submit" id="addDone" th:value="Enregister" />
+			      	</form>
+			      </td>
+			      <td class="align-middle" id="passWord"> 
+			      	<form method="post">
+			      		<input type="text" id="passWord" th:value="${utilisateur?.passWord}" name="passWord"/> 
+			      		<input type="submit" id="addDone" th:value="Enregister" />
+			      	</form>
+			      </td>
+			      <td class="align-middle" id="isConnected"> 
+			      	<form method="post">
+			      		<input type="text" id="isConnected" th:value="${utilisateur?.isConnected}" name="isConnected"/> 
+			      		<input type="submit" id="addDone" th:value="Enregister" />
+			      	</form>
+			      </td>
+			      <td class="align-middle" id="isBanni"> 
+			      	<form method="post">
+					    <input type="text" id="isBanni" th:value="${utilisateur?.isBanni}" name="isBanni"/> 
+			      		<input type="submit" id="addDone" th:value="Enregister" />
+			      	</form>
+			      </td>
+			      <td class="align-middle" id="nbPlaintes"> 
+			      	<form method="post">
+			    		  <input type="text" id="nbPlaintes" th:value="${utilisateur?.nbPlaintes}" name="nbPlaintes"/> 
+			      		<input type="submit" id="addDone" th:value="Enregister" />
+			      	</form>
+			      </td>
+			      <td class="align-middle" id="dateNaissance"> 
+			      	<form method="post">
+					      <input type="text" id="dateNaissance" th:value="${utilisateur?.dateNaissance}" name="dateNaissance"/> 
+			      		<input type="submit" id="addDone" th:value="Enregister" />
+			      	</form>
+			      </td>
+			      <td class="align-middle" id="email"> 
+			      	<form method="post">
+					      <input type="text" id="email" th:value="${utilisateur?.email}" name="email"/> 
+			      		<input type="submit" id="addDone" th:value="Enregister" />
+			      	</form>
+			      </td>
 			      <td class="align-middle" id="actions">
 			      	<div>
 			      		<div class="col-xs-3"> <!-- href="produit.jsp" th:href="@{'/supprimer?id='+${prod.id}}"  -->
@@ -141,23 +178,6 @@
 			      </form>
 			      </td>
 			    </tr>
-			    <!-- <form method="post">
-						<div> 
-							<label for="nom"> Nom Utilisateur : </label>
-							<input type="text" id="nom" th:value="${utilisateur?.userName}" name="userName" required/>
-						</div>
-						<div> 
-							<label for="naissance"> Date Naissance : </label> 
-							<input type="date" id="naissance" th:value="${#dates.formatISO(utilisateur?.dateNaissance)}" placeholder="0000-00-00" name="dateNaissance" required/>
-							<input type="date" id="naissance" th:value="${datenaiss}" name="datenaiss" required/>
-							"${#dates.format(sdf.parse(utilisateur?.dateNaissance), 'yyyy-MM-dd')}"
-						</div> ${#dates.formatISO(standardDate)}
-						<div> 
-							<label for="email"> Email : </label> 
-							<input type="text" id="email" th:value="${utilisateur?.email}" name="email" required/>
-						</div>
-						<input type="submit" id="addDone" th:value="Enregister" />
-					</form> -->
 			  </tbody>
 			</table>
 		

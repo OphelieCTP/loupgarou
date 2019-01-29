@@ -45,6 +45,7 @@ public class CrudTestController {
 				daoUtilisateur.save(user);
 				}
 			}
+		if(id!=null) { model.addAttribute("idEd", id); }
 		model.addAttribute("utilisateurs", daoUtilisateur.findAll());
 		//redirect.setExposeModelAttributes(false);
 		return "crudTest";
@@ -59,6 +60,7 @@ public class CrudTestController {
 		if(id!=null) {
 			model.addAttribute("utilisateur", daoUtilisateur.findById(id).get());
 			utilisateur.setUserID(id);
+			model.addAttribute("idEd", id);
 		}
 		
 		utilisateur.setDateNaissance(datenaiss);
