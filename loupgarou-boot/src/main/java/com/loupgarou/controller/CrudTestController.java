@@ -5,7 +5,10 @@ import java.util.Date;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -64,7 +67,22 @@ public class CrudTestController {
 			model.addAttribute("idEd", id);
 		}
 		
-		utilisateur.setDateNaissance(datenaiss);
+		if(id==null) {
+			utilisateur.setPassWord(new BCryptPasswordEncoder().encode(utilisateur.getPassWord()));
+			utilisateur.setDateNaissance(datenaiss);
+		}
+		
+		
+		
+		System.out.println(utilisateur.getUserID());
+		System.out.println(utilisateur.getUserName());
+		System.out.println(utilisateur.getPassWord());
+		System.out.println(utilisateur.getEmail());
+		System.out.println(utilisateur.getNbPlaintes());
+		System.out.println(utilisateur.getIsBanni());
+		System.out.println(utilisateur.getIsConnected());
+		System.out.println(utilisateur.getDateNaissance());
+		
 		
 		if(result.hasErrors()) {
 			System.out.println("User invalide");

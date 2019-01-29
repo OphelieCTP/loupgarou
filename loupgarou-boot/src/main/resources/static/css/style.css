@@ -25,6 +25,14 @@ td {
   vertical-align: middle;
 }
 
+table thead tr th #passWord {
+	width: 5%;
+}
+
+table body tr td #passWord {
+	width: 5%;
+}
+
 table tbody tr td div p {
 	line-height: 10pt;
 }
