@@ -1,29 +1,31 @@
 package com.loupgarou.controller;
 
+import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.util.ReflectionUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.loupgarou.dao.IDAOUtilisateur;
 import com.loupgarou.model.*;
 
 import com.loupgarou.security.annotation.IsAdmin;
+
+import ch.qos.logback.core.net.SyslogOutputStream;
 
 @Controller
 public class CrudTestController {
@@ -33,26 +35,23 @@ public class CrudTestController {
 	@RequestMapping(value="/crudTest", method=RequestMethod.GET)
 	public String users(Model model, @RequestParam(value="idEd", required=false) Integer id,
 			@RequestParam(value="ban", required=false) Integer ban ) {
-		//RedirectView redirect = new RedirectView("crudTest");
-		if(ban!=null) { 
-			if(ban==1) {
-				model.addAttribute("utilisateur", daoUtilisateur.findById(id).get());
+		if(id!=null) {
+			if(ban!=null) { 
 				Utilisateur user =  daoUtilisateur.findById(id).get(); 
-				user.setIsBanni(true);
-				daoUtilisateur.save(user);
+				if(ban==1) {
+					user.setIsBanni(true);
+					daoUtilisateur.save(user);
+					}
+				if(ban==0) {
+					user.setIsBanni(false);
+					daoUtilisateur.save(user);
+					}
 				}
-			if(ban==0) {
-				model.addAttribute("utilisateur", daoUtilisateur.findById(id).get());
-				Utilisateur user =  daoUtilisateur.findById(id).get(); 
-				user.setIsBanni(false);
-				daoUtilisateur.save(user);
-				}
+			model.addAttribute("utilisateur", daoUtilisateur.findById(id).get());
+			model.addAttribute("idEd", id);
 			}
-		if(id!=null) { model.addAttribute("idEd", id);}
 		model.addAttribute("utilisateurs", daoUtilisateur.findAll());
-		//redirect.setExposeModelAttributes(false);
 		return "crudTest";
-		//return redirect;
 	}
 	
 	@IsAdmin
@@ -60,30 +59,16 @@ public class CrudTestController {
 	public RedirectView editUser(@Valid @ModelAttribute Utilisateur utilisateur, BindingResult result, Model model, 
 			@RequestParam(value="idEd", required=false) Integer id,
 			@DateTimeFormat(pattern = "yyyy-MM-dd") Date datenaiss) {
-		RedirectView redirect = new RedirectView("crudTest");System.out.println("OK_111111");
+		RedirectView redirect = new RedirectView("crudTest");
 		if(id!=null) {
 			model.addAttribute("utilisateur", daoUtilisateur.findById(id).get());
 			utilisateur.setUserID(id);
 			model.addAttribute("idEd", id);
 		}
-		
-		if(id==null) {
+		else {
 			utilisateur.setPassWord(new BCryptPasswordEncoder().encode(utilisateur.getPassWord()));
-			utilisateur.setDateNaissance(datenaiss);
 		}
-		
-		
-		
-		System.out.println(utilisateur.getUserID());
-		System.out.println(utilisateur.getUserName());
-		System.out.println(utilisateur.getPassWord());
-		System.out.println(utilisateur.getEmail());
-		System.out.println(utilisateur.getNbPlaintes());
-		System.out.println(utilisateur.getIsBanni());
-		System.out.println(utilisateur.getIsConnected());
-		System.out.println(utilisateur.getDateNaissance());
-		
-		
+		utilisateur.setDateNaissance(datenaiss);
 		if(result.hasErrors()) {
 			System.out.println("User invalide");
 			return redirect;
@@ -103,23 +88,5 @@ public class CrudTestController {
 		daoUtilisateur.deleteById(id);
 		return "redirect:/crudTest";
 	}
-	
-	/// VERSION FONCTIONNELLE EDITION EN PLUSIEURS PAGES : 
-	
-//	@GetMapping({"/editUser"})
-//	public String redirEditProd(@RequestParam(value="idEd", required=false, defaultValue="0") Integer id, Model model) {
-//		model.addAttribute("utilisateur", daoUtilisateur.findById(id).get());
-//		return "editUser";
-//	}
-//
-//	
-//	@PostMapping("/editUser")
-//	public String editUser(@RequestParam(value="idEd", required=true, defaultValue="0") int id, 
-//			@Valid @ModelAttribute Utilisateur utilisateur, @DateTimeFormat(pattern = "yyyy-MM-dd") Date datenaiss) {
-//		utilisateur.setDateNaissance(datenaiss);
-//		utilisateur.setUserID(id);
-//		daoUtilisateur.save(utilisateur);
-//		return "redirect:/crudTest";
-//	}
 
 }

@@ -21,16 +21,11 @@ body {
 	 
 }
 
-td {
-  vertical-align: middle;
-}
-
-table thead tr th #passWord {
-	width: 5%;
-}
-
-table body tr td #passWord {
-	width: 5%;
+.table.th, .table.td{
+	padding-top: 1px;
+	padding-right: 10px;
+	padding-bottom: 1px;
+	padding-left: 10px;
 }
 
 table tbody tr td div p {
@@ -41,11 +36,21 @@ table tbody tr td div p {
 	display : flex;
 }
 
+tr#scale th {
+	color: #ffffff;
+}
+
 #chat, #rules, #edit, #menu, #statJoueur, #vote, #listeJoueur{
 	margin:0 auto;
 }
 
+a.btn.btn-primary.btn-md.btn-block{
+	width: 100px;
+}
 
+a#add.btn.btn-primary.btn-md.btn-block{
+	width: auto;
+}
 
 #identification {
 	text-align : center;
