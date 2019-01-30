@@ -64,6 +64,9 @@ public class CrudTestController {
 			model.addAttribute("utilisateur", daoUtilisateur.findById(id).get());
 			utilisateur.setUserID(id);
 			model.addAttribute("idEd", id);
+			if(utilisateur.getPassWord()!=daoUtilisateur.findById(id).get().getPassWord()) {
+				utilisateur.setPassWord(new BCryptPasswordEncoder().encode(utilisateur.getPassWord()));
+			}
 		}
 		else {
 			utilisateur.setPassWord(new BCryptPasswordEncoder().encode(utilisateur.getPassWord()));

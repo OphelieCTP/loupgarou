@@ -49,7 +49,6 @@ public class IndexController {
 				}
 				Utilisateur currentUser = daoUtilisateur.findByUserName(name);
 				session.setAttribute("currentUser", currentUser);
-				//System.out.println("Bienvenue "+name);
 				return new RedirectView("/loupgarou-webth/rules");
 			}
 			else {
@@ -61,7 +60,7 @@ public class IndexController {
 			}
 		}
 		else {
-			System.out.println("utilisateur non pr�sent dans la DB");
+			System.out.println("utilisateur non présent dans la DB");
 			return new RedirectView("/loupgarou-webth/index#inscription");
 		}
 	}
