@@ -362,4 +362,10 @@ h3 img:hover {
 	text-align:left;
 }
 
+#menu button {
+	border:none;
+	background:none;
+	padding-left:0px;
+}
+
 
