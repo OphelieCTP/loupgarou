@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -72,6 +73,7 @@ public class IndexController {
 			@DateTimeFormat(pattern = "yyyy-MM-dd") Date datenaiss,
 			@Valid @ModelAttribute Utilisateur newUser, BindingResult result
 			) {
+			BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
 			System.out.println(datenaiss);
 		if(newUser.getPassWord().equals(pass2)) {
 			newUser.setDateNaissance(datenaiss);
@@ -83,6 +85,7 @@ public class IndexController {
 			}
 			else {
 				System.out.println("User ok");
+				newUser.setPassWord((bcrypt.encode(newUser.getPassWord())));
 				daoUtilisateur.save(newUser);
 				session.setAttribute("currentUser", newUser);
 				model.addAttribute("utilisateurs", daoUtilisateur.findAll());

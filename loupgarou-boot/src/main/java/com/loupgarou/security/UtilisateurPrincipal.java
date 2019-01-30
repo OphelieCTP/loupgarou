@@ -49,7 +49,14 @@ public class UtilisateurPrincipal implements UserDetails {
 	}
 
 	public boolean isAccountNonLocked() {
-		return true;
+		if(this.utilisateur.getIsBanni())
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 
 	public boolean isCredentialsNonExpired() {
