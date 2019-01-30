@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.loupgarou.divers.*;
 
 import javax.persistence.Column;
@@ -39,24 +40,28 @@ public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="UTIL_ID")
+	@JsonView(Views.Utilisateur.class)
 	protected int userID = 0;
 	
 	@Column(name="UTIL_USERNAME", length=50, nullable=false)
 	@NotEmpty
 	@NotNull
 	@Size(max=50)
+	@JsonView(Views.Utilisateur.class)
 	protected String userName = "";
 	
 	@Column(name="UTIL_PASSWORD", length=250, nullable=false)
 	@NotEmpty
 	@NotNull
 	@Size(max=250)
+	@JsonView(Views.Utilisateur.class)
 	protected String passWord = "";
 	
 	@Column(name="UTIL_NB_PLAINTES")
 	protected int nbPlaintes;
 	
 	@Column(name="UTIL_IS_CONNECTED")
+	@JsonView(Views.Utilisateur.class)
 	protected Boolean isConnected = false;
 	
 	@Column(name="UTIL_BANNI")
@@ -77,6 +82,7 @@ public class Utilisateur {
 	protected Chat chat; 
 	
 	@Column(name="UTIL_ROLE", length = 50 , insertable=false, updatable=false)	
+	@JsonView(Views.Utilisateur.class)
 	@NotEmpty
 	protected String role = "";
 	

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.loupgarou.divers.fonctions;
 
 
@@ -19,12 +20,15 @@ public class Villageois extends Utilisateur{
 //	protected int villID;
 	
 	@Column(name="VILL_AMOUREUX")
+	@JsonView(Views.Villageois.class)
 	protected Boolean amoureux;
 	
 	@Column(name="VILL_VIVANT")
+	@JsonView(Views.Villageois.class)
 	protected Boolean vivant;
 	
 	@Column(name="VILL_BULLETIN")
+	@JsonView(Views.Villageois.class)
 	@NotNull
 	protected Integer vote;
 	
@@ -35,6 +39,7 @@ public class Villageois extends Utilisateur{
 	protected Boolean aVote = false;
 	
 	@Column(name="VILL_ENDORMIT")
+	@JsonView(Views.Villageois.class)
 	protected Boolean endormit;
 	
 	@Column(name="VILL_CAPITAINE")
