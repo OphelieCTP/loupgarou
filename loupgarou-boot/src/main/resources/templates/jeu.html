@@ -194,7 +194,7 @@
 				Vote
 				</div>
 				<form id="voteJ" method="post" action="jeu/vote">
-					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+					<!-- <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /> -->
 					<div class="radio" th:each="v : ${listVills}">
 						<input type="radio" name="vote" th:value="${v?.userID}" th:if="${ currentUser.userID != v.userID AND v.vivant == true}"/>
 						<label th:if="${ currentUser.userID != v.userID AND v.vivant == true}">[[${v?.userName}]] </label>

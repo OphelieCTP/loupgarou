@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.loupgarou.dao.IDAOVillageois;
+import com.loupgarou.model.Views;
 import com.loupgarou.model.Villageois;
 
 @Controller
@@ -24,7 +26,7 @@ public class JeuController {
 	
 	@GetMapping("/jeu")
 	public String afficherJeu(Model model, HttpSession session) {
-		Villageois currPlayer = daoVillageois.findById(12).get();
+		Villageois currPlayer = daoVillageois.findById(10).get();
 		session.setAttribute("currentPlayer", currPlayer);
 		model.addAttribute("currentUser", currPlayer);
 		

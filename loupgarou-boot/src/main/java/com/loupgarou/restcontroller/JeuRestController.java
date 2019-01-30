@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.loupgarou.dao.IDAOVillageois;
+import com.loupgarou.model.Views;
 import com.loupgarou.model.Villageois;
 
 
@@ -26,6 +28,7 @@ public class JeuRestController {
 	IDAOVillageois daoVillageois;
 	
 	@GetMapping("/jeu")
+	@JsonView(Views.Villageois.class)
 	public List<Villageois> getJoueurs() {
 		List<Villageois> mesVillageois = daoVillageois.findByPartieID(1);
 		return mesVillageois;
@@ -34,35 +37,39 @@ public class JeuRestController {
 	
 	//attendre l'identifiant du joueur a modifier
 	@PostMapping("/jeu/vote")
-	public Villageois EnregistreVote(@RequestParam Integer vote, HttpSession session)
+	@JsonView(Views.Villageois.class)
+	public Villageois EnregistreVote(@RequestParam Integer vote, @RequestParam Integer id)
 	{
-		Villageois currPlayer = (Villageois)session.getAttribute("currentPlayer");
+		Villageois currPlayer = daoVillageois.findById(id).get();
 		currPlayer.setVote(vote);
 		System.out.println(currPlayer.getEndormit());
 		daoVillageois.save(currPlayer);
 		return currPlayer;
 	}
 	
-	@GetMapping("jeu/sauver/{sauverId}")
-	public String sauverVillageois(@PathVariable Integer sauverId)
+	@PostMapping("jeu/sauver/{sauverId}")
+	@JsonView(Views.Villageois.class)
+	public Villageois sauverVillageois(@PathVariable Integer sauverId)
 	{
 		Villageois aSauver = daoVillageois.findById(sauverId).get();
 		aSauver.setVivant(true);
 		daoVillageois.save(aSauver);
-		return "redirect:/jeu";
+		return aSauver;
 	}
 	
 	@PostMapping("jeu/tuer")
-	public String tuerVillageois(@RequestParam Integer atuer)
+	@JsonView(Views.Villageois.class)
+	public Villageois tuerVillageois(@RequestParam Integer atuer)
 	{
 		Villageois victime = daoVillageois.findById(atuer).get();
 		victime.setVivant(false);
 		daoVillageois.save(victime);
-		return "redirect:/jeu";
+		return victime;
 	}
 	
 	@PostMapping("jeu/voir")
-	public String voirVillageois(@RequestParam Integer avoir, HttpSession session)
+	@JsonView(Views.Villageois.class)
+	public Villageois voirVillageois(@RequestParam Integer avoir, HttpSession session)
 	{
 		Villageois vu = daoVillageois.findById(avoir).get();
 		List<Villageois> joueurVu = (List<Villageois>)session.getAttribute("joueurVu");
@@ -72,24 +79,26 @@ public class JeuRestController {
 		}
 		joueurVu.add(vu);
 		session.setAttribute("joueurVu", joueurVu);
-		return "redirect:/jeu";
+		return vu;
 	}
 	
 	@PostMapping("jeu/couple")
-	public String formerCouple(@RequestParam Integer lover1Id, @RequestParam Integer lover2Id, HttpSession session)
+	@JsonView(Views.Villageois.class)
+	public List<Villageois> formerCouple(@RequestParam Integer lover1Id, @RequestParam Integer lover2Id, HttpSession session)
 	{
+		List<Villageois> couple = new ArrayList<Villageois>();
 		if(lover1Id != lover2Id)
 		{
 			Villageois lover1 = daoVillageois.findById(lover1Id).get();
 			lover1.setAmoureux(true);
-			daoVillageois.save(lover1);
+			couple.add(daoVillageois.save(lover1));
 			Villageois lover2 = daoVillageois.findById(lover2Id).get();
 			lover2.setAmoureux(true);
-			daoVillageois.save(lover2);
+			couple.add(daoVillageois.save(lover2));
 			Boolean cupidonPouv = (Boolean)session.getAttribute("cupidonPouv");
 			cupidonPouv = false;
 			session.setAttribute("cupidonPouv", cupidonPouv);
 		}
-		return "redirect:/jeu";
+		return couple;
 	}
 }
