@@ -30,13 +30,10 @@ public class Partie {
 	//private ArrayList<Villageois> joueurs = new ArrayList<Villageois>();
 	
 	@Column(name="PART_NB_VILLAGEOIS")
-	@NotEmpty
 	private int nbVillageois;
 	@Column(name="PART_NB_LOUP")
-	@NotEmpty
 	private int nbLoups;
 	@Column(name="PART_ETAT")
-	@NotEmpty
 	private Boolean etat;
 	
 	@OneToOne
@@ -46,7 +43,6 @@ public class Partie {
 	
 	@Column(name="PART_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
-	@NotEmpty
 	private Date dateCreation = new Date();
 	
 	
@@ -59,7 +55,7 @@ public class Partie {
 		nbVillageois = 0;
 		nbLoups = 0;
 		etat = true;
-		chat = new Chat();
+		//chat = new Chat();
 		joueurs = new ArrayList<Villageois>();
 	}
 	
