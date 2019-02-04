@@ -26,5 +26,5 @@ public interface IDAOVillageois extends JpaRepository<Villageois, Integer>  {
 	public List<Villageois> findByPartieID(@Param("id") Integer id);
 	
 	//A ECRIRE 
-	public Villageois initVillageois(@Param("chatId") Integer chatId, @Param("role") String role, @Param("partieId") Integer partieId, @Param("amoureux") Boolean amoureux,  @Param("vivant") Boolean vivant,  @Param("endormit") Boolean endormit,  @Param("capitaine") Boolean capitaine);		
+	//public Villageois initVillageois(@Param("chatId") Integer chatId, @Param("role") String role, @Param("partieId") Integer partieId, @Param("amoureux") Boolean amoureux,  @Param("vivant") Boolean vivant,  @Param("endormit") Boolean endormit,  @Param("capitaine") Boolean capitaine);		
 }

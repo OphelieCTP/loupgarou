@@ -1,0 +1,108 @@
+h1 {
+	font-size: 60px;
+	color: ThreeDDarkShadow;
+	font-family: 'Poiret One', cursive;
+	text-align: center;
+	border-top: solid #9bA5b5 50px;
+	color: white;
+}
+
+h2 {
+	font-size: 40px;
+	color:red;
+	font-family: 'Special Elite', cursive;
+	text-align: center;
+	/* text-decoration: underline dotted; */
+	
+}
+
+h3 {
+	font-size: 20px;
+	color: black;
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+	font-weight:bold;
+	
+}
+
+h4 {
+	font-size: 20px;
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+	padding-left: 50px;
+	padding-right: 50px;
+	font-weight:bold;
+}
+
+div {
+	font-family: 'Arial';
+	color: white;
+	text-align: justify;
+	margin: 2px 2px 1em 0;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+ul,ol{
+	padding-left: 100px;
+	padding-right: 100px;
+	color: withe;
+}
+li ,b{
+	color: white;
+}
+#div1,#div2, #div3, #div5, #div6, #div8, #div9 {
+	text-align: center;
+}
+
+#id1{
+    /* color: inherit; */
+	 background-color:white; 
+}
+nav li a {
+	position: relative;
+	text-decoration: none;
+	
+}
+
+nav li a::before {
+	content: "";
+	position: absolute;
+	bottom: -5px;
+	left: 50%;
+	width: 0;
+	height: 4px;
+	background: #00008B;
+	transition: all 0.25s ease-in-out;
+	width: 0;
+}
+
+nav li a:hover::before {
+	left: 0;
+	width: 100%;
+}
+footer {
+	position: absolute;
+	text-align: center;
+	color: white;
+	
+}
+
+.RulesSection {
+	background : rgba(94,94,94,0.8);
+	border-radius: 20px;
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-top: 50px;
+	margin-bottom: 50px; 
+	padding-bottom:20px;		
+}
+
+.RulesSection .RulesTitle{
+	background: black;
+	margin-left: -50px;
+    width: calc(100% + 100px);
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	padding-top:10px;
+	padding-bottom:7px;
+}
