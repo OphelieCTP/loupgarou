@@ -12,4 +12,8 @@ public class Views {
 	public static class Villageois extends Utilisateur {
 		
 	}
+	
+	public static class Message extends Common {
+		
+	}
 }

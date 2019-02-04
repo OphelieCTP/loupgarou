@@ -1,0 +1,13 @@
+<p>
+  chat works!
+</p>
+
+<table>
+     <tbody>
+          <!-- <tr *ngFor="let p of produits">  -->
+          <tr *ngFor="let mess of MessageService.findAllAsync() | async">
+               <td> {{ mess.contenu }} </td>
+              
+          </tr>
+     </tbody>
+</table>

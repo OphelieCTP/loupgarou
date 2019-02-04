@@ -17,6 +17,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="message")
 public class Message {
@@ -24,27 +26,33 @@ public class Message {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="MESS_ID")
+	@JsonView(Views.Common.class)
 	private int idMessage;
 
 	@Column(name="MESS_USERNAME", length=50, nullable=false)
 	@NotEmpty
 	@NotNull
 	@Size(max=50)
+	@JsonView(Views.Common.class)
 	private String joueur;
 	
 	@Column(name="MESS_description")
 	@Lob
+	@JsonView(Views.Common.class)
 	private String contenu;
 	
 	@Column(name="MESS_DATE_ENVOI")
 	@Temporal(TemporalType.DATE)
+	@JsonView(Views.Common.class)
 	private Date dateCreation;
 	
 	@Column(name="MESS_VISIBLE")
+	@JsonView(Views.Common.class)
 	private Visible visible;
 
 	@ManyToOne
 	@JoinColumn(name="MESS_ID_CHAT")
+	@JsonView(Views.Common.class)
 	private Chat chat; 
 	
 	public Message()
