@@ -1,3 +1,114 @@
-<p>
-  jeu works!
-</p>
+<div id="container-fluid" class="col-sm-12">
+
+
+		<div id="page-left" class="col-sm-2">
+		<br/>
+			<div id="menu" class="col-sm-11" th:replace="menu.html :: div#menu">
+				<div class="container-fluid" id="menuTitle">
+				Menu
+				</div>
+
+				<ul class="nav nav-pills nav-stacked">
+                          <li role="presentation"><a class="menu-item" [routerLink]="['/jeu']" routerLinkActive="active">Démarrer une partie</a></li>
+                          <li role="presentation"><a class="menu-item" [routerLink]="['/rules']" routerLinkActive="active">Regles du jeu</a></li>
+                          <li role="presentation"><a class="menu-item" [routerLink]="['/crud']" routerLinkActive="active">Editer les joueurs</a></li>
+                          <li role="presentation"><a class="menu-item" [routerLink]="['/monCompte']" routerLinkActive="active">Mon Compte</a></li>
+                          <li role="presentation"><form method="post" action="/logout">
+					 <button type="submit" class="menu-item">Deconnexion</button></form></li>
+
+				</ul>
+			</div>
+		<br/>
+			<div id="statJoueur" class="col-md-11">
+				<div class="container-fluid" id="statJTitle">
+				Rôle
+				</div>
+
+				<!-- <div class="carte" th:if="${ currentUser.role == 'Villageois' }">
+					<div id="imgLegend" > [[${ currentUser.userName }]] - Villageois</div>
+					<img id="carteJ" src="img/vill.png"  />
+				</div>
+				<div class="carte" th:if="${ currentUser.role == 'Loup' }">
+					<div id="imgLegend" >[[${ currentUser.userName }]] - Loup Garou</div>
+					<img id="carteJ" src="img/loupg.png"  />
+				</div>
+				<div class="carte" th:if="${ currentUser.role == 'Chasseur' }">
+					<div id="imgLegend" >[[${ currentUser.userName }]] - Chasseur</div>
+					<img id="carteJ" src="img/chasseur.png"  />
+				</div>
+				<div class="carte" th:if="${ currentUser.role == 'Cupidon' }">
+					<div id="imgLegend" >[[${ currentUser.userName }]] - Cupidon</div>
+					<img id="carteJ" src="img/cupidon.png"  />
+				</div>
+				<div class="carte" th:if="${ currentUser.role == 'PetiteFille' }">
+					<div id="imgLegend" >[[${ currentUser.userName }]] - Petite Fille</div>
+					<img id="carteJ" src="img/pfille.png"  />
+				</div>
+				<div class="carte" th:if="${ currentUser.role == 'Sorciere' }">
+					<div id="imgLegend" >[[${ currentUser.userName }]] - Sorcière</div>
+					<img id="carteJ" src="img/sorciere.png"  />
+				</div>
+				<div class="carte" th:if="${ currentUser.role == 'Voyante' }">
+					<div id="imgLegend" >[[${ currentUser.userName }]] - Voyante</div>
+					<img id="carteJ" src="img/voyante.png"  />
+				</div>
+
+				<div th:if="${ currentUser.role == 'Sorciere' }" th:include="sorciere">
+				</div>
+
+				<div th:if="${ currentUser.role == 'Voyante' }" th:include="voyante">
+				</div>
+
+				<div th:if="${ currentUser.role == 'Chasseur' }" th:include="chasseur">
+				</div>
+
+				<div th:if="${ currentUser.role == 'Cupidon' AND cupidonPouv == true }" th:include="cupidon">
+				</div> -->
+
+			</div>
+		</div>
+
+		<div id="page-center" class="col-sm-8">
+			<br/>
+			<div id="chat" class="col-md-11">
+
+			</div>
+			<div id="edit" >
+			<br/>
+				<form class="col-md-12" >
+				<div class="input-group">
+				  <input type="text" class="form-control" aria-label="...">
+				  <div class="input-group-btn">
+				   	 <input class="btn btn-info" type="submit" value="Envoyer" />
+				  </div>
+				</div>
+				</form>
+			</div>
+			<br/>
+		</div>
+
+		<div id="page-right" class="col-sm-2">
+		<br/>
+			<div id="vote" class="col-sm-11">
+				<div class="container-fluid" id="voteTitle">
+				Vote
+				</div>
+				<!-- <form id="voteJ" method="post" action="jeu/vote">
+					<!-- <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+					<div class="radio" th:each="v : ${listVills}">
+						<input type="radio" name="vote" th:value="${v?.userID}" th:if="${ currentUser.userID != v.userID AND v.vivant == true}"/>
+						<label th:if="${ currentUser.userID != v.userID AND v.vivant == true}">[[${v?.userName}]] </label>
+					</div>
+
+					<div id="centered-button">
+					<button type="submit" class="btn btn-info">Voter</button>
+					</div>
+				</form> -->
+			</div>
+
+			<br/>
+
+			<div th:replace="listeJoueur"></div>
+		</div>
+
+	</div>

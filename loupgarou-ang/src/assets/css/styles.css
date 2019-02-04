@@ -105,7 +105,7 @@ font-weight:bold;
 }
 
 #page-center {
-background-image: url("./assets/center_bc.png");
+background-image: url("../center_bc.png");
 background-position: center top;
 background-repeat: no-repeat;
 }
