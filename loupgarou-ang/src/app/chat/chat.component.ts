@@ -6,7 +6,7 @@ import { Message } from '../message';
 import { MessageService } from '../message.service';
 
 @Component({
-  selector: 'app-chat,[app-chat]',
+  selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
@@ -23,7 +23,7 @@ export class ChatComponent implements OnInit {
 
   postMessage(message: Message){
     this.message.dateCreation = new Date();
-    console.log(this.message.dateCreation);
+    //console.log(this.message.dateCreation);
   	this.messageService.save(this.message);
   }
 

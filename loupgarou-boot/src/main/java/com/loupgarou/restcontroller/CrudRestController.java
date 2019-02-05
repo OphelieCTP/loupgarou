@@ -31,7 +31,7 @@ public class CrudRestController {
 	public List<Utilisateur> getUser() {
 		List<Utilisateur> utilisateurs = daoUtilisateur.findAll();
 		return utilisateurs;
-	}
+	} 
 	
 
 }

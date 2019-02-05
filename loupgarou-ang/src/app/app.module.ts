@@ -15,8 +15,6 @@ import { JeuComponent } from './jeu/jeu.component';
 import { MonCompteComponent } from './mon-compte/mon-compte.component';
 import { ChatComponent } from './chat/chat.component';
 
-import { timer } from 'rxjs/observable/timer';
-
 import { MessageService } from './message.service';
 
 

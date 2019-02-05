@@ -19,7 +19,7 @@ public class SseEmitterController {
  
 	@GetMapping("/sse") 
 	public SseEmitter handleSse() { 
-		SseEmitter emitter = new SseEmitter((long) 1000); 
+		SseEmitter emitter = new SseEmitter(); 
 		 
 		emitters.add(emitter); 
  
