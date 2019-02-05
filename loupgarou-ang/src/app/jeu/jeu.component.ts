@@ -11,7 +11,7 @@ import { JoueurService } from '../joueur.service';
 export class JeuComponent implements OnInit {
 
   private mesVills: any;
-  private currVill : Villageois = new Villageois();
+  private bulletin : number;
 
   constructor(private villService: JoueurService) { }
 
@@ -22,12 +22,13 @@ export class JeuComponent implements OnInit {
 
 
 
-  loadCurrentUser() {
-         this.villService.findById(8).subscribe(resp => this.currVill = <Villageois>resp );
-    }
+   loadCurrentUser() {
+          this.villService.findById(8);
+     }
 
     voter() {
-         console.log(this.currVill.userName);
+         this.villService.currVillAsync.subscribe(resp => console.log(resp.userID));
+         console.log(this.bulletin);
     }
 
 }

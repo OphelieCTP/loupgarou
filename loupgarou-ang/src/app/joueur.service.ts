@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class JoueurService {
   public villAsync : any = null;
+  public currVillAsync : any = null;
 
   constructor(private appConfig : AppConfigService, private httpClient : HttpClient) { }
 
@@ -20,8 +21,26 @@ export class JoueurService {
          return this.villAsync;
     }
 
+    // findById(id : number)
+    // {
+    //       return this.httpClient.get("http://localhost:8080/api/jeu/"+id);
+    // }
+
     findById(id : number)
     {
-          return this.httpClient.get("http://localhost:8080/api/jeu/"+id);
+         if(this.currVillAsync == null)
+         {
+             this.currVillAsync = this.httpClient.get("http://localhost:8080/api/jeu/"+id); //Version un traitmeent
+             // this.httpClient.get("http://localhost-8080/api/produit").subscribe(resp => { console.log(resp);this.produits = resp; } ) //Accolades plusieurs traintements
+         }
+         return this.currVillAsync;
+
+
     }
+
+
+    // sendVote(currVillId : number, voteId : number)
+    // {
+    //      this.httpClient.post("http://localhost:8080/api/jeu/vote?vote="+voteId+"&id="+currVillId).subscribe();
+    // }
 }

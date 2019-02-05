@@ -7,6 +7,7 @@ import { RouterModule, Routes, ActivatedRoute } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AppConfigService } from './app-config.service';
+import { JoueurService } from './joueur.service';
 import { RulesComponent } from './rules/rules.component';
 import { HomeComponent } from './home/home.component';
 import { CrudComponent } from './crud/crud.component';
@@ -38,13 +39,12 @@ const routes: Routes = [
     ChatComponent
   ],
   imports: [
-    BrowserModule, 
-    FormsModule, 
+    BrowserModule,
+    FormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule
   ],
-  providers: [AppConfigService],
+  providers: [AppConfigService, JoueurService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-

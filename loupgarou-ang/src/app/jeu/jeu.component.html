@@ -96,8 +96,8 @@
 				<form id="voteJ" method="post" action="jeu/vote">
 					<!-- <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /> -->
 					<div class="radio" *ngFor="let v of villService.findAllAsync() | async">
-						<input type="radio" name="vote" value="{{v.userID}}" *ngIf="v.vivant == true"/>
-						<label *ngIf="v.vivant == true"> {{v.userName}} </label>
+						<input type="radio" [(ngModel)]="bulletin" name="vote" value="{{v.userID}}" *ngIf="v.vivant == true  && (villService.findById(7) | async)?.userID != v.userID"/>
+						<label *ngIf="v.vivant == true && (villService.findById(7) | async)?.userID != v.userID"> {{v.userName}} </label>
 					</div>
 
 					<div id="centered-button">
