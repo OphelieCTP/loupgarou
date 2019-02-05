@@ -1,32 +1,29 @@
-<!-- <div id="page-center" class="col-sm-8"> -->
-	<br/>
-	<div id="chat" class="col-md-11">
-		<table>
-			<tbody>
-				<tr *ngFor="let mess of messageService.findAllAsync() | async">
-					<td> {{mess.joueur}} : {{mess.contenu}} </td>
-				</tr>
-			</tbody>
-		</table>
+<br/>
+<div id="chat" class="col-md-11">
+	<table>
+		<tbody>
+			<tr *ngFor="let mess of messageService.findAllAsync() | async">
+				<td> {{mess.joueur}} : {{mess.contenu}} </td>
+			</tr>
+		</tbody>
+	</table>
 
+</div>
+<div id="edit" >
+<br/>
+	<form class="col-md-12" >
+	<div class="input-group">
+		<input [hidden]=false name="joueur" type="text" [(ngModel)]="message.joueur" />
+		<input [hidden]=false name="visible" type="text" [(ngModel)]="message.visible" />
+		<input name="contenu" type="text" [(ngModel)]="message.contenu" /><br>
+	  <!-- <input type="text" class="form-control" aria-label="..."> -->
+	  <div class="input-group-btn">
+	   	<!--  <input class="btn btn-info" type="submit" value="Envoyer" /> -->
+	   	<button (click)="sendMessage(message)" class="btn btn-info">Envoyer</button>
+	   	<button (click)="exit()" class="btn btn-info">Refresh</button>
+	  </div>
 	</div>
-	<div id="edit" >
-	<br/>
-		<form class="col-md-12" >
-		<div class="input-group">
-			<input [hidden]=false name="joueur" type="text" [(ngModel)]="message.joueur" />
-			<input [hidden]=false name="visible" type="text" [(ngModel)]="message.visible" />
-			<input name="contenu" type="text" [(ngModel)]="message.contenu" /><br>
-		  <!-- <input type="text" class="form-control" aria-label="..."> -->
-		  <div class="input-group-btn">
-		   	<!--  <input class="btn btn-info" type="submit" value="Envoyer" /> -->
-		   	<button (click)="postMessage(message)" class="btn btn-info">Envoyer</button>
-		   	<button (click)="exit()" class="btn btn-info">Refresh</button>
-		  </div>
-		</div>
-		</form>
-	</div>
-	<br/>
-<<!-- /div> -->
-
+	</form>
+</div>
+<br/>
 
