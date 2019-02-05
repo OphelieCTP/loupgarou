@@ -24,9 +24,9 @@
 				Rôle
 				</div>
 
-				<div class="carte" *ngIf="(villService.findById(8) | async)?.role == 'Villageois'">
-					<!-- <div id="imgLegend" > [[${ currentUser.userName }]] - Villageois</div>
-					<img id="carteJ" src="img/vill.png"  /> -->
+				<div class="carte" *ngIf="(villService.findById(currId) | async)?.role == 'Villageois'">
+					<div id="imgLegend" > {{(villService.findById(currId) | async)?.userName }} - Villageois</div>
+					<img id="carteJ" src="../../assets/vill.png"  />
 				</div>
 				<!-- <div class="carte" th:if="${ currentUser.role == 'Loup' }">
 					<div id="imgLegend" >[[${ currentUser.userName }]] - Loup Garou</div>
@@ -39,15 +39,16 @@
 				<div class="carte" th:if="${ currentUser.role == 'Cupidon' }">
 					<div id="imgLegend" >[[${ currentUser.userName }]] - Cupidon</div>
 					<img id="carteJ" src="img/cupidon.png"  />
+				</div> -->
+				<div class="carte" th:if="(villService.findById(currId) | async)?.role == 'PetiteFille'">
+					<div id="imgLegend" > {{(villService.findById(currId) | async)?.userName }} - Petite Fille</div>
+					<img id="carteJ" src="../../assets/pfille.png"  />
 				</div>
-				<div class="carte" th:if="${ currentUser.role == 'PetiteFille' }">
-					<div id="imgLegend" >[[${ currentUser.userName }]] - Petite Fille</div>
-					<img id="carteJ" src="img/pfille.png"  />
+				<div class="carte" *ngIf="(villService.findById(currId) | async)?.role == 'Sorciere'">
+					<div id="imgLegend" > {{ (villService.findById(currId) | async)?.userName }} - Sorcière</div>
+					<img id="carteJ" src="../../assets/sorciere.png"  />
 				</div>
-				<div class="carte" th:if="${ currentUser.role == 'Sorciere' }">
-					<div id="imgLegend" >[[${ currentUser.userName }]] - Sorcière</div>
-					<img id="carteJ" src="img/sorciere.png"  />
-				</div>
+				<!--
 				<div class="carte" th:if="${ currentUser.role == 'Voyante' }">
 					<div id="imgLegend" >[[${ currentUser.userName }]] - Voyante</div>
 					<img id="carteJ" src="img/voyante.png"  />
@@ -69,7 +70,7 @@
 		</div>
 
 		<div id="page-center" class="col-sm-8">
-			
+
 
 			<br/>
 			<div id="chat" class="col-md-11">
@@ -101,8 +102,8 @@
 				<form id="voteJ" method="post" action="jeu/vote">
 					<!-- <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /> -->
 					<div class="radio" *ngFor="let v of villService.findAllAsync() | async">
-						<input type="radio" [(ngModel)]="bulletin" name="vote" value="{{v.userID}}" *ngIf="v.vivant == true  && (villService.findById(8) | async)?.userID != v.userID"/>
-						<label *ngIf="v.vivant == true && (villService.findById(8) | async)?.userID != v.userID"> {{v.userName}} </label>
+						<input type="radio" [(ngModel)]="bulletin" name="vote" value="{{v.userID}}" *ngIf="v.vivant == true  && (villService.findById(currId) | async)?.userID != v.userID"/>
+						<label *ngIf="v.vivant == true && (villService.findById(currId) | async)?.userID != v.userID"> {{v.userName}} </label>
 					</div>
 
 					<div id="centered-button">

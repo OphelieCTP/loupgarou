@@ -12,6 +12,7 @@ export class JeuComponent implements OnInit {
 
   private mesVills: any;
   private bulletin : number;
+  private currId : number = 8;
 
   constructor(private villService: JoueurService) { }
 
