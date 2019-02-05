@@ -15,6 +15,10 @@ import { JeuComponent } from './jeu/jeu.component';
 import { MonCompteComponent } from './mon-compte/mon-compte.component';
 import { ChatComponent } from './chat/chat.component';
 
+import { timer } from 'rxjs/observable/timer';
+
+import { MessageService } from './message.service';
+
 
 //Configuration des routes
 const routes: Routes = [
@@ -39,9 +43,9 @@ const routes: Routes = [
     ChatComponent
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    RouterModule.forRoot(routes),
+    BrowserModule, 
+    FormsModule, 
+    RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'}),
     HttpClientModule
   ],
   providers: [AppConfigService, JoueurService],
