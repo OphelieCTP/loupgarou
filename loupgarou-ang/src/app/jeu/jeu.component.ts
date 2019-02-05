@@ -16,19 +16,20 @@ export class JeuComponent implements OnInit {
   constructor(private villService: JoueurService) { }
 
   ngOnInit() {
-       this.loadCurrentUser();
+
   }
 
 
 
 
-   loadCurrentUser() {
-          this.villService.findById(8);
-     }
+   // loadCurrentUser() {
+   //        this.villService.findById();
+   //   }
 
     voter() {
-         this.villService.currVillAsync.subscribe(resp => console.log(resp.userID));
-         console.log(this.bulletin);
+         // this.villService.currVillAsync.subscribe(resp => console.log(resp.userID));
+         // console.log(this.bulletin);
+         this.villService.currVillAsync.subscribe(resp => this.villService.sendVote(resp.userID, this.bulletin));
     }
 
 }

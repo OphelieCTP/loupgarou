@@ -39,8 +39,8 @@ export class JoueurService {
     }
 
 
-    // sendVote(currVillId : number, voteId : number)
-    // {
-    //      this.httpClient.post("http://localhost:8080/api/jeu/vote?vote="+voteId+"&id="+currVillId).subscribe();
-    // }
+    sendVote(currVillId : number, voteId : number)
+    {
+         this.httpClient.post("http://localhost:8080/api/jeu/vote?vote="+voteId+"&id="+currVillId, null).subscribe();
+    }
 }
