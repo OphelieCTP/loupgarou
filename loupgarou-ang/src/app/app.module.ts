@@ -48,7 +48,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'}),
     HttpClientModule
   ],
-  providers: [AppConfigService, JoueurService],
+  providers: [AppConfigService, JoueurService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
