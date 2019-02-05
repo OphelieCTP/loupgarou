@@ -34,6 +34,13 @@ public class JeuRestController {
 		return mesVillageois;
 	}
 	
+	@GetMapping("/jeu/{askId}")
+	@JsonView(Views.Villageois.class)
+	public Villageois getJoueur(@PathVariable Integer askId) {
+		Villageois vill = daoVillageois.findById(askId).get();
+		return vill;
+	}
+	
 	
 	//attendre l'identifiant du joueur a modifier
 	@PostMapping("/jeu/vote")
