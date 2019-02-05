@@ -9,10 +9,18 @@ import { MessageService } from '../message.service';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
+	public message: Message = new Message();
 
-  constructor() { }
+	public messages: Array<Message> = new Array<Message>();
+
+  constructor(private messageService: MessageService) { 
+  	this.messages = messageService.messAsync; }
 
   ngOnInit() {
+  }
+
+  postMessage(){
+  	this.messageService.save(this.message);
   }
 
 }

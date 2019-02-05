@@ -1,0 +1,57 @@
+<div id="container-fluid" class="col-sm-12">
+	<div id="page-left" class="col-sm-2">
+		<br/>
+			<div id="menu" class="col-sm-11" th:replace="menu.html :: div#menu">
+				<div class="container-fluid" id="menuTitle">
+				Menu
+				</div>
+
+				<ul class="nav nav-pills nav-stacked">
+                          <li role="presentation"><a class="menu-item" [routerLink]="['/jeu']" routerLinkActive="active">Démarrer une partie</a></li>
+                          <li role="presentation"><a class="menu-item" [routerLink]="['/rules']" routerLinkActive="active">Regles du jeu</a></li>
+                          <li role="presentation"><a class="menu-item" [routerLink]="['/crud']" routerLinkActive="active">Editer les joueurs</a></li>
+                          <li role="presentation"><a class="menu-item" [routerLink]="['/monCompte']" routerLinkActive="active">Mon Compte</a></li>
+                          <li role="presentation"><form method="post" action="/logout">
+					 <button type="submit" class="menu-item">Deconnexion</button></form></li>
+
+				</ul>
+			</div>
+		</div>
+
+		<div id="page-center-crud" class="col-sm-10">
+
+			<h1> Joueurs </h1>
+
+			<p> </p>
+			<div class="col-xs-3">
+				<input type="submit" id="add" class="btn btn-primary btn-md btn-block" value = "Ajouter Joueur" >
+			</div>
+			<p> </p>
+
+			<section id="addUser">
+				<div>
+					
+				</div>
+			</section>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th class="align-middle" scope="col">ID</th>
+						<th class="align-middle" scope="col">Nom Utilisateur</th>
+						<th class="align-middle" scope="col">Mot de Passe</th>
+						<th class="align-middle" scope="col">Statut Connexion</th>
+						<th class="align-middle" scope="col">Statut Banni</th>
+						<th class="align-middle" scope="col">Nombre de plaintes</th>
+						<th class="align-middle" scope="col">Date Naissance</th>
+						<th class="align-middle" scope="col">Email</th>
+						<th class="align-middle" scope="col">Actions possibles</th>
+					</tr>
+				</thead>
+			</table>
+
+
+		</div>
+
+	
+</div>

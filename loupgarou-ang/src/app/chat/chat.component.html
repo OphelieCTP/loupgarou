@@ -2,12 +2,39 @@
   chat works!
 </p>
 
+		<div id="page-center" class="col-sm-8">
+			<br/>
+			<div id="chat" class="col-md-11">
+
+				<!-- <span *ngFor="let mess of MessageService.findAllAsync() | async"> {{ mess.contenu }} </span> -->
+		
+			</div>
+			<div id="edit" >
+			<br/>
+				<form class="col-md-12" >
+				<div class="input-group">
+					<input [hidden]=true name="joueur" type="text" [(ngModel)]="message.joueur" />
+					<input [hidden]=true name="chat" type="text" [(ngModel)]="message.chat" />
+					<input [hidden]=true name="visible" type="text" [(ngModel)]="message.visible" />
+					<input [hidden]=true name="dateCreation" type="date" [(ngModel)]="message.dateCreation" />
+					<input name="contenu" type="text" [(ngModel)]="message.contenu" /><br>
+				  <!-- <input type="text" class="form-control" aria-label="..."> -->
+				  <div class="input-group-btn">
+				   	<!--  <input class="btn btn-info" type="submit" value="Envoyer" /> -->
+				   	 <button (click)="addProduit()" class="btn btn-info">Envoyer</button>
+				  </div>
+				</div>
+				</form>
+			</div>
+			<br/>
+		</div>
+
 <table>
      <tbody>
-          <!-- <tr *ngFor="let p of produits">  -->
-          <tr *ngFor="let mess of MessageService.findAllAsync() | async">
-               <td> {{ mess.contenu }} </td>
-              
-          </tr>
+          <!-- <tr *ngFor="let mess of messages">  -->
+          <!-- <tr *ngFor="let mess of MessageService.findAllAsync() | async">
+               <td> {{ mess.contenu }} </td> 
+          </tr> -->
      </tbody>
 </table>
+
